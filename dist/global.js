@@ -550,6 +550,18 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   margin-bottom: 1rem !important;
 }
 
+.tailwind .ml-2{
+  margin-left: 0.5rem !important;
+}
+
+.tailwind .mt-1{
+  margin-top: 0.25rem !important;
+}
+
+.tailwind .mt-\\[0\\.5px\\]{
+  margin-top: 0.5px !important;
+}
+
 .tailwind .mb-6{
   margin-bottom: 1.5rem !important;
 }
@@ -562,40 +574,12 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   margin-bottom: -0.5rem !important;
 }
 
-.tailwind .ml-2{
-  margin-left: 0.5rem !important;
-}
-
 .tailwind .ml-\\[-1px\\]{
   margin-left: -1px !important;
 }
 
-.tailwind .mt-1{
-  margin-top: 0.25rem !important;
-}
-
 .tailwind .mt-8{
   margin-top: 2rem !important;
-}
-
-.tailwind .mt-\\[1px\\]{
-  margin-top: 1px !important;
-}
-
-.tailwind .mt-\\[2px\\]{
-  margin-top: 2px !important;
-}
-
-.tailwind .mt-\\[3px\\]{
-  margin-top: 3px !important;
-}
-
-.tailwind .mt-\\[-1px\\]{
-  margin-top: -1px !important;
-}
-
-.tailwind .mt-\\[0\\.5px\\]{
-  margin-top: 0.5px !important;
 }
 
 .tailwind .block{
@@ -610,21 +594,21 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   display: none !important;
 }
 
-.tailwind .h-\\[12px\\]{
-  height: 12px !important;
+.tailwind .h-4{
+  height: 1rem !important;
 }
 
-.tailwind .h-fit{
-  height: -moz-fit-content !important;
-  height: fit-content !important;
+.tailwind .h-\\[12px\\]{
+  height: 12px !important;
 }
 
 .tailwind .h-full{
   height: 100% !important;
 }
 
-.tailwind .h-4{
-  height: 1rem !important;
+.tailwind .h-fit{
+  height: -moz-fit-content !important;
+  height: fit-content !important;
 }
 
 .tailwind .max-h-0{
@@ -637,6 +621,10 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 
 .tailwind .min-h-\\[20rem\\]{
   min-height: 20rem !important;
+}
+
+.tailwind .w-4{
+  width: 1rem !important;
 }
 
 .tailwind .w-\\[12px\\]{
@@ -658,10 +646,6 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 
 .tailwind .w-full{
   width: 100% !important;
-}
-
-.tailwind .w-4{
-  width: 1rem !important;
 }
 
 .tailwind .min-w-\\[120px\\]{
@@ -764,6 +748,10 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   align-items: center !important;
 }
 
+.tailwind .justify-start{
+  justify-content: flex-start !important;
+}
+
 .tailwind .justify-end{
   justify-content: flex-end !important;
 }
@@ -800,12 +788,12 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   gap: 0.25rem !important;
 }
 
-.tailwind .gap-\\[0\\.375rem\\]{
-  gap: 0.375rem !important;
-}
-
 .tailwind .gap-\\[10px\\]{
   gap: 10px !important;
+}
+
+.tailwind .gap-\\[0\\.375rem\\]{
+  gap: 0.375rem !important;
 }
 
 .tailwind .overflow-hidden{
@@ -832,16 +820,16 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   border-width: 1px !important;
 }
 
-.tailwind .border-b-0{
-  border-bottom-width: 0px !important;
-}
-
 .tailwind .border-b-\\[1px\\]{
   border-bottom-width: 1px !important;
 }
 
 .tailwind .border-l{
   border-left-width: 1px !important;
+}
+
+.tailwind .border-b-0{
+  border-bottom-width: 0px !important;
 }
 
 .tailwind .border-none{
@@ -870,6 +858,12 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   border-color: rgba(255, 255, 255, 0.4) !important;
 }
 
+.tailwind .border-black{
+  --tw-border-opacity: 1 !important;
+  border-color: rgba(0, 0, 0, 1) !important;
+  border-color: rgba(0, 0, 0, var(--tw-border-opacity, 1)) !important;
+}
+
 .tailwind .bg-\\[\\#000\\]{
   --tw-bg-opacity: 1 !important;
   background-color: rgba(0, 0, 0, 1) !important;
@@ -894,16 +888,6 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   background-color: rgba(0, 0, 0, var(--tw-bg-opacity, 1)) !important;
 }
 
-.tailwind .bg-black\\/70{
-  background-color: rgba(0, 0, 0, 0.7) !important;
-}
-
-.tailwind .bg-gray-500{
-  --tw-bg-opacity: 1 !important;
-  background-color: rgba(107, 114, 128, 1) !important;
-  background-color: rgba(107, 114, 128, var(--tw-bg-opacity, 1)) !important;
-}
-
 .tailwind .bg-transparent{
   background-color: transparent !important;
 }
@@ -914,6 +898,16 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   background-color: rgba(255, 255, 255, var(--tw-bg-opacity, 1)) !important;
 }
 
+.tailwind .bg-black\\/70{
+  background-color: rgba(0, 0, 0, 0.7) !important;
+}
+
+.tailwind .bg-gray-500{
+  --tw-bg-opacity: 1 !important;
+  background-color: rgba(107, 114, 128, 1) !important;
+  background-color: rgba(107, 114, 128, var(--tw-bg-opacity, 1)) !important;
+}
+
 .tailwind .bg-opacity-50{
   --tw-bg-opacity: 0.5 !important;
 }
@@ -922,9 +916,25 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   background-image: linear-gradient(to bottom right, var(--tw-gradient-stops)) !important;
 }
 
+.tailwind .bg-gradient-to-r{
+  background-image: linear-gradient(to right, var(--tw-gradient-stops)) !important;
+}
+
 .tailwind .from-brand\\/20{
   --tw-gradient-from: rgba(20, 232, 255, 0.2) var(--tw-gradient-from-position) !important;
   --tw-gradient-to: rgba(20, 232, 255, 0) var(--tw-gradient-to-position) !important;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+
+.tailwind .from-white{
+  --tw-gradient-from: #fff var(--tw-gradient-from-position) !important;
+  --tw-gradient-to: rgba(255, 255, 255, 0) var(--tw-gradient-to-position) !important;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+
+.tailwind .from-\\[\\#fee646\\]{
+  --tw-gradient-from: #fee646 var(--tw-gradient-from-position) !important;
+  --tw-gradient-to: rgba(254, 230, 70, 0) var(--tw-gradient-to-position) !important;
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
 }
 
@@ -936,17 +946,22 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   --tw-gradient-to: #000 var(--tw-gradient-to-position) !important;
 }
 
+.tailwind .to-\\[\\#2cd4df\\]{
+  --tw-gradient-to: #2cd4df var(--tw-gradient-to-position) !important;
+}
+
 .tailwind .to-90\\%{
   --tw-gradient-to-position: 90% !important;
+}
+
+.tailwind .bg-clip-text{
+  -webkit-background-clip: text !important;
+          background-clip: text !important;
 }
 
 .tailwind .object-contain{
   -o-object-fit: contain !important;
      object-fit: contain !important;
-}
-
-.tailwind .p-12{
-  padding: 3rem !important;
 }
 
 .tailwind .p-2{
@@ -969,12 +984,11 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   padding: 4px !important;
 }
 
-.tailwind .px-2{
-  padding-left: 0.5rem !important;
-  padding-right: 0.5rem !important;
+.tailwind .p-12{
+  padding: 3rem !important;
 }
 
-.tailwind .px-\\[0\\.5rem\\]{
+.tailwind .px-2{
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
@@ -989,11 +1003,6 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   padding-bottom: 0.375rem !important;
 }
 
-.tailwind .py-4{
-  padding-top: 1rem !important;
-  padding-bottom: 1rem !important;
-}
-
 .tailwind .py-\\[0\\.375rem\\]{
   padding-top: 0.375rem !important;
   padding-bottom: 0.375rem !important;
@@ -1004,17 +1013,36 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   padding-bottom: 6px !important;
 }
 
+.tailwind .px-\\[0\\.5rem\\]{
+  padding-left: 0.5rem !important;
+  padding-right: 0.5rem !important;
+}
+
+.tailwind .py-4{
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+}
+
+.tailwind .px-4{
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+.tailwind .py-2{
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
 .tailwind .pb-4{
   padding-bottom: 1rem !important;
 }
 
-.tailwind .text-center{
-  text-align: center !important;
+.tailwind .pl-4{
+  padding-left: 1rem !important;
 }
 
-.tailwind .text-4xl{
-  font-size: 2.25rem !important;
-  line-height: 2.5rem !important;
+.tailwind .text-center{
+  text-align: center !important;
 }
 
 .tailwind .text-\\[0\\.4rem\\]{
@@ -1058,6 +1086,16 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   line-height: 1.75rem !important;
 }
 
+.tailwind .text-4xl{
+  font-size: 2.25rem !important;
+  line-height: 2.5rem !important;
+}
+
+.tailwind .text-2xl{
+  font-size: 1.5rem !important;
+  line-height: 2rem !important;
+}
+
 .tailwind .font-\\[400\\]{
   font-weight: 400 !important;
 }
@@ -1082,16 +1120,16 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   font-weight: 500 !important;
 }
 
-.tailwind .font-normal{
-  font-weight: 400 !important;
-}
-
 .tailwind .uppercase{
   text-transform: uppercase !important;
 }
 
 .tailwind .capitalize{
   text-transform: capitalize !important;
+}
+
+.tailwind .leading-4{
+  line-height: 1rem !important;
 }
 
 .tailwind .leading-\\[0\\.5rem\\]{
@@ -1124,10 +1162,6 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 
 .tailwind .leading-\\[23px\\]{
   line-height: 23px !important;
-}
-
-.tailwind .leading-4{
-  line-height: 1rem !important;
 }
 
 .tailwind .tracking-\\[-0\\.0281rem\\]{
@@ -1170,12 +1204,6 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   color: rgba(20, 232, 255, var(--tw-text-opacity, 1)) !important;
 }
 
-.tailwind .text-gray-300{
-  --tw-text-opacity: 1 !important;
-  color: rgba(209, 213, 219, 1) !important;
-  color: rgba(209, 213, 219, var(--tw-text-opacity, 1)) !important;
-}
-
 .tailwind .text-gray-400{
   --tw-text-opacity: 1 !important;
   color: rgba(156, 163, 175, 1) !important;
@@ -1196,6 +1224,16 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   --tw-text-opacity: 1 !important;
   color: rgba(255, 255, 255, 1) !important;
   color: rgba(255, 255, 255, var(--tw-text-opacity, 1)) !important;
+}
+
+.tailwind .text-gray-300{
+  --tw-text-opacity: 1 !important;
+  color: rgba(209, 213, 219, 1) !important;
+  color: rgba(209, 213, 219, var(--tw-text-opacity, 1)) !important;
+}
+
+.tailwind .text-transparent{
+  color: transparent !important;
 }
 
 .tailwind .opacity-0{
@@ -1327,6 +1365,12 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   border-color: rgba(255, 255, 255, var(--tw-border-opacity, 1)) !important;
 }
 
+.hover\\:bg-white:hover{
+  --tw-bg-opacity: 1 !important;
+  background-color: rgba(255, 255, 255, 1) !important;
+  background-color: rgba(255, 255, 255, var(--tw-bg-opacity, 1)) !important;
+}
+
 .hover\\:bg-gray-200:hover{
   --tw-bg-opacity: 1 !important;
   background-color: rgba(229, 231, 235, 1) !important;
@@ -1337,12 +1381,6 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   --tw-bg-opacity: 1 !important;
   background-color: rgba(17, 24, 39, 1) !important;
   background-color: rgba(17, 24, 39, var(--tw-bg-opacity, 1)) !important;
-}
-
-.hover\\:bg-white:hover{
-  --tw-bg-opacity: 1 !important;
-  background-color: rgba(255, 255, 255, 1) !important;
-  background-color: rgba(255, 255, 255, var(--tw-bg-opacity, 1)) !important;
 }
 
 .hover\\:text-black:hover{
@@ -17543,7 +17581,7 @@ if (true) {
 
 /***/ }),
 
-/***/ 477:
+/***/ 858:
 /***/ ((__unused_webpack_module, exports) => {
 
 /**
@@ -17897,7 +17935,7 @@ exports.unstable_wrapCallback = function (callback) {
 
 
 if (true) {
-  module.exports = __webpack_require__(477);
+  module.exports = __webpack_require__(858);
 } else {}
 
 
@@ -18267,145 +18305,43 @@ var update = injectStylesIntoStyleTag_default()(style/* default */.A, options);
 
        /* harmony default export */ const src_style = (style/* default */.A && style/* default */.A.locals ? style/* default */.A.locals : undefined);
 
-;// ./src/FetchData.js
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
-function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
-function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
-function fetchData(_x) {
-  return _fetchData.apply(this, arguments);
-}
-function _fetchData() {
-  _fetchData = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(city) {
-    var timestamp, response2, data;
-    return _regeneratorRuntime().wrap(function _callee$(_context) {
-      while (1) switch (_context.prev = _context.next) {
-        case 0:
-          _context.prev = 0;
-          timestamp = new Date().getTime();
-          _context.next = 4;
-          return fetch("https://api.tech-week.com/list_events/?city=".concat(city, "&_=").concat(timestamp), {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            credentials: "include"
-          });
-        case 4:
-          response2 = _context.sent;
-          if (response2.ok) {
-            _context.next = 8;
-            break;
-          }
-          _context.next = 12;
-          break;
-        case 8:
-          _context.next = 10;
-          return response2.json();
-        case 10:
-          data = _context.sent;
-          return _context.abrupt("return", data);
-        case 12:
-          _context.next = 17;
-          break;
-        case 14:
-          _context.prev = 14;
-          _context.t0 = _context["catch"](0);
-          return _context.abrupt("return", 10);
-        case 17:
-        case "end":
-          return _context.stop();
-      }
-    }, _callee, null, [[0, 14]]);
-  }));
-  return _fetchData.apply(this, arguments);
-}
-;// ./src/CitySelector.js
+;// ./src/IndividualEvent.js
 
-function CitySelector(_ref) {
-  var data = _ref.data,
-    setCity = _ref.setCity,
-    city = _ref.city,
-    currentCity = _ref.currentCity;
-  if (city !== "NYC") {
-    return /*#__PURE__*/react.createElement("div", {
-      className: "flex-grow basis-0 border-[1px] border-[#777777] p-[4px] cursor-not-allowed text-gray-400 bg-[#181818]"
-    }, /*#__PURE__*/react.createElement("div", {
-      className: "grow flex flex-col gap-[10px] p-3 pb-4 border-[1px] border-[#777777]"
-    }, /*#__PURE__*/react.createElement("div", {
-      className: "text-[1rem] font-[700] leading-[1.1rem] opacity-75"
-    }, data[1]), /*#__PURE__*/react.createElement("div", {
-      className: "text-[1.65rem] font-[600]"
-    }, data[0])));
-  }
+function IndividualEvent(_ref) {
+  var item = _ref.item,
+    windowWidth = _ref.windowWidth,
+    hasLink = _ref.hasLink,
+    className = _ref.className;
+  var hosts = item.hosts.split("|");
   return /*#__PURE__*/react.createElement("div", {
-    className: "flex-grow basis-0 border-[1px] border-white p-[4px] bg-black"
+    key: item.title,
+    className: "border-b-[1px] border-white flex flex-col p-4"
   }, /*#__PURE__*/react.createElement("div", {
-    className: "grow flex flex-col gap-[10px] p-3 pb-4 border-[1px] border-white ".concat(currentCity === city ? "bg-[#14e8ff] text-[#000]" : "bg-[#000] text-[#979797]"),
-    onClick: function onClick() {
-      return setCity(city);
-    }
-  }, /*#__PURE__*/react.createElement("div", {
-    className: "text-[1rem] font-[700] leading-[1.1rem] opacity-75"
-  }, data[1]), /*#__PURE__*/react.createElement("div", {
-    className: "text-[1.65rem] font-[600]"
-  }, data[0])));
-}
-;// ./src/ui/FilterCategory.js
-
-var FilterCategory = /*#__PURE__*/react.forwardRef(function FilterCategory(_ref, ref) {
-  var children = _ref.children,
-    text = _ref.text,
-    filtered = _ref.filtered,
-    onClickFunction = _ref.onClickFunction;
-  return /*#__PURE__*/react.createElement("div", {
-    id: text,
-    className: "flex flex-col gap-3 text-[1rem] font-[400] leading-[1.1] tracking-[-0.0281rem]",
-    ref: ref
+    className: "flex justify-start items-center"
   }, /*#__PURE__*/react.createElement("div", {
     className: "flex gap-2"
-  }, /*#__PURE__*/react.createElement("div", {
-    className: "text-white"
-  }, text), filtered && /*#__PURE__*/react.createElement("button", {
-    onClick: onClickFunction,
-    className: "transition-all duration-200 group"
-  }, /*#__PURE__*/react.createElement("svg", {
-    xmlns: "http://www.w3.org/2000/svg",
-    width: "10",
-    height: "10",
-    viewBox: "0 0 10 10",
-    fill: "none",
-    className: "transition-all duration-200 group-hover:rotate-90"
-  }, /*#__PURE__*/react.createElement("path", {
-    d: "M0.726501 9.97656L0.0233765 9.27344L4.29291 5L0.0233765 0.730469L0.726501 0.0195312L4.99994 4.29297L9.26947 0.0195312L9.98041 0.730469L5.70697 5L9.98041 9.27344L9.26947 9.97656L4.99994 5.70703L0.726501 9.97656Z",
-    fill: "white"
-  })))), children);
-});
-/* harmony default export */ const ui_FilterCategory = (FilterCategory);
-;// ./src/ui/FilterButton.js
-
-function FilterButton(_ref) {
-  var text = _ref.text,
-    onClick = _ref.onClick,
-    isActive = _ref.isActive,
-    isDisabled = _ref.isDisabled;
-  return /*#__PURE__*/react.createElement("button", {
-    className: "text-[14px] px-[8px] py-[6px] border-[1px] font-[400] transition-colors leading-[18px] tracking-[-0.4496px] ".concat(isActive ? "bg-white text-black border-white hover:border-gray-200 hover:text-gray-900" : isDisabled ? "bg-transparent text-gray-500 border-gray-500 cursor-not-allowed" : "bg-transparent text-white border-white40 hover:border-gray-200 hover:text-gray-200"),
-    onClick: onClick,
-    disabled: isDisabled
-  }, text);
+  }, hosts.map(function (host) {
+    return /*#__PURE__*/react.createElement("p", {
+      key: host,
+      className: "bg-gradient-to-r from-[#fee646] to-[#2cd4df] bg-clip-text text-transparent uppercase"
+    }, host);
+  }))), /*#__PURE__*/react.createElement("h3", {
+    className: "text-2xl font-bold"
+  }, item.title), /*#__PURE__*/react.createElement("p", null, item.description));
 }
-;// ./src/ui/FiltersBody.js
-function FiltersBody_typeof(o) { "@babel/helpers - typeof"; return FiltersBody_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, FiltersBody_typeof(o); }
-function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
-function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == FiltersBody_typeof(i) ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != FiltersBody_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != FiltersBody_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+;// ./src/App.js
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _regeneratorRuntime() { "use strict"; var r = _regenerator(), e = r.m(_regeneratorRuntime), t = (Object.getPrototypeOf ? Object.getPrototypeOf(e) : e.__proto__).constructor; function n(r) { var e = "function" == typeof r && r.constructor; return !!e && (e === t || "GeneratorFunction" === (e.displayName || e.name)); } var o = { "throw": 1, "return": 2, "break": 3, "continue": 3 }; function a(r) { var e, t; return function (n) { e || (e = { stop: function stop() { return t(n.a, 2); }, "catch": function _catch() { return n.v; }, abrupt: function abrupt(r, e) { return t(n.a, o[r], e); }, delegateYield: function delegateYield(r, o, a) { return e.resultName = o, t(n.d, _regeneratorValues(r), a); }, finish: function finish(r) { return t(n.f, r); } }, t = function t(r, _t, o) { n.p = e.prev, n.n = e.next; try { return r(_t, o); } finally { e.next = n.n; } }), e.resultName && (e[e.resultName] = n.v, e.resultName = void 0), e.sent = n.v, e.next = n.n; try { return r.call(this, e); } finally { n.p = e.prev, n.n = e.next; } }; } return (_regeneratorRuntime = function _regeneratorRuntime() { return { wrap: function wrap(e, t, n, o) { return r.w(a(e), t, n, o && o.reverse()); }, isGeneratorFunction: n, mark: r.m, awrap: function awrap(r, e) { return new _OverloadYield(r, e); }, AsyncIterator: _regeneratorAsyncIterator, async: function async(r, e, t, o, u) { return (n(e) ? _regeneratorAsyncGen : _regeneratorAsync)(a(r), e, t, o, u); }, keys: _regeneratorKeys, values: _regeneratorValues }; })(); }
+function _regeneratorValues(e) { if (null != e) { var t = e["function" == typeof Symbol && Symbol.iterator || "@@iterator"], r = 0; if (t) return t.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) return { next: function next() { return e && r >= e.length && (e = void 0), { value: e && e[r++], done: !e }; } }; } throw new TypeError(_typeof(e) + " is not iterable"); }
+function _regeneratorKeys(e) { var n = Object(e), r = []; for (var t in n) r.unshift(t); return function e() { for (; r.length;) if ((t = r.pop()) in n) return e.value = t, e.done = !1, e; return e.done = !0, e; }; }
+function _regeneratorAsync(n, e, r, t, o) { var a = _regeneratorAsyncGen(n, e, r, t, o); return a.next().then(function (n) { return n.done ? n.value : a.next(); }); }
+function _regeneratorAsyncGen(r, e, t, o, n) { return new _regeneratorAsyncIterator(_regenerator().w(r, e, t, o), n || Promise); }
+function _regeneratorAsyncIterator(t, e) { function n(r, o, i, f) { try { var c = t[r](o), u = c.value; return u instanceof _OverloadYield ? e.resolve(u.v).then(function (t) { n("next", t, i, f); }, function (t) { n("throw", t, i, f); }) : e.resolve(u).then(function (t) { c.value = t, i(c); }, function (t) { return n("throw", t, i, f); }); } catch (t) { f(t); } } var r; this.next || (_regeneratorDefine2(_regeneratorAsyncIterator.prototype), _regeneratorDefine2(_regeneratorAsyncIterator.prototype, "function" == typeof Symbol && Symbol.asyncIterator || "@asyncIterator", function () { return this; })), _regeneratorDefine2(this, "_invoke", function (t, o, i) { function f() { return new e(function (e, r) { n(t, i, e, r); }); } return r = r ? r.then(f, f) : f(); }, !0); }
+function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
+function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { if (r) i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n;else { var o = function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); }; o("next", 0), o("throw", 1), o("return", 2); } }, _regeneratorDefine2(e, r, n, t); }
+function _OverloadYield(e, d) { this.v = e, this.k = d; }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -18415,1072 +18351,59 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
-function FiltersBody(_ref) {
-  var activeFilters = _ref.activeFilters,
-    setActiveFilters = _ref.setActiveFilters,
-    availableFilters = _ref.availableFilters,
-    searchRef = _ref.searchRef,
-    searchMode = _ref.searchMode,
-    showPastEvents = _ref.showPastEvents,
-    setShowPastEvents = _ref.setShowPastEvents;
-  var _React$useState = react.useState(activeFilters.search),
+var App = function App() {
+  var _React$useState = react.useState(null),
     _React$useState2 = _slicedToArray(_React$useState, 2),
-    searchTerm = _React$useState2[0],
-    setSearchTerm = _React$useState2[1];
-  var _React$useState3 = react.useState(false),
+    error = _React$useState2[0],
+    setError = _React$useState2[1];
+  var _React$useState3 = react.useState(window.innerWidth),
     _React$useState4 = _slicedToArray(_React$useState3, 2),
-    neighborhoodExpanded = _React$useState4[0],
-    setNeighborhoodExpanded = _React$useState4[1];
+    windowWidth = _React$useState4[0],
+    setWindowWidth = _React$useState4[1];
   var _React$useState5 = react.useState(false),
     _React$useState6 = _slicedToArray(_React$useState5, 2),
-    topicsExpanded = _React$useState6[0],
-    setTopicsExpanded = _React$useState6[1];
-  var _React$useState7 = react.useState(false),
+    isValidEmail = _React$useState6[0],
+    setIsValidEmail = _React$useState6[1];
+  var _React$useState7 = react.useState(""),
     _React$useState8 = _slicedToArray(_React$useState7, 2),
-    typesExpanded = _React$useState8[0],
-    setTypesExpanded = _React$useState8[1];
+    email = _React$useState8[0],
+    setEmail = _React$useState8[1];
+  var _React$useState9 = react.useState([]),
+    _React$useState10 = _slicedToArray(_React$useState9, 2),
+    events = _React$useState10[0],
+    setEvents = _React$useState10[1];
 
-  // Sync local searchTerm with activeFilters.search when it changes externally
+  // Load testimonials using MutationObserver
   react.useEffect(function () {
-    setSearchTerm(activeFilters.search);
-  }, [activeFilters.search]);
-
-  // Handle search input
-  var handleSearch = function handleSearch(e) {
-    setSearchTerm(e.target.value);
-    // Update search filter in activeFilters
-    setActiveFilters(function (prev) {
-      return _objectSpread(_objectSpread({}, prev), {}, {
-        search: e.target.value
-      });
-    });
-  };
-
-  // Effect to focus search input when in search mode
-  react.useEffect(function () {
-    if (searchMode && searchRef.current) {
-      var searchInput = searchRef.current.querySelector('input[type="text"]');
-      if (searchInput) {
-        setTimeout(function () {
-          searchInput.focus();
-        }, 100);
-      }
-    }
-  }, [searchMode, searchRef]);
-  var handleFilterClick = function handleFilterClick(filterType, filterValue) {
-    if (activeFilters[filterType].includes(filterValue)) {
-      setActiveFilters(function (prevFilters) {
-        return _objectSpread(_objectSpread({}, prevFilters), {}, _defineProperty({}, filterType, prevFilters[filterType].filter(function (f) {
-          return f !== filterValue;
-        })));
-      });
-    } else {
-      setActiveFilters(function (prevFilters) {
-        return _objectSpread(_objectSpread({}, prevFilters), {}, _defineProperty({}, filterType, [].concat(_toConsumableArray(prevFilters[filterType]), [filterValue])));
-      });
-    }
-  };
-  var convertTimeToMinutes = function convertTimeToMinutes(timeStr) {
-    // Handle formats like "11:30 AM", "1:00 PM", etc.
-    var _timeStr$split = timeStr.split(" "),
-      _timeStr$split2 = _slicedToArray(_timeStr$split, 2),
-      time = _timeStr$split2[0],
-      period = _timeStr$split2[1];
-    var _time$split$map = time.split(":").map(Number),
-      _time$split$map2 = _slicedToArray(_time$split$map, 2),
-      hour = _time$split$map2[0],
-      minute = _time$split$map2[1];
-    var hours24 = hour;
-    if (period === "AM") {
-      if (hour === 12) hours24 = 0; // 12 AM is midnight
-    } else {
-      // PM
-      if (hour !== 12) hours24 = hour + 12; // 12 PM stays 12, others add 12
-    }
-    return hours24 * 60 + (minute || 0); // Convert to minutes, handle cases where minute might be undefined
-  };
-
-  // Helper to limit items to 2 rows (approximately 4-5 items per row based on current styling)
-  var limitItems = function limitItems(items, isExpanded) {
-    return isExpanded ? items : items.slice(0, 6);
-  };
-
-  // Animation style for filter categories
-  var animationStyle = {
-    transition: "max-height 500ms ease-in-out, opacity 500ms ease-in-out",
-    overflow: "hidden"
-  };
-  return /*#__PURE__*/react.createElement("div", {
-    id: "filters-body",
-    className: "flex flex-col gap-6"
-  }, /*#__PURE__*/react.createElement("div", {
-    className: "flex justify-between items-center"
-  }, /*#__PURE__*/react.createElement("div", {
-    className: "text-[18px] leading-[23px]"
-  }, "Event Filters"), /*#__PURE__*/react.createElement(FilterButton, {
-    text: "Clear All",
-    onClick: function onClick() {
-      return setActiveFilters({
-        date: [],
-        neighborhood: [],
-        start_time: [],
-        topics: [],
-        types: [],
-        search: ""
-      });
-    },
-    isDisabled: Object.keys(activeFilters).length === 0
-  })), /*#__PURE__*/react.createElement("div", {
-    className: "flex gap-2 items-start"
-  }, /*#__PURE__*/react.createElement("div", {
-    className: "relative mt-[0.5px]"
-  }, /*#__PURE__*/react.createElement("input", {
-    type: "checkbox",
-    name: "pastEvents",
-    id: "pastEvents",
-    className: "w-4 h-4 appearance-none border border-white bg-black checked:bg-white checked:border-white cursor-pointer",
-    checked: showPastEvents,
-    onChange: function onChange(e) {
-      return setShowPastEvents(e.target.checked);
-    }
-  }), showPastEvents && /*#__PURE__*/react.createElement("svg", {
-    className: "absolute top-0 left-0 w-4 h-4 pointer-events-none",
-    viewBox: "0 0 16 16",
-    fill: "none"
-  }, /*#__PURE__*/react.createElement("path", {
-    d: "M3 8L6 11L13 4",
-    stroke: "black",
-    strokeWidth: "2",
-    strokeLinecap: "round",
-    strokeLinejoin: "round"
-  }))), /*#__PURE__*/react.createElement("label", {
-    htmlFor: "pastEvents",
-    className: "font-[400] text-[14px] cursor-pointer leading-4"
-  }, "Show Past Events")), /*#__PURE__*/react.createElement(ui_FilterCategory, {
-    text: "Search",
-    ref: searchRef
-  }, /*#__PURE__*/react.createElement("div", {
-    className: "w-full relative"
-  }, /*#__PURE__*/react.createElement("input", {
-    type: "text",
-    placeholder: "Search by keyword...",
-    value: activeFilters.search,
-    onChange: handleSearch,
-    className: "w-full px-2 py-1.5 border-[1px] text-[14px] transition-colors border-white40 bg-black text-white focus:outline-none hover:border-white"
-  }), searchTerm && /*#__PURE__*/react.createElement("button", {
-    className: "absolute right-3 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300",
-    onClick: function onClick() {
-      setSearchTerm("");
-      setActiveFilters(function (prev) {
-        return _objectSpread(_objectSpread({}, prev), {}, {
-          search: ""
-        });
-      });
-    }
-  }, /*#__PURE__*/react.createElement("svg", {
-    xmlns: "http://www.w3.org/2000/svg",
-    width: "16",
-    height: "16",
-    viewBox: "0 0 24 24",
-    fill: "none",
-    stroke: "currentColor",
-    strokeWidth: "2"
-  }, /*#__PURE__*/react.createElement("line", {
-    x1: "18",
-    y1: "6",
-    x2: "6",
-    y2: "18"
-  }), /*#__PURE__*/react.createElement("line", {
-    x1: "6",
-    y1: "6",
-    x2: "18",
-    y2: "18"
-  }))))), /*#__PURE__*/react.createElement(ui_FilterCategory, {
-    text: "Day of Week",
-    filtered: activeFilters.date.length > 0,
-    onClickFunction: function onClickFunction() {
-      return setActiveFilters(function (prev) {
-        return _objectSpread(_objectSpread({}, prev), {}, {
-          date: []
-        });
-      });
-    }
-  }, /*#__PURE__*/react.createElement("div", {
-    className: "flex flex-wrap gap-2"
-  }, ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].map(function (day) {
-    return /*#__PURE__*/react.createElement(FilterButton, {
-      key: day,
-      text: day,
-      onClick: function onClick() {
-        return handleFilterClick("date", day);
-      },
-      isActive: activeFilters.date.includes(day),
-      isDisabled: !availableFilters.date.includes(day)
-    });
-  }))), /*#__PURE__*/react.createElement(ui_FilterCategory, {
-    text: "Neighborhood",
-    filtered: activeFilters.neighborhood.length > 0,
-    onClickFunction: function onClickFunction() {
-      return setActiveFilters(function (prev) {
-        return _objectSpread(_objectSpread({}, prev), {}, {
-          neighborhood: []
-        });
-      });
-    }
-  }, /*#__PURE__*/react.createElement("div", {
-    className: "flex flex-wrap gap-2"
-  }, !neighborhoodExpanded && availableFilters.neighborhood.slice(0, 6).map(function (neighborhood) {
-    return /*#__PURE__*/react.createElement(FilterButton, {
-      key: neighborhood,
-      text: neighborhood,
-      onClick: function onClick() {
-        return handleFilterClick("neighborhood", neighborhood);
-      },
-      isActive: activeFilters.neighborhood.includes(neighborhood)
-    });
-  }), neighborhoodExpanded && availableFilters.neighborhood.map(function (neighborhood) {
-    return /*#__PURE__*/react.createElement(FilterButton, {
-      key: neighborhood,
-      text: neighborhood,
-      onClick: function onClick() {
-        return handleFilterClick("neighborhood", neighborhood);
-      },
-      isActive: activeFilters.neighborhood.includes(neighborhood)
-    });
-  })), availableFilters.neighborhood.length > 6 && /*#__PURE__*/react.createElement("button", {
-    className: "text-white text-[14px] font-[500] w-fit",
-    onClick: function onClick() {
-      return setNeighborhoodExpanded(!neighborhoodExpanded);
-    }
-  }, neighborhoodExpanded ? "See less" : "See more")), /*#__PURE__*/react.createElement(ui_FilterCategory, {
-    text: "Start Time"
-  }, /*#__PURE__*/react.createElement("div", {
-    className: "w-full"
-  }, /*#__PURE__*/react.createElement("select", {
-    className: "w-full border-[1px] text-[14px] px-2 py-1.5 transition-colors border-white40 hover:border-white bg-black text-white focus:outline-none text-center appearance-none [-webkit-appearance:none] [-moz-appearance:none]",
-    onChange: function onChange(e) {
-      var selectedTime = e.target.value;
-      if (selectedTime === "") {
-        // Clear the start time filter
-        setActiveFilters(function (prev) {
-          return _objectSpread(_objectSpread({}, prev), {}, {
-            start_time: []
-          });
-        });
-      } else {
-        // Set filter to show times >= selected time
-        var availableTimes = availableFilters.start_time;
-        var filteredTimes = availableTimes.filter(function (time) {
-          // Convert times to comparable format (assuming format like "8am", "9pm")
-          var selectedHour = convertTimeToMinutes(selectedTime);
-          var timeHour = convertTimeToMinutes(time);
-          return timeHour >= selectedHour;
-        });
-        setActiveFilters(function (prev) {
-          return _objectSpread(_objectSpread({}, prev), {}, {
-            start_time: filteredTimes
-          });
-        });
-      }
-    },
-    value: activeFilters.start_time.length > 0 ?
-    // Find the earliest time in active filters
-    availableFilters.start_time.find(function (time) {
-      return activeFilters.start_time.includes(time);
-    }) || "" : ""
-  }, /*#__PURE__*/react.createElement("option", {
-    value: ""
-  }, "-"), availableFilters.start_time.sort(function (a, b) {
-    return convertTimeToMinutes(a) - convertTimeToMinutes(b);
-  }).map(function (time) {
-    return /*#__PURE__*/react.createElement("option", {
-      key: time,
-      value: time
-    }, time, " or later");
-  })))), /*#__PURE__*/react.createElement(ui_FilterCategory, {
-    text: "Topics",
-    filtered: activeFilters.topics.length > 0,
-    onClickFunction: function onClickFunction() {
-      return setActiveFilters(function (prev) {
-        return _objectSpread(_objectSpread({}, prev), {}, {
-          topics: []
-        });
-      });
-    }
-  }, /*#__PURE__*/react.createElement("div", {
-    className: "flex flex-wrap gap-2"
-  }, !topicsExpanded && availableFilters.topics.slice(0, 6).map(function (topic) {
-    return /*#__PURE__*/react.createElement(FilterButton, {
-      key: topic,
-      text: topic,
-      onClick: function onClick() {
-        return handleFilterClick("topics", topic);
-      },
-      isActive: activeFilters.topics.includes(topic)
-    });
-  }), topicsExpanded && availableFilters.topics.map(function (topic) {
-    return /*#__PURE__*/react.createElement(FilterButton, {
-      key: topic,
-      text: topic,
-      onClick: function onClick() {
-        return handleFilterClick("topics", topic);
-      },
-      isActive: activeFilters.topics.includes(topic)
-    });
-  })), availableFilters.topics.length > 6 && /*#__PURE__*/react.createElement("button", {
-    className: "text-white text-[14px] font-[500] w-fit",
-    onClick: function onClick() {
-      return setTopicsExpanded(!topicsExpanded);
-    }
-  }, topicsExpanded ? "See less" : "See more")), /*#__PURE__*/react.createElement(ui_FilterCategory, {
-    text: "Types",
-    filtered: activeFilters.types.length > 0,
-    onClickFunction: function onClickFunction() {
-      return setActiveFilters(function (prev) {
-        return _objectSpread(_objectSpread({}, prev), {}, {
-          types: []
-        });
-      });
-    }
-  }, /*#__PURE__*/react.createElement("div", {
-    className: "flex flex-wrap gap-2",
-    style: _objectSpread(_objectSpread({}, animationStyle), {}, {
-      maxHeight: "1000px"
-    })
-  }, !typesExpanded && availableFilters.types.slice(0, 6).map(function (type) {
-    if (type.startsWith("Match making")) {
-      return /*#__PURE__*/react.createElement(FilterButton, {
-        key: type,
-        text: "Match making",
-        onClick: function onClick() {
-          return handleFilterClick("types", type);
-        },
-        isActive: activeFilters.types.includes(type)
-      });
-    } else {
-      return /*#__PURE__*/react.createElement(FilterButton, {
-        key: type,
-        text: type,
-        onClick: function onClick() {
-          return handleFilterClick("types", type);
-        },
-        isActive: activeFilters.types.includes(type)
-      });
-    }
-  }), typesExpanded && availableFilters.types.map(function (type) {
-    if (type.startsWith("Match making")) {
-      return /*#__PURE__*/react.createElement(FilterButton, {
-        key: type,
-        text: "Match making",
-        onClick: function onClick() {
-          return handleFilterClick("types", type);
-        },
-        isActive: activeFilters.types.includes(type)
-      });
-    } else {
-      return /*#__PURE__*/react.createElement(FilterButton, {
-        key: type,
-        text: type,
-        onClick: function onClick() {
-          return handleFilterClick("types", type);
-        },
-        isActive: activeFilters.types.includes(type)
-      });
-    }
-  })), availableFilters.types.length > 6 && /*#__PURE__*/react.createElement("button", {
-    className: "text-white text-[14px] font-[500] w-fit",
-    onClick: function onClick() {
-      return setTypesExpanded(!typesExpanded);
-    }
-  }, typesExpanded ? "See less" : "See more")));
-}
-;// ./src/Filters.js
-function Filters_slicedToArray(r, e) { return Filters_arrayWithHoles(r) || Filters_iterableToArrayLimit(r, e) || Filters_unsupportedIterableToArray(r, e) || Filters_nonIterableRest(); }
-function Filters_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function Filters_unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return Filters_arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? Filters_arrayLikeToArray(r, a) : void 0; } }
-function Filters_arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function Filters_iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function Filters_arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-
-
-function Filters(_ref) {
-  var city = _ref.city,
-    setCity = _ref.setCity,
-    availableFilters = _ref.availableFilters,
-    activeFilters = _ref.activeFilters,
-    setActiveFilters = _ref.setActiveFilters,
-    showPastEvents = _ref.showPastEvents,
-    setShowPastEvents = _ref.setShowPastEvents;
-  var _React$useState = react.useState(0),
-    _React$useState2 = Filters_slicedToArray(_React$useState, 2),
-    headerHeight = _React$useState2[0],
-    setHeaderHeight = _React$useState2[1];
-  var _React$useState3 = react.useState(false),
-    _React$useState4 = Filters_slicedToArray(_React$useState3, 2),
-    isSticky = _React$useState4[0],
-    setIsSticky = _React$useState4[1];
-  var stickyTriggerRef = react.useRef(null);
-  react.useEffect(function () {
-    // Function to measure header height
-    var measureHeader = function measureHeader() {
-      // The header contains the Tech Week Schedule title and sponsors
-      var headerElement = document.querySelector(".center-outside");
-      if (headerElement) {
-        var height = headerElement.getBoundingClientRect().height;
-        setHeaderHeight(height);
-      }
-    };
-
-    // Initial measurement
-    measureHeader();
-
-    // Re-measure on window resize
-    window.addEventListener("resize", measureHeader);
-
-    // Cleanup
-    return function () {
-      return window.removeEventListener("resize", measureHeader);
-    };
-  }, []);
-  react.useEffect(function () {
-    // Create a sentinel element that will trigger when we're about to become sticky
-    var sentinel = document.createElement("div");
-    sentinel.style.position = "absolute";
-    sentinel.style.top = "0";
-    sentinel.style.height = "1px";
-    sentinel.style.width = "1px";
-    sentinel.style.visibility = "hidden";
-
-    // Add the sentinel to the DOM
-    var filtersElement = document.getElementById("filters");
-    if (filtersElement && filtersElement.parentElement) {
-      filtersElement.parentElement.insertBefore(sentinel, filtersElement);
-      stickyTriggerRef.current = sentinel;
-    }
-
-    // Create intersection observer
-    var observer = new IntersectionObserver(function (_ref2) {
-      var _ref3 = Filters_slicedToArray(_ref2, 1),
-        entry = _ref3[0];
-      // When sentinel goes out of view, we're sticky
-      setIsSticky(!entry.isIntersecting);
-    }, {
-      threshold: 1.0
-    });
-
-    // Start observing
-    if (stickyTriggerRef.current) {
-      observer.observe(stickyTriggerRef.current);
-    }
-
-    // Cleanup
-    return function () {
-      if (stickyTriggerRef.current) {
-        observer.unobserve(stickyTriggerRef.current);
-        stickyTriggerRef.current.remove();
-      }
-    };
-  }, []);
-  return /*#__PURE__*/react.createElement("div", {
-    id: "filters",
-    className: "w-[22.5rem] min-h-[20rem] border-[1px] border-white p-[4px] bg-black sticky top-4 overflow-hidden",
-    style: {
-      height: isSticky ? "calc(100vh - 2rem)" : headerHeight ? "calc(100vh - ".concat(headerHeight, "px - 9.5rem)") : "100vh",
-      transition: "height 0.2s ease-out"
-    }
-  }, /*#__PURE__*/react.createElement("div", {
-    className: "border-[1px] border-white h-full p-4 overflow-y-scroll",
-    style: {
-      scrollbarWidth: "none",
-      msOverflowStyle: "none"
-    }
-  }, /*#__PURE__*/react.createElement(FiltersBody, {
-    activeFilters: activeFilters,
-    setActiveFilters: setActiveFilters,
-    availableFilters: availableFilters,
-    showPastEvents: showPastEvents,
-    setShowPastEvents: setShowPastEvents
-  })));
-}
-;// ./src/utils/timetodayofweek.js
-function timeTodayOfWeek(date) {
-  var dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-  var dateObj = new Date(date);
-  return dayNames[dateObj.getDay()];
-}
-;// ./src/utils/timetoampm.js
-function timeToAmPm(time) {
-  var dateObj = new Date(time);
-  var hours = dateObj.getHours();
-  var minutes = dateObj.getMinutes().toString().padStart(2, "0");
-  var ampm = hours < 12 ? "AM" : "PM";
-  var displayHours = hours % 12 || 12; // Convert 0 to 12 for midnight
-
-  return "".concat(displayHours, ":").concat(minutes, " ").concat(ampm);
-}
-;// ./src/utils/sortFilters.js
-function sortFilters_slicedToArray(r, e) { return sortFilters_arrayWithHoles(r) || sortFilters_iterableToArrayLimit(r, e) || sortFilters_unsupportedIterableToArray(r, e) || sortFilters_nonIterableRest(); }
-function sortFilters_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function sortFilters_unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return sortFilters_arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? sortFilters_arrayLikeToArray(r, a) : void 0; } }
-function sortFilters_arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function sortFilters_iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function sortFilters_arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-function sortFilters(result) {
-  var newFilters = {
-    date: [],
-    neighborhood: [],
-    start_time: [],
-    topics: [],
-    types: []
-  };
-  result.forEach(function (item) {
-    if (!newFilters.date.includes(item.day)) {
-      newFilters.date.push(item.day);
-    }
-    if (item.neighborhood && !newFilters.neighborhood.includes(item.neighborhood)) {
-      newFilters.neighborhood.push(item.neighborhood);
-    }
-    if (!newFilters.start_time.includes(item.time)) {
-      newFilters.start_time.push(item.time);
-    }
-    if (item.themes) {
-      item.themes.forEach(function (theme) {
-        if (!newFilters.topics.includes(theme) && theme !== "") {
-          newFilters.topics.push(theme);
-        }
-      });
-    }
-    if (item.formats) {
-      item.formats.forEach(function (format) {
-        if (!newFilters.types.includes(format) && format !== "") {
-          newFilters.types.push(format);
-        }
-      });
-    }
-  });
-
-  // Custom sort for days of the week (Monday first, Sunday last)
-  var dayOrder = {
-    Monday: 1,
-    Tuesday: 2,
-    Wednesday: 3,
-    Thursday: 4,
-    Friday: 5,
-    Saturday: 6,
-    Sunday: 7
-  };
-  newFilters.date.sort(function (a, b) {
-    return dayOrder[a] - dayOrder[b];
-  });
-
-  // Custom sort for time (AM first, PM last)
-  newFilters.start_time.sort(function (a, b) {
-    // Helper function to convert time string to minutes since midnight
-    var timeToMinutes = function timeToMinutes(timeStr) {
-      var _timeStr$split = timeStr.split(" "),
-        _timeStr$split2 = sortFilters_slicedToArray(_timeStr$split, 2),
-        time = _timeStr$split2[0],
-        period = _timeStr$split2[1];
-      var _time$split$map = time.split(":").map(Number),
-        _time$split$map2 = sortFilters_slicedToArray(_time$split$map, 2),
-        hour = _time$split$map2[0],
-        minute = _time$split$map2[1];
-      var hours24 = hour;
-      if (period === "AM") {
-        if (hour === 12) hours24 = 0; // 12 AM is midnight
-      } else {
-        // PM
-        if (hour !== 12) hours24 = hour + 12; // 12 PM stays 12, others add 12
-      }
-      return hours24 * 60 + minute;
-    };
-    return timeToMinutes(a) - timeToMinutes(b);
-  });
-
-  // Standard alphabetical sort for other filters
-  newFilters.neighborhood.sort();
-  newFilters.topics.sort();
-  newFilters.types.sort();
-  return newFilters;
-}
-;// ./src/utils/applyFilters.js
-function applyFilters_slicedToArray(r, e) { return applyFilters_arrayWithHoles(r) || applyFilters_iterableToArrayLimit(r, e) || applyFilters_unsupportedIterableToArray(r, e) || applyFilters_nonIterableRest(); }
-function applyFilters_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function applyFilters_unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return applyFilters_arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? applyFilters_arrayLikeToArray(r, a) : void 0; } }
-function applyFilters_arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function applyFilters_iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function applyFilters_arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-function applyFilters(data, activeFilters) {
-  // Check if any filters are active
-  var hasActiveFilters = Object.entries(activeFilters).some(function (_ref) {
-    var _ref2 = applyFilters_slicedToArray(_ref, 2),
-      key = _ref2[0],
-      value = _ref2[1];
-    if (key === "search" && typeof value === "string") {
-      return value.trim() !== ""; // For search, check if string is not empty
-    }
-    return Array.isArray(value) && value.length > 0; // For array filters, check length
-  });
-  if (!hasActiveFilters) {
-    return data;
-  }
-  return data.filter(function (item) {
-    // For each filter category (date, neighborhood, etc.)
-    return Object.keys(activeFilters).every(function (filterCategory) {
-      // Handle search differently since it's a string, not an array
-      if (filterCategory === "search") {
-        // If search is empty, don't filter
-        if (!activeFilters.search || activeFilters.search.trim() === "") {
-          return true;
-        }
-
-        // Search in event name, hosts, and any other relevant fields
-        var searchTerm = activeFilters.search.toLowerCase();
-        return item.event_name.toLowerCase().includes(searchTerm) || item.hosts && item.hosts.some(function (host) {
-          return host.toLowerCase().includes(searchTerm);
-        }) || item.neighborhood && item.neighborhood.toLowerCase().includes(searchTerm);
-      }
-
-      // For non-search filters (arrays)
-      if (!activeFilters[filterCategory] || activeFilters[filterCategory].length === 0) {
+    var getEvents = function getEvents() {
+      var _window$webflowCmsDat;
+      if ((_window$webflowCmsDat = window.webflowCmsData) !== null && _window$webflowCmsDat !== void 0 && _window$webflowCmsDat.events) {
+        var eventsData = window.webflowCmsData.events;
+        // console.log("Found testimonials:", testimonialsData);
+        setEvents(eventsData);
         return true;
       }
-
-      // Handle different categories
-      switch (filterCategory) {
-        case "date":
-          return activeFilters.date.includes(item.day);
-        case "neighborhood":
-          return activeFilters.neighborhood.includes(item.neighborhood);
-        case "start_time":
-          return activeFilters.start_time.includes(item.time);
-        case "topics":
-          // Check if any of the item's themes match any selected topic filters
-          return item.themes && item.themes.some(function (theme) {
-            return activeFilters.topics.includes(theme);
-          });
-        case "types":
-          // Check if any of the item's formats match any selected type filters
-          return item.formats && item.formats.some(function (format) {
-            return activeFilters.types.includes(format);
-          });
-        default:
-          return true;
+      return false;
+    };
+    if (getEvents()) return;
+    var observer = new MutationObserver(function () {
+      if (getEvents()) {
+        observer.disconnect();
       }
     });
-  });
-}
-;// ./src/MobileFilters.js
-
-
-function MobileFilters(_ref) {
-  var city = _ref.city,
-    setCity = _ref.setCity,
-    availableFilters = _ref.availableFilters,
-    activeFilters = _ref.activeFilters,
-    setActiveFilters = _ref.setActiveFilters,
-    filterToggle = _ref.filterToggle,
-    setFilterToggle = _ref.setFilterToggle,
-    searchMode = _ref.searchMode,
-    showPastEvents = _ref.showPastEvents,
-    setShowPastEvents = _ref.setShowPastEvents;
-  var searchRef = react.useRef(null);
-  react.useEffect(function () {
-    if (filterToggle) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    observer.observe(document.documentElement, {
+      attributes: true,
+      childList: true,
+      subtree: true
+    });
     return function () {
-      document.body.style.overflow = "";
+      return observer.disconnect();
     };
-  }, [filterToggle]);
-
-  // When opening in search mode, scroll to search section
-  react.useEffect(function () {
-    if (filterToggle && searchMode && searchRef.current) {
-      searchRef.current.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-    }
-  }, [filterToggle, searchMode]);
-  return /*#__PURE__*/react.createElement("div", {
-    className: "fixed inset-0 z-[9999] flex"
-  }, /*#__PURE__*/react.createElement("div", {
-    className: "absolute inset-0 bg-black bg-opacity-50 transition-all duration-300",
-    onClick: function onClick() {
-      return setFilterToggle(false);
-    }
-  }), /*#__PURE__*/react.createElement("div", {
-    className: "flex justify-end w-full"
-  }, /*#__PURE__*/react.createElement("div", {
-    className: "w-[90%] h-full bg-black border-l border-white relative z-10 overflow-hidden"
-  }, /*#__PURE__*/react.createElement("div", {
-    className: "h-full p-6 overflow-y-scroll",
-    style: {
-      scrollbarWidth: "none",
-      msOverflowStyle: "none"
-    }
-  }, /*#__PURE__*/react.createElement("div", {
-    className: "flex justify-between items-center mb-4"
-  }, /*#__PURE__*/react.createElement("h2", {
-    className: "text-xl font-bold text-white"
-  }, "Filters"), /*#__PURE__*/react.createElement("button", {
-    className: "flex items-center justify-center",
-    onClick: function onClick() {
-      return setFilterToggle(false);
-    }
-  }, /*#__PURE__*/react.createElement("svg", {
-    xmlns: "http://www.w3.org/2000/svg",
-    width: "10",
-    height: "10",
-    viewBox: "0 0 10 10",
-    fill: "none"
-  }, /*#__PURE__*/react.createElement("path", {
-    d: "M0.726501 9.97656L0.0233765 9.27344L4.29291 5L0.0233765 0.730469L0.726501 0.0195312L4.99994 4.29297L9.26947 0.0195312L9.98041 0.730469L5.70697 5L9.98041 9.27344L9.26947 9.97656L4.99994 5.70703L0.726501 9.97656Z",
-    fill: "white"
-  })))), /*#__PURE__*/react.createElement(FiltersBody, {
-    activeFilters: activeFilters,
-    setActiveFilters: setActiveFilters,
-    availableFilters: availableFilters,
-    searchRef: searchRef,
-    searchMode: searchMode,
-    showPastEvents: showPastEvents,
-    setShowPastEvents: setShowPastEvents
-  })))));
-}
-;// ./src/MobileCityDropdown.js
-function MobileCityDropdown_slicedToArray(r, e) { return MobileCityDropdown_arrayWithHoles(r) || MobileCityDropdown_iterableToArrayLimit(r, e) || MobileCityDropdown_unsupportedIterableToArray(r, e) || MobileCityDropdown_nonIterableRest(); }
-function MobileCityDropdown_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function MobileCityDropdown_unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return MobileCityDropdown_arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? MobileCityDropdown_arrayLikeToArray(r, a) : void 0; } }
-function MobileCityDropdown_arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function MobileCityDropdown_iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function MobileCityDropdown_arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-
-var MobileCityDropdown = function MobileCityDropdown(_ref) {
-  var city = _ref.city,
-    setCity = _ref.setCity;
-  var _React$useState = react.useState(false),
-    _React$useState2 = MobileCityDropdown_slicedToArray(_React$useState, 2),
-    dropdownOpen = _React$useState2[0],
-    setDropdownOpen = _React$useState2[1];
-
-  // Close dropdown when clicking outside
-  react.useEffect(function () {
-    var handleClickOutside = function handleClickOutside(event) {
-      if (dropdownOpen && !event.target.closest(".city-dropdown-container")) {
-        setDropdownOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return function () {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [dropdownOpen]);
-  return /*#__PURE__*/react.createElement("div", {
-    className: "relative city-dropdown-container"
-  }, /*#__PURE__*/react.createElement("div", {
-    className: "border-[1px] leading-[21.75px] border-white py-[0.375rem] px-2 uppercase cursor-pointer flex items-center justify-between min-w-[120px]",
-    onClick: function onClick() {
-      return setDropdownOpen(!dropdownOpen);
-    }
-  }, /*#__PURE__*/react.createElement("span", {
-    className: "text-white text-[0.875rem] font-medium"
-  }, city === "NYC" ? "NEW YORK" : city === "SF" ? "SAN FRANCISCO" : "LOS ANGELES"), /*#__PURE__*/react.createElement("svg", {
-    xmlns: "http://www.w3.org/2000/svg",
-    width: "14",
-    height: "14",
-    viewBox: "0 0 24 24",
-    fill: "none",
-    stroke: "currentColor",
-    strokeWidth: "2",
-    strokeLinecap: "round",
-    strokeLinejoin: "round",
-    className: "ml-2 transition-transform duration-300 ".concat(dropdownOpen ? "rotate-180" : "")
-  }, /*#__PURE__*/react.createElement("polyline", {
-    points: "6 9 12 15 18 9"
-  }))), /*#__PURE__*/react.createElement("div", {
-    className: "absolute left-0 mt-1 border-[1px] border-white bg-black w-full z-10 \n                   transition-all duration-300 origin-top\n                   ".concat(dropdownOpen ? "opacity-100 scale-y-100 max-h-[500px]" : "opacity-0 scale-y-0 max-h-0 overflow-hidden")
-  }, /*#__PURE__*/react.createElement("div", {
-    className: "py-[0.375rem] px-2 uppercase hover:bg-white hover:text-black cursor-pointer text-[0.875rem] font-medium",
-    onClick: function onClick() {
-      setCity("NYC");
-      setDropdownOpen(false);
-    }
-  }, "NEW YORK")));
-};
-/* harmony default export */ const src_MobileCityDropdown = (MobileCityDropdown);
-
-/*
-<div
-          className="py-[0.375rem] px-2 uppercase hover:bg-white hover:text-black text-gray-400 cursor-not-allowed text-[0.875rem] font-medium"
-          //onClick={() => {
-          //setCity("SF");
-          //setDropdownOpen(false);
-          //}}
-        >
-          SAN FRANCISCO
-        </div>
-        <div
-          className="py-[0.375rem] px-2 uppercase hover:bg-white hover:text-black text-gray-400 cursor-not-allowed text-[0.875rem] font-medium"
-          //onClick={() => {
-          //setCity("LA");
-          //setDropdownOpen(false);
-          //}}
-        >
-          LOS ANGELES
-        </div>*/
-;// ./src/IndividualEvent.js
-
-function IndividualEvent(_ref) {
-  var item = _ref.item,
-    windowWidth = _ref.windowWidth,
-    hasLink = _ref.hasLink,
-    className = _ref.className,
-    activeFilters = _ref.activeFilters;
-  var isStarred = item.starred_on_calendar === "TIER_1" || item.starred_on_calendar === "TIER_3" || item.starred_on_calendar === "TIER_2" && activeFilters.date.length > 0;
-  return /*#__PURE__*/react.createElement("div", {
-    key: item.id,
-    className: "group flex flex-col w-full bg-black border-b-[1px] border-white ".concat(windowWidth > 1030 ? "p-2 gap-[0.25rem]" : "p-2 gap-[0.25rem]", " ").concat(item.starred_on_calendar === "TIER_3" ? "bg-gradient-to-br from-20% from-brand/20 to-90% to-black" : "", " ")
-  }, /*#__PURE__*/react.createElement("div", {
-    className: "flex w-full justify-between items-start gap-4 font-[500] tracking-[-0.45px] uppercase ".concat(windowWidth > 1030 ? "text-[0.75rem] leading-[0.75rem]" : "text-[0.5rem] leading-[0.5rem]")
-  }, /*#__PURE__*/react.createElement("div", {
-    className: "flex ".concat(windowWidth > 1030 ? "gap-3" : "gap-[0.25rem]", " justify-between items-center")
-  }, /*#__PURE__*/react.createElement("div", {
-    className: "flex justify-center items-center ".concat(windowWidth > 1030 ? "gap-2" : "gap-1")
-  }, isStarred && /*#__PURE__*/react.createElement("div", {
-    className: "flex justify-center items-center"
-  }, /*#__PURE__*/react.createElement("svg", {
-    xmlns: "http://www.w3.org/2000/svg",
-    width: "20",
-    height: "20",
-    viewBox: "0 0 20 20",
-    fill: "none",
-    className: "w-[12px] h-[12px] object-contain"
-  }, /*#__PURE__*/react.createElement("path", {
-    d: "M9.9999 14.8972L15.6924 18.333L14.1816 11.858L19.2107 7.50134L12.5882 6.93967L9.9999 0.833008L7.41156 6.93967L0.789062 7.50134L5.81823 11.858L4.3074 18.333L9.9999 14.8972Z",
-    fill: "#14E8FF"
-  }))), /*#__PURE__*/react.createElement("div", {
-    className: "text-brand text-pretty w-fit"
-  }, item.hosts.join(", "))), /*#__PURE__*/react.createElement("div", {
-    className: "".concat(windowWidth > 1030 ? "text-[0.5rem]" : "text-[0.4rem]")
-  }, "|"), /*#__PURE__*/react.createElement("div", {
-    className: "text-grayText text-nowrap"
-  }, item.day, " ", item.time)), /*#__PURE__*/react.createElement("div", {
-    className: "text-grayText text-nowrap"
-  }, item.neighborhood)), /*#__PURE__*/react.createElement("div", {
-    className: "flex justify-between items-center gap-2"
-  }, /*#__PURE__*/react.createElement("div", {
-    className: "".concat(windowWidth > 1030 ? "text-[17px]" : "text-[0.75rem]", " font-[500] leading-[1.2] tracking-[-0.04rem] capitalize group-hover:text-[#aaa] ").concat(className)
-  }, item.event_name, !hasLink && " (Invite Only)"), /*#__PURE__*/react.createElement("div", {
-    className: "flex-shrink-0 transition-all duration-300"
-  }, hasLink && (windowWidth > 1030 ? /*#__PURE__*/react.createElement("svg", {
-    xmlns: "http://www.w3.org/2000/svg",
-    width: "14",
-    height: "14",
-    viewBox: "0 0 14 14",
-    fill: "none"
-  }, /*#__PURE__*/react.createElement("mask", {
-    id: "mask0_757_422387",
-    style: {
-      maskType: "alpha"
-    },
-    maskUnits: "userSpaceOnUse",
-    x: "0",
-    y: "0",
-    width: "14",
-    height: "14"
-  }, /*#__PURE__*/react.createElement("rect", {
-    width: "14",
-    height: "14",
-    fill: "#D9D9D9"
-  })), /*#__PURE__*/react.createElement("g", {
-    mask: "url(#mask0_757_422387)"
-  }, /*#__PURE__*/react.createElement("path", {
-    d: "M1.14397 14L0 12.856L11.2218 1.63424H0.92607V0H14V13.0739H12.3658V2.77821L1.14397 14Z",
-    fill: "white",
-    className: "group-hover:fill-brand"
-  }))) : /*#__PURE__*/react.createElement("svg", {
-    xmlns: "http://www.w3.org/2000/svg",
-    width: "10",
-    height: "10",
-    viewBox: "0 0 10 10",
-    fill: "none"
-  }, /*#__PURE__*/react.createElement("mask", {
-    id: "mask0_590_355924",
-    style: {
-      maskType: "alpha"
-    },
-    maskUnits: "userSpaceOnUse",
-    x: "0",
-    y: "0",
-    width: "10",
-    height: "10"
-  }, /*#__PURE__*/react.createElement("rect", {
-    x: "0.449951",
-    y: "0.901245",
-    width: "9.06889",
-    height: "9.06889",
-    fill: "#D9D9D9"
-  })), /*#__PURE__*/react.createElement("g", {
-    mask: "url(#mask0_590_355924)"
-  }, /*#__PURE__*/react.createElement("path", {
-    d: "M1.19099 9.97013L0.449951 9.2291L7.71918 1.95987H1.04984V0.901245H9.51884V9.37024H8.46021V2.70091L1.19099 9.97013Z",
-    fill: "white",
-    className: "group-hover:fill-brand"
-  })))))));
-}
-;// ./src/App.js
-function App_typeof(o) { "@babel/helpers - typeof"; return App_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, App_typeof(o); }
-function App_toConsumableArray(r) { return App_arrayWithoutHoles(r) || App_iterableToArray(r) || App_unsupportedIterableToArray(r) || App_nonIterableSpread(); }
-function App_nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function App_iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
-function App_arrayWithoutHoles(r) { if (Array.isArray(r)) return App_arrayLikeToArray(r); }
-function App_regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ App_regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == App_typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(App_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
-function App_asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
-function App_asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { App_asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { App_asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
-function App_ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function App_objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? App_ownKeys(Object(t), !0).forEach(function (r) { App_defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : App_ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function App_defineProperty(e, r, t) { return (r = App_toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function App_toPropertyKey(t) { var i = App_toPrimitive(t, "string"); return "symbol" == App_typeof(i) ? i : i + ""; }
-function App_toPrimitive(t, r) { if ("object" != App_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != App_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-function App_slicedToArray(r, e) { return App_arrayWithHoles(r) || App_iterableToArrayLimit(r, e) || App_unsupportedIterableToArray(r, e) || App_nonIterableRest(); }
-function App_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function App_unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return App_arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? App_arrayLikeToArray(r, a) : void 0; } }
-function App_arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function App_iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function App_arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-
-
-
-
-
-
-
-
-
-
-
-
-var afterNow = function afterNow(date) {
-  // Get current date in NY timezone
-  var now = new Date();
-  var formatter = new Intl.DateTimeFormat("en", {
-    timeZone: "America/New_York",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit"
-  });
-  var parts = formatter.formatToParts(now);
-
-  // Extract parts by type instead of assuming array order
-  var year = parts.find(function (part) {
-    return part.type === 'year';
-  }).value;
-  var month = parts.find(function (part) {
-    return part.type === 'month';
-  }).value;
-  var day = parts.find(function (part) {
-    return part.type === 'day';
-  }).value;
-  var todayString = "".concat(year, "-").concat(month, "-").concat(day);
-
-  // Get event date string (YYYY-MM-DD format) - events are already in NY timezone
-  var eventString = date.split('T')[0];
-
-  // Compare date strings directly - return true if event is today or in the future
-  return eventString >= todayString;
-};
-var App = function App() {
-  var _React$useState = react.useState([]),
-    _React$useState2 = App_slicedToArray(_React$useState, 2),
-    data = _React$useState2[0],
-    setData = _React$useState2[1];
-  var _React$useState3 = react.useState([]),
-    _React$useState4 = App_slicedToArray(_React$useState3, 2),
-    pastEvents = _React$useState4[0],
-    setPastEvents = _React$useState4[1];
-  var _React$useState5 = react.useState([]),
-    _React$useState6 = App_slicedToArray(_React$useState5, 2),
-    filteredData = _React$useState6[0],
-    setFilteredData = _React$useState6[1];
-  var _React$useState7 = react.useState(true),
-    _React$useState8 = App_slicedToArray(_React$useState7, 2),
-    isLoading = _React$useState8[0],
-    setIsLoading = _React$useState8[1];
-  var _React$useState9 = react.useState(null),
-    _React$useState10 = App_slicedToArray(_React$useState9, 2),
-    error = _React$useState10[0],
-    setError = _React$useState10[1];
-  var _React$useState11 = react.useState("NYC"),
-    _React$useState12 = App_slicedToArray(_React$useState11, 2),
-    city = _React$useState12[0],
-    setCity = _React$useState12[1];
-  var _React$useState13 = react.useState(window.innerWidth),
-    _React$useState14 = App_slicedToArray(_React$useState13, 2),
-    windowWidth = _React$useState14[0],
-    setWindowWidth = _React$useState14[1];
-  var _React$useState15 = react.useState(false),
-    _React$useState16 = App_slicedToArray(_React$useState15, 2),
-    filterToggle = _React$useState16[0],
-    setFilterToggle = _React$useState16[1];
-  var _React$useState17 = react.useState(false),
-    _React$useState18 = App_slicedToArray(_React$useState17, 2),
-    searchMode = _React$useState18[0],
-    setSearchMode = _React$useState18[1];
-  var _React$useState19 = react.useState(false),
-    _React$useState20 = App_slicedToArray(_React$useState19, 2),
-    showPastEvents = _React$useState20[0],
-    setShowPastEvents = _React$useState20[1];
-  var _React$useState21 = react.useState(false),
-    _React$useState22 = App_slicedToArray(_React$useState21, 2),
-    isValidEmail = _React$useState22[0],
-    setIsValidEmail = _React$useState22[1];
-  var _React$useState23 = react.useState(""),
-    _React$useState24 = App_slicedToArray(_React$useState23, 2),
-    email = _React$useState24[0],
-    setEmail = _React$useState24[1];
-  var _React$useState25 = react.useState({
-      date: [],
-      neighborhood: [],
-      start_time: [],
-      topics: [],
-      types: [],
-      search: ""
-    }),
-    _React$useState26 = App_slicedToArray(_React$useState25, 2),
-    availableFilters = _React$useState26[0],
-    setAvailableFilters = _React$useState26[1];
-  var _React$useState27 = react.useState({
-      date: [],
-      neighborhood: [],
-      start_time: [],
-      topics: [],
-      types: [],
-      search: ""
-    }),
-    _React$useState28 = App_slicedToArray(_React$useState27, 2),
-    activeFilters = _React$useState28[0],
-    setActiveFilters = _React$useState28[1];
-
-  // Parse URL parameters on component mount
-  react.useEffect(function () {
-    var urlParams = new URLSearchParams(window.location.search);
-    var searchParam = urlParams.get("filter");
-    //console.log(searchParam);
-    if (searchParam) {
-      setActiveFilters(function (prev) {
-        return App_objectSpread(App_objectSpread({}, prev), {}, {
-          search: searchParam
-        });
-      });
-    }
   }, []);
   var submitForm = /*#__PURE__*/function () {
-    var _ref = App_asyncToGenerator(/*#__PURE__*/App_regeneratorRuntime().mark(function _callee(e) {
-      var response, _data;
-      return App_regeneratorRuntime().wrap(function _callee$(_context) {
+    var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(e) {
+      var response, data;
+      return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
             if (e) e.preventDefault();
@@ -19501,7 +18424,7 @@ var App = function App() {
             _context.next = 7;
             return response.json();
           case 7:
-            _data = _context.sent;
+            data = _context.sent;
             //console.log(data);
             window.location.reload();
             _context.next = 14;
@@ -19529,257 +18452,6 @@ var App = function App() {
     setIsValidEmail(emailPattern.test(value));
   };
   react.useEffect(function () {
-    setActiveFilters(function (prev) {
-      return {
-        date: [],
-        neighborhood: [],
-        start_time: [],
-        topics: [],
-        types: [],
-        search: prev.search
-      };
-    });
-    var loadData = /*#__PURE__*/function () {
-      var _ref2 = App_asyncToGenerator(/*#__PURE__*/App_regeneratorRuntime().mark(function _callee2() {
-        var result, currentEvents, pastEventsResult, formatEvents, tier1Events, tier2Events, tier3Events, regularEvents, i, j, _ref3, _i, _j, _ref4, _i2, _j2, _ref5, sortedResult, sortedPastEvents;
-        return App_regeneratorRuntime().wrap(function _callee2$(_context2) {
-          while (1) switch (_context2.prev = _context2.next) {
-            case 0:
-              _context2.prev = 0;
-              setIsLoading(true);
-              setError(null);
-              _context2.next = 5;
-              return fetchData(city);
-            case 5:
-              result = _context2.sent;
-              if (!(result === 10)) {
-                _context2.next = 10;
-                break;
-              }
-              setIsLoading(false);
-              setError("showForm");
-              return _context2.abrupt("return");
-            case 10:
-              result.find(function (event) {
-                if (event.id === "917cc4f0-3568-4738-951b-63093c8882f1") {} else if (event.id === "38614fde-35b0-43d8-8bf9-a05cb397ba76") {
-                  event.start_time = "2025-06-05T13:00:00";
-                } else if (event.id === "f990bcfb-d089-4ea7-8b9b-63bf9d4ad80a") {
-                  event.start_time = "2025-06-03T17:30:00";
-                }
-              });
-
-              // Separate past and current/future events
-              currentEvents = result.filter(function (event) {
-                return afterNow(event.start_time);
-              });
-              pastEventsResult = result.filter(function (event) {
-                return !afterNow(event.start_time);
-              }); // Apply format transformations to both current and past events
-              formatEvents = function formatEvents(events) {
-                events.forEach(function (event) {
-                  event.formats = event.formats.map(function (format) {
-                    if (format.startsWith("B") || format.startsWith(" B")) {
-                      return "Breakfast, Brunch or Lunch";
-                    } else if (format.startsWith("Ha")) {
-                      return "Happy Hour";
-                    } else if (format.startsWith("Match")) {
-                      return "Matchmaking";
-                    } else if (format.startsWith("Pan")) {
-                      return "Panel / Fireside Chat";
-                    } else if (format.startsWith("Pitch")) {
-                      return "Pitch Event / Demo Day";
-                    } else if (format.startsWith("Round") || format.startsWith("Work")) {
-                      return "Roundtable / Workshop";
-                    }
-                    return format;
-                  });
-                  event.themes = event.themes.map(function (theme) {
-                    if (theme.startsWith("Crypto") || theme.startsWith("Crpyto")) {
-                      return "Crypto / Web3";
-                    } else if (theme.startsWith("Deep")) {
-                      return "Deep Tech";
-                    } else if (theme.startsWith("GTM")) {
-                      return "GTM";
-                    } else if (theme.startsWith("International")) {
-                      return "International / Expansion";
-                    } else if (theme.startsWith("Men") || theme.startsWith("men")) {
-                      return "";
-                    }
-                    return theme;
-                  });
-                });
-              };
-              formatEvents(currentEvents);
-              formatEvents(pastEventsResult);
-
-              // Separate events by tier
-              tier1Events = currentEvents.filter(function (event) {
-                return event.starred_on_calendar === "TIER_1";
-              });
-              tier2Events = currentEvents.filter(function (event) {
-                return event.starred_on_calendar === "TIER_2";
-              });
-              tier3Events = currentEvents.filter(function (event) {
-                return event.starred_on_calendar === "TIER_3";
-              });
-              regularEvents = currentEvents.filter(function (event) {
-                return !event.starred_on_calendar || event.starred_on_calendar !== "TIER_1" && event.starred_on_calendar !== "TIER_2" && event.starred_on_calendar !== "TIER_3";
-              }); // Randomize TIER_1 events
-              for (i = tier1Events.length - 1; i > 0; i--) {
-                j = Math.floor(Math.random() * (i + 1));
-                _ref3 = [tier1Events[j], tier1Events[i]];
-                tier1Events[i] = _ref3[0];
-                tier1Events[j] = _ref3[1];
-              }
-
-              // Randomize TIER_2 events
-              for (_i = tier2Events.length - 1; _i > 0; _i--) {
-                _j = Math.floor(Math.random() * (_i + 1));
-                _ref4 = [tier2Events[_j], tier2Events[_i]];
-                tier2Events[_i] = _ref4[0];
-                tier2Events[_j] = _ref4[1];
-              }
-
-              // Randomize TIER_3 events
-              for (_i2 = tier3Events.length - 1; _i2 > 0; _i2--) {
-                _j2 = Math.floor(Math.random() * (_i2 + 1));
-                _ref5 = [tier3Events[_j2], tier3Events[_i2]];
-                tier3Events[_i2] = _ref5[0];
-                tier3Events[_j2] = _ref5[1];
-              }
-
-              // Sort regular events by start time
-              regularEvents.sort(function (a, b) {
-                return new Date(a.start_time) - new Date(b.start_time);
-              });
-
-              // Combine all events in the desired order
-              sortedResult = [].concat(App_toConsumableArray(tier3Events), App_toConsumableArray(tier1Events), App_toConsumableArray(tier2Events), App_toConsumableArray(regularEvents)); // Apply time transformations after sorting
-              sortedResult.forEach(function (item) {
-                item.day = timeTodayOfWeek(item.start_time);
-                item.time = timeToAmPm(item.start_time);
-              });
-
-              // Sort and format past events (most recent first)
-              sortedPastEvents = pastEventsResult.sort(function (a, b) {
-                return new Date(b.start_time) - new Date(a.start_time);
-              });
-              sortedPastEvents.forEach(function (item) {
-                item.day = timeTodayOfWeek(item.start_time);
-                item.time = timeToAmPm(item.start_time);
-              });
-              setData(sortedResult);
-              setPastEvents(sortedPastEvents);
-              setAvailableFilters(sortFilters(sortedResult));
-              _context2.next = 36;
-              break;
-            case 33:
-              _context2.prev = 33;
-              _context2.t0 = _context2["catch"](0);
-              setError(_context2.t0.message);
-              //console.error("Error fetching data:", err);
-            case 36:
-              _context2.prev = 36;
-              setTimeout(function () {
-                setIsLoading(false);
-              }, 100);
-              return _context2.finish(36);
-            case 39:
-            case "end":
-              return _context2.stop();
-          }
-        }, _callee2, null, [[0, 33, 36, 39]]);
-      }));
-      return function loadData() {
-        return _ref2.apply(this, arguments);
-      };
-    }();
-    loadData();
-  }, [city]);
-
-  //reset filtered data when city changes
-  react.useEffect(function () {
-    setFilteredData(data);
-  }, [city]);
-
-  // Update available filters based on showPastEvents
-  react.useEffect(function () {
-    if (showPastEvents && pastEvents.length > 0) {
-      setAvailableFilters(sortFilters(pastEvents));
-      // Clear active filters when switching to past events to avoid confusion
-      setActiveFilters(function (prev) {
-        return {
-          date: [],
-          neighborhood: [],
-          start_time: [],
-          topics: [],
-          types: [],
-          search: prev.search // Keep search term
-        };
-      });
-    } else if (data.length > 0) {
-      setAvailableFilters(sortFilters(data));
-      // Clear active filters when switching back to current events
-      setActiveFilters(function (prev) {
-        return {
-          date: [],
-          neighborhood: [],
-          start_time: [],
-          topics: [],
-          types: [],
-          search: prev.search // Keep search term
-        };
-      });
-    }
-  }, [showPastEvents, pastEvents, data]);
-
-  //filter data based on active filters
-  react.useEffect(function () {
-    var dataToFilter = showPastEvents ? pastEvents : data;
-    var filtered = applyFilters(dataToFilter, activeFilters);
-    // Apply custom sorting based on activeFilters.date
-    if (filtered.length > 0) {
-      // First separate events by tier
-      var tier1Events = filtered.filter(function (event) {
-        return event.starred_on_calendar === "TIER_1";
-      });
-      var tier2Events = filtered.filter(function (event) {
-        return event.starred_on_calendar === "TIER_2";
-      });
-      var tier3Events = filtered.filter(function (event) {
-        return event.starred_on_calendar === "TIER_3";
-      });
-      var regularEvents = filtered.filter(function (event) {
-        return !event.starred_on_calendar || event.starred_on_calendar !== "TIER_1" && event.starred_on_calendar !== "TIER_2" && event.starred_on_calendar !== "TIER_3";
-      });
-
-      // Randomize TIER_1 events (using a stable sort to maintain existing randomization)
-      var sortedTier1 = App_toConsumableArray(tier1Events);
-      var sortedTier3 = App_toConsumableArray(tier3Events);
-
-      // Apply different sorting based on date filter status
-      if (activeFilters.date.length > 0) {
-        // When dates are selected: randomized tier_1, then randomized tier_2, then time sorted regular events
-        var sortedTier2 = App_toConsumableArray(tier2Events);
-        var _sortedTier = App_toConsumableArray(tier3Events);
-        var sortedRegular = App_toConsumableArray(regularEvents).sort(function (a, b) {
-          return new Date(a.start_time) - new Date(b.start_time);
-        });
-        filtered = [].concat(App_toConsumableArray(_sortedTier), App_toConsumableArray(sortedTier1), App_toConsumableArray(sortedTier2), App_toConsumableArray(sortedRegular));
-      } else {
-        // When no dates selected: randomized tier_1, then time sorted all other events (including tier_2)
-        var otherEvents = [].concat(App_toConsumableArray(tier2Events), App_toConsumableArray(regularEvents)).sort(function (a, b) {
-          return new Date(a.start_time) - new Date(b.start_time);
-        });
-        filtered = [].concat(App_toConsumableArray(sortedTier3), App_toConsumableArray(sortedTier1), App_toConsumableArray(otherEvents));
-      }
-    }
-    //console.log(activeFilters);
-    setFilteredData(filtered);
-  }, [activeFilters, data, showPastEvents, pastEvents]);
-
-  // Add resize event listener
-  react.useEffect(function () {
     var handleResize = function handleResize() {
       setWindowWidth(window.innerWidth);
     };
@@ -19792,18 +18464,7 @@ var App = function App() {
   }, []);
   return /*#__PURE__*/react.createElement("div", {
     className: "tailwind"
-  }, isLoading ? /*#__PURE__*/react.createElement("div", {
-    className: "flex w-full justify-center text-white select-none"
-  }, /*#__PURE__*/react.createElement("div", {
-    className: "max-w-[1400px] grow flex flex-col gap-4"
-  }, /*#__PURE__*/react.createElement("div", {
-    id: "loading",
-    className: "border-[1px] border-white p-[4px] bg-black h-fit"
-  }, /*#__PURE__*/react.createElement("div", {
-    className: "flex w-full justify-between items-center border-[1px] border-white p-[4px] sticky top-0 bg-black"
-  }, /*#__PURE__*/react.createElement("p", {
-    className: "w-full text-center text-xl uppercase text-white text-[1.65rem] font-[600] py-4"
-  }, "Loading Amazing Events..."))))) : error === "showForm" ? /*#__PURE__*/react.createElement("div", {
+  }, error === "showForm" ? /*#__PURE__*/react.createElement("div", {
     className: "fixed inset-0 z-[9999] overflow-hidden"
   }, /*#__PURE__*/react.createElement("div", {
     className: "absolute inset-0 backdrop-blur-sm bg-black/70"
@@ -19888,75 +18549,16 @@ var App = function App() {
   }, /*#__PURE__*/react.createElement("div", {
     className: "max-w-[1400px] grow flex flex-col gap-4"
   }, /*#__PURE__*/react.createElement("div", {
-    className: "mobile:hidden"
-  }, /*#__PURE__*/react.createElement("div", {
-    id: "city",
-    className: "flex gap-4"
-  }, /*#__PURE__*/react.createElement(CitySelector, {
-    data: ["NEW YORK", "JUN 02 - JUN 08"],
-    setCity: setCity,
-    currentCity: city,
-    city: "NYC"
-  }), /*#__PURE__*/react.createElement(CitySelector, {
-    data: ["SAN FRANCISCO", "OCT 06 - OCT 12"]
-    //setCity={setCity}
-    ,
-    currentCity: city,
-    city: "SF"
-  }), /*#__PURE__*/react.createElement(CitySelector, {
-    data: ["LOS ANGELES", "OCT 13 - OCT 19"]
-    //setCity={setCity}
-    ,
-    currentCity: city,
-    city: "LA"
-  }))), /*#__PURE__*/react.createElement("div", {
     id: "contentAndFilters",
     className: "flex gap-4 justify-between"
   }, /*#__PURE__*/react.createElement("div", {
-    className: "flex flex-col gap-4 grow"
+    className: "flex flex-col grow"
   }, /*#__PURE__*/react.createElement("div", {
     id: "content",
     className: "border-[1px] border-white p-[4px] bg-black h-fit"
-  }, windowWidth <= 1030 && /*#__PURE__*/react.createElement("div", {
-    className: "flex w-full justify-between items-center border-[1px] border-white p-[4px] sticky top-0 bg-black"
-  }, /*#__PURE__*/react.createElement(src_MobileCityDropdown, {
-    city: city,
-    setCity: setCity
-  }), /*#__PURE__*/react.createElement("div", {
-    className: "flex gap-1"
-  }, /*#__PURE__*/react.createElement("button", {
-    onClick: function onClick() {
-      setSearchMode(true);
-      setFilterToggle(!filterToggle);
-    },
-    className: "uppercase font-medium text-[0.875rem] flex items-center gap-[0.375rem] py-[0.375rem] px-[0.5rem] text-black"
-  }, /*#__PURE__*/react.createElement("svg", {
-    width: "14",
-    height: "14",
-    viewBox: "0 0 14 14",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg"
-  }, /*#__PURE__*/react.createElement("path", {
-    d: "M5.25002 1.16663C3.00177 1.16663 1.16669 3.00171 1.16669 5.24996C1.16669 7.49821 3.00177 9.33329 5.25002 9.33329C6.26969 9.33329 7.20128 8.95297 7.91832 8.33069L8.16669 8.57906V9.33329L11.6667 12.8333L12.8334 11.6666L9.33335 8.16663H8.57912L8.33075 7.91825C8.95303 7.20121 9.33335 6.26963 9.33335 5.24996C9.33335 3.00171 7.49827 1.16663 5.25002 1.16663ZM5.25002 2.33329C6.86776 2.33329 8.16669 3.63222 8.16669 5.24996C8.16669 6.8677 6.86776 8.16663 5.25002 8.16663C3.63228 8.16663 2.33335 6.8677 2.33335 5.24996C2.33335 3.63222 3.63228 2.33329 5.25002 2.33329Z",
-    fill: "white"
-  }))), /*#__PURE__*/react.createElement("button", {
-    onClick: function onClick() {
-      setSearchMode(false);
-      setFilterToggle(!filterToggle);
-    },
-    className: "uppercase font-medium text-[0.875rem] flex items-center gap-[0.375rem] py-[0.375rem] px-[0.5rem] bg-white text-black"
-  }, /*#__PURE__*/react.createElement("svg", {
-    xmlns: "http://www.w3.org/2000/svg",
-    width: "14",
-    height: "14",
-    viewBox: "0 0 14 14",
-    fill: "none"
-  }, /*#__PURE__*/react.createElement("path", {
-    d: "M2.625 1.75V3.47949C2.625 3.91016 2.83691 4.31348 3.19238 4.55957L6.125 6.78125V12.25L7.875 10.5V6.78125L10.8076 4.55957C11.1631 4.31348 11.375 3.91016 11.375 3.47949V1.75H2.625ZM3.5 2.625H10.5V3.47949C10.5 3.62305 10.4282 3.75635 10.3086 3.83838L10.3018 3.8418L7.29053 6.125H6.70947L3.69824 3.8418L3.69141 3.83838C3.57178 3.75635 3.5 3.62305 3.5 3.47949V2.625Z",
-    fill: "black"
-  })), /*#__PURE__*/react.createElement("p", null, "FILTERS")))), /*#__PURE__*/react.createElement("div", {
+  }, /*#__PURE__*/react.createElement("div", {
     className: "grow border-[1px] border-white ml-[-1px]"
-  }, filteredData.length > 0 ? Array.isArray(filteredData) && filteredData.map(function (item) {
+  }, events.length > 0 && events.map(function (item) {
     if (item.invite_url !== "Invite Only") {
       return /*#__PURE__*/react.createElement("a", {
         key: item.id,
@@ -19964,49 +18566,16 @@ var App = function App() {
         target: "_blank"
       }, /*#__PURE__*/react.createElement(IndividualEvent, {
         item: item,
-        activeFilters: activeFilters,
         windowWidth: windowWidth,
         hasLink: true,
         className: ""
       }));
     } else {
-      return /*#__PURE__*/react.createElement(IndividualEvent, {
-        key: item.id,
-        item: item,
-        activeFilters: activeFilters,
-        windowWidth: windowWidth,
-        hasLink: false,
-        className: "group-hover:"
-      });
+      return /*#__PURE__*/react.createElement("p", null, item.title);
     }
-  }) : /*#__PURE__*/react.createElement("div", {
-    className: "w-full text-center text-white p-4"
-  }, "NO EVENTS MATCH YOUR FILTERS"))), /*#__PURE__*/react.createElement("div", {
+  }))), /*#__PURE__*/react.createElement("div", {
     className: "grow"
-  })), windowWidth > 1030 ? /*#__PURE__*/react.createElement("div", {
-    className: "flex flex-col gap-4 relative"
-  }, /*#__PURE__*/react.createElement(Filters, {
-    city: city,
-    setCity: setCity,
-    availableFilters: availableFilters,
-    activeFilters: activeFilters,
-    setActiveFilters: setActiveFilters,
-    showPastEvents: showPastEvents,
-    setShowPastEvents: setShowPastEvents
-  }), /*#__PURE__*/react.createElement("div", {
-    className: "grow"
-  })) : filterToggle && /*#__PURE__*/react.createElement(MobileFilters, {
-    city: city,
-    setCity: setCity,
-    availableFilters: availableFilters,
-    activeFilters: activeFilters,
-    setActiveFilters: setActiveFilters,
-    filterToggle: filterToggle,
-    setFilterToggle: setFilterToggle,
-    searchMode: searchMode,
-    showPastEvents: showPastEvents,
-    setShowPastEvents: setShowPastEvents
-  })))));
+  }))))));
 };
 /* harmony default export */ const src_App = (App);
 ;// ./src/index.js
