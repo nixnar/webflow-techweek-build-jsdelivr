@@ -1,0 +1,1396 @@
+<script src="http://localhost:3000/global.js" defer=""></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    console.log("DOM content loaded - starting main initialization");
+
+    // Global error handler to catch and log errors without stopping execution
+    window.addEventListener("error", function (event) {
+      console.error("Caught in global handler:", event.error);
+      // Prevent the error from stopping other code
+      event.preventDefault();
+    });
+
+    // Safe element selector that won't throw errors on null elements
+    function safeEl(selector) {
+      const el = document.getElementById(selector);
+      if (!el) {
+        console.warn(`Element not found: ${selector}`);
+      }
+      return el;
+    }
+
+    // Safe DOM operation that checks for null before using
+    function safeOp(element, operation) {
+      if (element) {
+        try {
+          operation(element);
+        } catch (e) {
+          console.error(`Error in operation:`, e);
+        }
+      }
+    }
+
+    var scheduleSeeMore = document.querySelector(".Schedule-See-More");
+    var header = document.getElementById("see-full-schedule");
+
+    if (scheduleSeeMore && header) {
+      scheduleSeeMore.addEventListener("mouseenter", function () {
+        header.style.background =
+          "linear-gradient(265deg, #ED7602 -0.07%, #EF2A00 100%)";
+      });
+
+      scheduleSeeMore.addEventListener("mouseleave", function () {
+        header.style.background = "none";
+      });
+    }
+
+    // Hover effect for link-arrow-hover div
+    var linkArrowHover = safeEl("link-arrow-hover");
+    var arrowImage = linkArrowHover
+      ? linkArrowHover.querySelector("#arrow")
+      : null;
+
+    if (linkArrowHover && arrowImage) {
+      // Store the original image URL to restore it on mouseout
+      const originalImageUrl = arrowImage.getAttribute("src");
+      const tealArrowUrl =
+        "https://cdn.prod.website-files.com/62acecf52d5a4664886cbac1/67d9dd6eee1c43e3da5b12ff_arrow_outward_teal.svg";
+
+      linkArrowHover.addEventListener("mouseenter", function () {
+        arrowImage.setAttribute("src", tealArrowUrl);
+      });
+
+      linkArrowHover.addEventListener("mouseleave", function () {
+        arrowImage.setAttribute("src", originalImageUrl);
+      });
+    }
+
+    let data = [];
+    let currentNeighborhoods = [];
+
+    let city = getCity();
+    console.log("Initial city value:", city);
+
+    const nyDate = 3;
+    const sfDate = 7;
+    const laDate = 14;
+
+    const container = safeEl("calendar-container");
+    console.log("Calendar container found:", !!container);
+
+    const initStart = 0;
+    let criteria = {
+      date: [],
+      search: "",
+      start: initStart,
+      topic: [],
+      type: [],
+      neighborhoods: [],
+    };
+    let topicExpanded = true;
+    let typeExpanded = true;
+    let neighborhoodExpanded = true;
+    let queriedCreds = false;
+
+    const page = safeEl("page-wrapper");
+    if (page) {
+      page.classList.add("no-scroll");
+    }
+
+    // Log the initial state of city buttons
+    const cityButtons = safeEl("city-filters");
+    if (cityButtons) {
+      console.log("Found city filters on DOM load:", cityButtons);
+      console.log(
+        "City buttons children:",
+        Array.from(cityButtons.children).map((c) => c.id)
+      );
+
+      // Apply initial styling to city buttons
+    } else {
+      console.error("City filters not found on DOM load");
+    }
+
+    // Now that we've safely initialized, call fetchData
+    console.log("Starting fetchData after initialization");
+    fetchData();
+
+    try {
+      initialHideFilters();
+    } catch (e) {
+      console.error("Error in initialHideFilters:", e);
+    }
+
+    async function fetchData() {
+      console.log("====== API DEBUGGING ======");
+      console.log("Starting fetchData() for city:", city);
+      console.log("Current URL:", window.location.href);
+      console.log("Browser info:", navigator.userAgent);
+
+      try {
+        const apiUrl = "https://api.tech-week.com/list_events/?city=" + city;
+        console.log("Fetching from API:", apiUrl);
+
+        // Log headers being sent
+        const headers = {
+          "Content-Type": "application/json",
+        };
+        console.log("Request headers:", headers);
+        console.log("Using credentials include");
+
+        // First try - with normal fetch
+        console.log("Attempting API call...");
+        let startTime = performance.now();
+
+        try {
+          const response2 = await fetch(apiUrl, {
+            method: "GET",
+            headers: headers,
+            credentials: "include",
+          });
+
+          let endTime = performance.now();
+          console.log(`API call took ${endTime - startTime}ms to complete`);
+
+          if (!response2.ok) {
+            console.error("API response not OK:", response2);
+            console.log(
+              "Response status:",
+              response2.status,
+              response2.statusText
+            );
+            console.log("Attempting to log response body...");
+
+            try {
+              const errorText = await response2.text();
+              console.log("Error response body:", errorText);
+            } catch (e) {
+              console.log("Could not read error response body:", e);
+            }
+
+            // Try without credentials as fallback
+            console.log("Trying again without credentials...");
+            const fallbackResponse = await fetch(apiUrl, {
+              method: "GET",
+              headers: headers,
+            });
+
+            if (!fallbackResponse.ok) {
+              console.error(
+                "Fallback API call also failed:",
+                fallbackResponse.status,
+                fallbackResponse.statusText
+              );
+              throw new Error("All API attempts failed");
+            } else {
+              console.log("Fallback API call succeeded!");
+              data = await fallbackResponse.json();
+            }
+          } else {
+            console.log(
+              "API response successful:",
+              response2.status,
+              response2.statusText
+            );
+            console.log(
+              "Response headers:",
+              Array.from(response2.headers.entries()).reduce(
+                (obj, [key, val]) => {
+                  obj[key] = val;
+                  return obj;
+                },
+                {}
+              )
+            );
+
+            data = await response2.json();
+            console.log("Raw API data received!");
+            console.log("Data type:", typeof data);
+            console.log("Is Array:", Array.isArray(data));
+            console.log("Data length:", data.length);
+
+            // Log sample of first event if available
+            if (data.length > 0) {
+              console.log(
+                "First event sample:",
+                JSON.stringify(data[0]).substring(0, 500) + "..."
+              );
+            } else {
+              console.warn("API returned empty array!");
+            }
+          }
+
+          // Continue with the rest of your code
+          if (data && data.length) {
+            data = convertEventsToPdt(data);
+            console.log("Data after PDT conversion:", data.length, "events");
+
+            fillNeighborhoods(data);
+            console.log("Neighborhoods filled");
+
+            console.log("Attaching click handlers...");
+            attachOnClick();
+            console.log("Click handlers attached");
+
+            initialHideFilters();
+            console.log("Initial filters hidden");
+
+            console.log("Filtering events with criteria:", criteria);
+            filterEvents(data, criteria);
+            console.log("Events filtered");
+
+            const subForm = safeEl("email-form-container");
+            if (subForm) {
+              subForm.style.display = "none";
+              console.log("Hidden email form");
+            } else {
+              console.warn("Email form container not found");
+            }
+
+            if (page) {
+              page.classList.remove("no-scroll");
+              console.log("Removed no-scroll class from page");
+            }
+          } else {
+            console.error("No data received or data empty!");
+            throw new Error("No data received");
+          }
+        } catch (fetchError) {
+          console.error("Fetch error:", fetchError);
+          console.log("Trying alternative approach with XMLHttpRequest...");
+
+          // Try XMLHttpRequest as a fallback
+          const xhr = new XMLHttpRequest();
+          xhr.open("GET", apiUrl, true);
+          xhr.setRequestHeader("Content-Type", "application/json");
+          xhr.withCredentials = true;
+
+          xhr.onload = function () {
+            if (xhr.status >= 200 && xhr.status < 300) {
+              console.log("XHR request successful!");
+              try {
+                data = JSON.parse(xhr.responseText);
+                console.log("XHR data parsed, length:", data.length);
+
+                // Continue with the existing flow
+                if (data && data.length) {
+                  data = convertEventsToPdt(data);
+                  fillNeighborhoods(data);
+                  attachOnClick();
+                  initialHideFilters();
+                  filterEvents(data, criteria);
+
+                  const subForm = safeEl("email-form-container");
+                  if (subForm) subForm.style.display = "none";
+                  if (page) page.classList.remove("no-scroll");
+                }
+              } catch (e) {
+                console.error("Error parsing XHR response:", e);
+                showError();
+              }
+            } else {
+              console.error("XHR request failed:", xhr.status, xhr.statusText);
+              showError();
+            }
+          };
+
+          xhr.onerror = function () {
+            console.error("XHR network error");
+            showError();
+          };
+
+          xhr.send();
+        }
+      } catch (error) {
+        console.error("Overall error in fetchData:", error);
+        showError();
+      }
+
+      function showError() {
+        const subForm = safeEl("email-form-container");
+        if (subForm) {
+          subForm.style.display = "flex";
+          console.log("Error occurred, showing email form");
+        } else {
+          console.error("Could not find email form to display on error");
+        }
+      }
+      console.log("====== END API DEBUGGING ======");
+    }
+
+    function filterEvents(events, criteria) {
+      // Date, Search, Time, Topic, Type
+      let results = events.filter((event) => {
+        // Ensure event.hosts is a string before using toLowerCase
+        let eventHosts = Array.isArray(event.hosts)
+          ? event.hosts.join(", ")
+          : String(event.hosts);
+        return (
+          event.event_name
+            .toLowerCase()
+            .includes(criteria.search.toLowerCase()) ||
+          eventHosts.toLowerCase().includes(criteria.search.toLowerCase())
+        );
+      });
+
+      if (criteria.date.length > 0) {
+        results = results.filter((event) => {
+          if (event.start_time != null) {
+            const rawDate = parseInt(
+              event.start_time.split("T")[0].split("-")[2]
+            ); // Removed double parseInt
+            return criteria.date.includes(rawDate);
+          }
+          return false; // Explicit return false if start_time is null
+        });
+      }
+
+      results = results.filter((event) => {
+        if (event.start_time != null) {
+          const time = convertIsoTo24Hour(event.start_time);
+          return time >= criteria.start;
+        } else {
+          return true;
+        }
+      });
+
+      results = results.filter((event) =>
+        haveCommonElement(event.themes, criteria.topic)
+      );
+
+      if (criteria.neighborhoods.length > 0) {
+        results = results.filter((event) =>
+          criteria.neighborhoods.includes(
+            event.neighborhood.toLowerCase().trim()
+          )
+        );
+      }
+
+      results = results.filter((event) =>
+        haveCommonElement(event.formats, criteria.type)
+      );
+
+      results.sort((a, b) => {
+        // Sort featured before non-featured
+        if (a.is_featured !== b.is_featured) {
+          return b.is_featured - a.is_featured;
+        }
+        // Sort by start time (earliest first)
+        return new Date(a.start_time) - new Date(b.start_time);
+      });
+
+      populateEvents(results);
+    }
+
+    function populateEvents(list) {
+      container.replaceChildren();
+
+      for (let d of list) {
+        const item = document.createElement("div");
+        item.setAttribute("class", "calendar-flex-item");
+        const superInfoFlex = document.createElement("div");
+        superInfoFlex.setAttribute("class", "super-info-flex");
+        const infoFlex = document.createElement("div");
+        infoFlex.setAttribute("class", "info-flex");
+        const subInfoFlex = document.createElement("div");
+        subInfoFlex.setAttribute("class", "sub-info-flex");
+
+        //Featured
+        if (d.is_featured === true) {
+          const fsvg = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "svg"
+          );
+          const fimage = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "image"
+          );
+          fsvg.setAttribute("height", "14");
+          fsvg.setAttribute("width", "14");
+          fsvg.appendChild(fimage);
+          fimage.setAttribute(
+            "href",
+            "https://cdn.prod.website-files.com/62acecf52d5a4664886cbac1/66ce40dd56cea4366aacbb5c_Star.svg"
+          );
+          subInfoFlex.appendChild(fsvg);
+        }
+
+        //Hosts
+        const hostP = document.createElement("p");
+        const hosts = document.createTextNode(d.hosts.join(", "));
+        hostP.setAttribute("class", "calendar-hosts info");
+        hostP.appendChild(hosts);
+        subInfoFlex.appendChild(hostP);
+        infoFlex.appendChild(subInfoFlex);
+
+        // Add spacer span element between hosts and time
+        const spacerSpan = document.createElement("span");
+        spacerSpan.style.paddingLeft = "16px";
+        spacerSpan.style.paddingRight = "16px";
+        const dividerText = document.createTextNode("|");
+        spacerSpan.appendChild(dividerText);
+        infoFlex.appendChild(spacerSpan);
+
+        //Time
+        if (d.start_time != null) {
+          const start = convertIsoToReadable(d.start_time);
+          const day = getDayOfWeek(d.start_time);
+          const timeP = document.createElement("p");
+          const timeText = document.createTextNode(day + " " + start);
+          timeP.setAttribute("class", "calendar-time");
+          timeP.appendChild(timeText);
+          infoFlex.appendChild(timeP);
+        } else {
+          console.log("Start Time Null", d);
+        }
+
+        //Neighborhood
+        if (d.neighborhood != null) {
+          const neighborP = document.createElement("p");
+          const neighborText = document.createTextNode(d.neighborhood);
+          neighborP.setAttribute("class", "calendar-time");
+          neighborP.appendChild(neighborText);
+          superInfoFlex.appendChild(neighborP);
+        }
+
+        superInfoFlex.append(infoFlex);
+        superInfoFlex.appendChild(infoFlex);
+
+        //Headline
+        const headlineP = document.createElement("a");
+        let vipText = "";
+        if (d.invite_url === "" || d.invite_url.includes("Invite Only")) {
+          headlineP.setAttribute("class", "calendar-headline");
+          vipText = " (Invite Only)";
+          const headline = document.createTextNode(
+            d.event_name + vipText + "\t\t\t"
+          );
+          headlineP.appendChild(headline);
+        } else {
+          headlineP.setAttribute("class", "calendar-headline non-vip");
+          headlineP.href = d.invite_url;
+          headlineP.target = "_blank";
+
+          const svg = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "svg"
+          );
+          const image = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "image"
+          );
+          svg.setAttribute("height", "22");
+          svg.setAttribute("width", "22");
+          svg.appendChild(image);
+          image.setAttribute(
+            "href",
+            "https://cdn.prod.website-files.com/62acecf52d5a4664886cbac1/67d4764f6ca9487ea99edf50_db531c8c2187003369746857ea511d15_arrow_outward.svg"
+          );
+          svg.setAttribute("class", "inline-arrow");
+          const headline = document.createTextNode(
+            d.event_name + vipText + "\t\t\t"
+          );
+          headlineP.appendChild(headline);
+          headlineP.appendChild(svg);
+
+          headlineP.onmouseover = function (e) {
+            this.getElementsByTagName("image")[0].setAttribute(
+              "href",
+              "https://cdn.prod.website-files.com/62acecf52d5a4664886cbac1/67d9dd6eee1c43e3da5b12ff_arrow_outward_teal.svg"
+            );
+          };
+          headlineP.onmouseleave = function (e) {
+            this.getElementsByTagName("image")[0].setAttribute(
+              "href",
+              "https://cdn.prod.website-files.com/62acecf52d5a4664886cbac1/67d4764f6ca9487ea99edf50_db531c8c2187003369746857ea511d15_arrow_outward.svg"
+            );
+          };
+        }
+
+        const headCatDiv = document.createElement("div");
+        headCatDiv.setAttribute("class", "head-cat-container");
+        headCatDiv.appendChild(headlineP);
+
+        //Themes
+        const catContainer = document.createElement("div");
+        catContainer.setAttribute("class", "category-container");
+        for (let c of d.themes) {
+          const catDiv = document.createElement("div");
+          const cat = document.createTextNode(c);
+          catDiv.appendChild(cat);
+          catDiv.setAttribute("class", "item-filter-button");
+          catContainer.appendChild(catDiv);
+        }
+
+        /*
+                  if (catContainer.childElementCount > 5) {
+                    const catDiv = document.createElement("div");
+                    const cat = document.createTextNode('+');
+                    catDiv.appendChild(cat);
+                    catDiv.setAttribute("class", "item-filter-button");
+                    catDiv.onclick = function () {
+                      if (catContainer.lastChild.textContent === '-') {
+                        hideButtons(catContainer.children);
+                        catDiv.textContent = '+'
+                      } else {
+                        showButtons(catContainer.children);
+                        catDiv.textContent = '-'
+                      }
+                    }
+                    catContainer.appendChild(catDiv);
+                    hideButtons(catContainer.children);
+                  }
+                  
+                  headCatDiv.appendChild(catContainer);
+                  */
+
+        const infoContainer = document.createElement("div");
+        infoContainer.setAttribute("class", "info-container");
+        infoContainer.appendChild(superInfoFlex);
+        infoContainer.appendChild(headCatDiv);
+        item.appendChild(infoContainer);
+
+        /*
+                  const watchDiv = document.createElement("a");
+                  watchDiv.href = d.invite_url;
+                  watchDiv.target = "_blank";
+                  watchDiv.setAttribute("class", "watch");
+                  const watchText = document.createTextNode("Event Link");
+                  watchDiv.appendChild(watchText);
+                  */
+
+        container.appendChild(item);
+      }
+    }
+
+    function attachOnClick() {
+      //city
+      const cityButtons = document.getElementById("city-filters");
+      console.log("City buttons container:", cityButtons);
+
+      if (!cityButtons) {
+        console.error("City filters element not found!");
+        return;
+      }
+
+      console.log("City buttons children count:", cityButtons.children.length);
+      console.log(
+        "City buttons children:",
+        Array.from(cityButtons.children).map((el) => ({
+          id: el.id,
+          tagName: el.tagName,
+        }))
+      );
+
+      for (let button of cityButtons.children) {
+        console.log("Processing city button:", button.id, button);
+
+        if (button.id === city) {
+          console.log("Setting active city button:", button.id);
+          button.classList.add("specialActivate");
+        }
+
+        button.onclick = function () {
+          console.log("City button clicked:", button.id);
+
+          if (!button.classList.contains("disabled")) {
+            city = button.id;
+            console.log("Setting city to:", city);
+            fetchData();
+
+            const monday = document.getElementById("monday-button");
+            if (monday) {
+              console.log("Clicking Monday button");
+              monday.click();
+            } else {
+              console.warn("Monday button not found");
+            }
+
+            clearCityButtons();
+            clearTopicTypeButtons();
+            clearDateButtons();
+            criteria.neighborhoods = [];
+            console.log("Adding specialActivate class to:", button.id);
+            button.classList.add("specialActivate");
+
+            if (topicExpanded) {
+              const topicMore = document.getElementById("topic-more");
+              if (topicMore) topicMore.click();
+            }
+
+            if (!typeExpanded) {
+              const typeMore = document.getElementById("type-more");
+              if (typeMore) typeMore.click();
+            }
+            if (!topicExpanded) {
+              const topicMore = document.getElementById("topic-more");
+              if (topicMore) topicMore.click();
+            }
+            if (!neighborhoodExpanded) {
+              const neighborhoodMore =
+                document.getElementById("neighborhood-more");
+              if (neighborhoodMore) neighborhoodMore.click();
+            }
+          }
+        };
+      }
+
+      const cityDropdown = document.getElementById("city-dropdown");
+      const cityDropText = document.getElementById("city-drop-text");
+
+      // Check if dropdown is empty or has only one child (LA option)
+      if (cityDropdown && cityDropdown.children.length <= 1) {
+        // Add New York and San Francisco options if they don't exist
+        if (!document.getElementById("nyc-link")) {
+          const nycLink = document.createElement("a");
+          nycLink.id = "nyc-link";
+          nycLink.href = "#";
+          nycLink.className = "dropdown-link w-dropdown-link";
+          nycLink.tabIndex = "0";
+          nycLink.textContent = "New York";
+          cityDropdown.appendChild(nycLink);
+        }
+
+        if (!document.getElementById("sf-link")) {
+          const sfLink = document.createElement("a");
+          sfLink.id = "sf-link";
+          sfLink.href = "#";
+          sfLink.className = "dropdown-link w-dropdown-link";
+          sfLink.tabIndex = "0";
+          sfLink.textContent = "San Francisco";
+          cityDropdown.appendChild(sfLink);
+        }
+      }
+
+      for (let option of cityDropdown.children) {
+        option.onclick = function () {
+          cityDropText.textContent = option.textContent;
+          let c = "NYC";
+          if (option.textContent.toLowerCase() === "los angeles") {
+            c = "LA";
+          } else if (option.textContent.toLowerCase() === "new york") {
+            c = "NYC";
+          } else if (option.textContent.toLowerCase() === "san francisco") {
+            c = "SF";
+          }
+
+          city = c;
+          fetchData();
+
+          // Close dropdown menu by removing the w--open class
+          const dropdownToggle = document.querySelector(".w-dropdown-toggle");
+          const dropdownList = document.querySelector(".w-dropdown-list");
+          if (dropdownToggle) {
+            dropdownToggle.classList.remove("w--open");
+            // Update aria-expanded attribute for accessibility
+            dropdownToggle.setAttribute("aria-expanded", "false");
+          }
+          if (dropdownList) dropdownList.classList.remove("w--open");
+
+          // For Webflow specific behavior - some versions require this
+          document.body.click(); // This simulates a click outside to close dropdown
+
+          const monday = document.getElementById("monday-button");
+          monday.click();
+
+          clearCityButtons();
+          clearTopicTypeButtons();
+          clearDateButtons();
+          criteria.neighborhoods = [];
+
+          if (topicExpanded) {
+            const topicMore = document.getElementById("topic-more");
+            topicMore.click();
+          }
+
+          if (!typeExpanded) {
+            const typeMore = document.getElementById("type-more");
+            typeMore.click();
+          }
+          if (!topicExpanded) {
+            const topicMore = document.getElementById("topic-more");
+            topicMore.click();
+          }
+          if (!neighborhoodExpanded) {
+            const neighborhoodMore =
+              document.getElementById("neighborhood-more");
+            neighborhoodMore.click();
+          }
+        };
+      }
+
+      //Date
+      const dateButtons = document.getElementById("date-filters");
+
+      for (let i = 0; i < dateButtons.childElementCount; i++) {
+        const button = dateButtons.children[i];
+
+        button.onclick = function () {
+          let proposed = nyDate + i;
+          if (city === "LA") {
+            proposed = laDate + i;
+          } else if (city === "SF") {
+            proposed = sfDate + i;
+          }
+
+          if (criteria.date.includes(proposed)) {
+            const index = criteria.date.indexOf(proposed);
+            criteria.date = criteria.date.filter(function (item) {
+              return item !== proposed;
+            });
+            button.classList.remove("activate");
+          } else {
+            criteria.date.push(proposed);
+            button.classList.add("activate");
+          }
+
+          filterEvents(data, criteria);
+        };
+      }
+
+      const dayX = document.getElementById("day-clear");
+      dayX.onclick = function () {
+        criteria.date = [];
+        filterEvents(data, criteria);
+        clearDateButtons();
+      };
+
+      //Search
+      const search = document.getElementById("search");
+      search.onkeypress = function (event) {
+        if (event.keyCode === 13) {
+          criteria.search = search.value;
+        }
+        filterEvents(data, criteria);
+      };
+
+      const clearSearch = document.getElementById("clear-search");
+      clearSearch.onclick = function () {
+        criteria.search = "";
+        search.value = "";
+        filterEvents(data, criteria);
+      };
+
+      const mobileButton = document.getElementById("mobile-filter-button");
+      mobileButton.onclick = function () {
+        const search = document.getElementById("search");
+        criteria.search = search.value;
+        filterEvents(data, criteria);
+      };
+
+      const exitButton = document.getElementById("exit-button");
+      mobileButton.onclick = function () {
+        const search = document.getElementById("search");
+        criteria.search = search.value;
+        filterEvents(data, criteria);
+      };
+
+      //Start
+      const startDropdown = document.getElementById("start-dropdown");
+      const startText = document.getElementById("start-text");
+      for (let option of startDropdown.children) {
+        option.onclick = function () {
+          startText.textContent = option.textContent;
+          criteria.start = convertTo24Hour(
+            option.textContent.replace(/[\s–]+$/, "")
+          );
+          filterEvents(data, criteria);
+        };
+      }
+
+      const startX = document.getElementById("time-clear");
+      startX.onclick = function () {
+        criteria.start = 0;
+        filterEvents(data, criteria);
+        startText.textContent = "–";
+      };
+
+      //Topics
+      const topicButtons = document.getElementById("topic-filters"); //Topics
+      for (let button of topicButtons.children) {
+        button.onclick = function () {
+          if (button.classList.contains("activate")) {
+            const index = criteria.topic.indexOf(button.textContent);
+            criteria.topic.splice(index, 1);
+            button.classList.remove("activate");
+          } else {
+            button.classList.add("activate");
+            criteria.topic.push(button.textContent);
+          }
+          filterEvents(data, criteria);
+        };
+      }
+
+      const topicX = document.getElementById("topics-clear");
+      topicX.onclick = function () {
+        criteria.topic = [];
+        filterEvents(data, criteria);
+        const topicButtons = document.getElementById("topic-filters");
+        for (let button of topicButtons.children) {
+          button.classList.remove("activate");
+        }
+      };
+
+      const typeButtons = document.getElementById("type-filters"); //Types
+      for (let button of typeButtons.children) {
+        button.onclick = function () {
+          if (button.classList.contains("activate")) {
+            const index = criteria.type.indexOf(button.textContent);
+            criteria.type.splice(index, 1);
+            button.classList.remove("activate");
+          } else {
+            button.classList.add("activate");
+            criteria.type.push(button.textContent);
+          }
+          filterEvents(data, criteria);
+        };
+      }
+
+      const typeX = document.getElementById("types-clear");
+      typeX.onclick = function () {
+        criteria.type = [];
+        filterEvents(data, criteria);
+        const typeButtons = document.getElementById("type-filters");
+        for (let button of typeButtons.children) {
+          button.classList.remove("activate");
+        }
+      };
+
+      //Neighborhood
+      const neighborhoodButtons = document.getElementById(
+        "neighborhood-filters"
+      ); //Topics
+      const neighborhoodMore = document.getElementById("neighborhood-more");
+      neighborhoodMore.onclick = function () {
+        if (neighborhoodExpanded) {
+          showButtons(neighborhoodButtons.children);
+          neighborhoodMore.textContent = "see less";
+        } else {
+          hideButtons(neighborhoodButtons.children);
+          neighborhoodMore.textContent = "see more";
+        }
+        neighborhoodExpanded = !neighborhoodExpanded;
+      };
+
+      const neighborhoodX = document.getElementById("neighborhood-clear");
+      neighborhoodX.onclick = function () {
+        criteria.neighborhoods = [];
+        filterEvents(data, criteria);
+        clearNeighborhoodButtons();
+      };
+
+      //Topic
+      const topicMore = document.getElementById("topic-more");
+      topicMore.onclick = function () {
+        if (topicExpanded) {
+          showButtons(topicButtons.children);
+          topicMore.textContent = "see less";
+        } else {
+          hideButtons(topicButtons.children);
+          topicMore.textContent = "see more";
+        }
+        topicExpanded = !topicExpanded;
+      };
+
+      //Type
+      const typeMore = document.getElementById("type-more");
+      typeMore.onclick = function () {
+        if (typeExpanded) {
+          showButtons(typeButtons.children);
+          typeMore.textContent = "see less";
+        } else {
+          hideButtons(typeButtons.children);
+          typeMore.textContent = "see more";
+        }
+        typeExpanded = !typeExpanded;
+      };
+
+      const clearButton = document.getElementById("clear-filters");
+      clearButton.onclick = function () {
+        criteria = {
+          date: [],
+          search: "",
+          start: initStart,
+          topic: [],
+          type: [],
+          neighborhoods: [],
+        };
+        startText.textContent = "–";
+        clearDateButtons();
+        clearTopicTypeButtons();
+        clearNeighborhoodButtons();
+        filterEvents(data, criteria);
+      };
+
+      // Mobile filter button toggle functionality
+      const mobileFilterButton = document.getElementById(
+        "mobile-filter-button"
+      );
+      const filtersSection = document.getElementById("filters-section");
+      const allFilters = document.getElementById("all-filters");
+      const allEvents = document.getElementById("all-events");
+      const exitFilters = document.getElementById("exit-filters");
+      const flexBox15 = document.querySelector(".flex-block-15");
+
+      // Use a more specific selector to target only the inner-city-filters within filters-section
+      const innerCityFiltersInSection = filtersSection
+        ? filtersSection.querySelector("#inner-city-filters")
+        : null;
+
+      // Track visibility state explicitly
+      let filtersVisible = false;
+
+      // Set up drawer-style menu CSS for mobile filters
+      function setupMobileFilterDrawer() {
+        if (allFilters) {
+          // Base styles that apply all the time
+          allFilters.style.zIndex = "1000";
+          allFilters.style.transition = "transform 0.3s ease-in-out";
+
+          // Mobile drawer positioning
+          if (window.innerWidth <= 768) {
+            allFilters.style.position = "fixed";
+            allFilters.style.top = "0";
+            allFilters.style.right = "0";
+            allFilters.style.width = "80vw";
+            allFilters.style.height = "100vh";
+            allFilters.style.overflowY = "auto";
+            allFilters.style.background = "white"; // Ensure background is visible
+            allFilters.style.boxShadow = "-5px 0px 15px rgba(0, 0, 0, 0.2)";
+            allFilters.style.padding = "20px";
+
+            // Initially off-screen to the right
+            if (!filtersVisible) {
+              allFilters.style.transform = "translateX(100%)";
+            } else {
+              allFilters.style.transform = "translateX(0)";
+            }
+          } else {
+            // Reset styles for desktop
+            allFilters.style.position = "";
+            allFilters.style.top = "";
+            allFilters.style.right = "";
+            allFilters.style.width = "";
+            allFilters.style.height = "";
+            allFilters.style.overflowY = "";
+            allFilters.style.boxShadow = "";
+            allFilters.style.transform = "";
+            allFilters.style.padding = "";
+          }
+        }
+
+        // Make sure exit button is in the right position
+        if (exitFilters) {
+          exitFilters.style.position = "absolute";
+          exitFilters.style.top = "10px";
+          exitFilters.style.right = "10px";
+          exitFilters.style.zIndex = "1001";
+        }
+      }
+
+      // Updates layout based on mobile/desktop state
+      function updateMobileLayout() {
+        // Set up drawer styles
+        setupMobileFilterDrawer();
+
+        // Always hide inner-city-filters within filters-section on mobile
+        if (window.innerWidth <= 768) {
+          if (innerCityFiltersInSection) {
+            innerCityFiltersInSection.style.display = "none";
+          }
+
+          // Handle visibility based on toggle state - for mobile we use transform instead of display
+          if (allFilters) {
+            allFilters.style.display = "block"; // Always displayed, but transforms off-screen
+            allFilters.style.transform = filtersVisible
+              ? "translateX(0)"
+              : "translateX(100%)";
+          }
+
+          if (allEvents) {
+            allEvents.style.display = "block"; // Always displayed
+          }
+
+          if (exitFilters) {
+            exitFilters.style.display = filtersVisible ? "block" : "none";
+          }
+        } else {
+          // On desktop
+          if (allFilters) {
+            allFilters.style.display = "block";
+            allFilters.style.transform = ""; // Clear transform
+          }
+
+          if (allEvents) {
+            allEvents.style.display = "block";
+          }
+
+          if (exitFilters) {
+            exitFilters.style.display = "none";
+          }
+
+          // On desktop, inner city filters inside filters-section can be visible
+          if (innerCityFiltersInSection) {
+            innerCityFiltersInSection.style.display = "block";
+          }
+        }
+      }
+
+      if (mobileFilterButton && allFilters) {
+        // Set proper z-index and styling for visibility
+        setupMobileFilterDrawer();
+
+        // Always start with appropriate display state
+        if (window.innerWidth <= 768) {
+          filtersVisible = false;
+          if (allFilters) {
+            allFilters.style.transform = "translateX(100%)";
+          }
+        } else {
+          filtersVisible = true;
+        }
+
+        // Apply initial state based on screen size
+        updateMobileLayout();
+
+        // Toggle filters visibility when mobile filter button is clicked
+        mobileFilterButton.addEventListener("click", function (event) {
+          event.preventDefault();
+          console.log("Filter button clicked, current state:", filtersVisible);
+
+          // Toggle visibility state
+          filtersVisible = !filtersVisible;
+
+          if (filtersVisible) {
+            console.log("Showing filters");
+
+            // Move the drawer into view with transform
+            allFilters.style.transform = "translateX(0)";
+
+            // Show exit button
+            if (exitFilters) exitFilters.style.display = "block";
+
+            // Create semi-transparent overlay for the rest of the page
+            let overlay = document.getElementById("mobile-filter-overlay");
+            if (!overlay) {
+              overlay = document.createElement("div");
+              overlay.id = "mobile-filter-overlay";
+              overlay.style.position = "fixed";
+              overlay.style.top = "0";
+              overlay.style.left = "0";
+              overlay.style.width = "100%";
+              overlay.style.height = "100%";
+              overlay.style.background = "rgba(0, 0, 0, 0.5)";
+              overlay.style.zIndex = "999";
+              overlay.style.opacity = "0";
+              overlay.style.transition = "opacity 0.3s ease-in-out";
+              document.body.appendChild(overlay);
+
+              // Close drawer when overlay is clicked
+              overlay.addEventListener("click", function () {
+                filtersVisible = false;
+                updateMobileLayout();
+                overlay.style.opacity = "0";
+                setTimeout(() => {
+                  if (overlay.parentNode) {
+                    overlay.parentNode.removeChild(overlay);
+                  }
+                }, 300);
+              });
+            }
+
+            // Fade in overlay
+            setTimeout(() => {
+              overlay.style.opacity = "1";
+            }, 10);
+
+            // Prevent body scrolling when drawer is open
+            document.body.style.overflow = "hidden";
+          } else {
+            console.log("Hiding filters");
+
+            // Move the drawer out of view with transform
+            allFilters.style.transform = "translateX(100%)";
+
+            // Hide exit button
+            if (exitFilters) exitFilters.style.display = "none";
+
+            // Remove overlay
+            const overlay = document.getElementById("mobile-filter-overlay");
+            if (overlay) {
+              overlay.style.opacity = "0";
+              setTimeout(() => {
+                if (overlay.parentNode) {
+                  overlay.parentNode.removeChild(overlay);
+                }
+              }, 300);
+            }
+
+            // Restore body scrolling
+            document.body.style.overflow = "";
+          }
+        });
+
+        // Exit button to close filters
+        if (exitFilters) {
+          exitFilters.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            // Simulate clicking the mobile filter button to close the drawer
+            mobileFilterButton.click();
+          });
+        }
+
+        // Update layout when window is resized
+        window.addEventListener("resize", updateMobileLayout);
+      }
+    }
+
+    function clearDateButtons() {
+      const dateButtons = document.getElementById("date-filters");
+      criteria.date = [];
+      for (let button of dateButtons.children) {
+        button.classList.remove("activate");
+      }
+    }
+
+    function clearNeighborhoodButtons() {
+      const neighborhoodButtons = document.getElementById(
+        "neighborhood-filters"
+      );
+      criteria.neighborhoods = [];
+      for (let button of neighborhoodButtons.children) {
+        button.classList.remove("activate");
+      }
+    }
+
+    function clearCityButtons() {
+      console.log("Clearing city buttons");
+      const cityButtons = document.getElementById("city-filters");
+      if (!cityButtons) {
+        console.error("City filters element not found in clearCityButtons!");
+        return;
+      }
+      console.log(
+        "Found city buttons container with",
+        cityButtons.children.length,
+        "children"
+      );
+
+      for (let button of cityButtons.children) {
+        console.log("Removing specialActivate from", button.id);
+        button.classList.remove("specialActivate");
+      }
+      console.log("City buttons cleared");
+    }
+
+    function clearTopicTypeButtons() {
+      const topicButtons = document.getElementById("topic-filters");
+      const typeButtons = document.getElementById("type-filters");
+      for (let button of topicButtons.children) {
+        button.classList.remove("activate");
+      }
+      for (let button of typeButtons.children) {
+        button.classList.remove("activate");
+      }
+    }
+
+    function haveCommonElement(arr1, arr2) {
+      arr1 = arr1.map((w) => w.toLowerCase());
+      arr2 = arr2.map((w) => w.toLowerCase());
+
+      if (arr2.length === 0) {
+        return true;
+      }
+      const set1 = new Set(arr1);
+      return arr2.some((item) => set1.has(item));
+    }
+
+    function convertTo24Hour(time) {
+      if (time === "") {
+        return 0;
+      }
+
+      let [hour, modifier] = time.split(" "); // Split the time string into hour and AM/PM
+      let [hours, minutes] = hour.split(":"); // Further split the hour part into hours and minutes
+
+      hours = parseInt(hours, 10);
+
+      if (modifier.toLowerCase() === "pm" && hours !== 12) {
+        hours += 12;
+      }
+      if (modifier.toLowerCase() === "am" && hours === 12) {
+        hours = 0;
+      }
+      return hours;
+    }
+
+    function convertIsoTo24Hour(timeStr) {
+      const timePart = timeStr.split("T")[1];
+      const hhmm = timePart.split(":");
+      return parseInt(hhmm[0]) + parseInt(hhmm[1]) / 60;
+    }
+
+    function convertIsoToReadable(timeStr) {
+      timeStr = timeStr.split("T")[1].split("Z")[0];
+      const [hours, minutes] = timeStr.split(":");
+      let hour = parseInt(hours, 10);
+      const period = hour >= 12 ? "PM" : "AM";
+      if (hour > 12) {
+        hour -= 12;
+      } else if (hour === 0) {
+        hour = 12;
+      }
+      return `${hour}:${minutes} ${period}`;
+    }
+
+    function hideButtons(buttons) {
+      let i = 0;
+      for (let button of buttons) {
+        if (i > 4) {
+          button.style.display = "none";
+        }
+        i++;
+      }
+    }
+
+    const days = [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday",
+    ];
+    function getDayOfWeek(startTime) {
+      const date = parseInt(startTime.split("T")[0].split("-")[2]);
+      let ref = nyDate;
+      if (city === "SF") {
+        ref = sfDate;
+      } else if (city === "LA") {
+        ref = laDate;
+      }
+
+      return days[Math.min(Math.max(date - ref, 0), 6)];
+    }
+
+    function showButtons(buttons) {
+      for (let button of buttons) {
+        button.style.display = "block";
+      }
+    }
+
+    function getCity() {
+      const urlParams = new URLSearchParams(window.location.search);
+      let city = urlParams.get("city");
+      if (city != null) {
+        city = city.toUpperCase();
+      } else {
+        city = "NYC"; // Default to NY when no city parameter is provided
+      }
+      return city;
+    }
+
+    function fillNeighborhoods(data) {
+      const list = [];
+      for (let event of data) {
+        list.push(event.neighborhood.toLowerCase().trim());
+      }
+
+      const frequencyMap = list.reduce((acc, neighborhood) => {
+        acc[neighborhood] = (acc[neighborhood] || 0) + 1;
+        return acc;
+      }, {});
+
+      const currentNeighborhoods = Object.entries(frequencyMap)
+        .sort((a, b) => b[1] - a[1]) // Step 3: Sort by frequency in descending order
+        .map((entry) => entry[0]); // Step 4: Extract the neighborhood names only
+
+      const container = document.getElementById("neighborhood-filters");
+      container.replaceChildren();
+
+      for (let neighborhood of currentNeighborhoods) {
+        const button = document.createElement("a");
+        button.setAttribute("class", "filter-button-3 w-button");
+        const text = document.createTextNode(neighborhood);
+        button.appendChild(text);
+        button.onclick = function () {
+          if (button.classList.contains("activate")) {
+            const index = criteria.neighborhoods.indexOf(button.textContent);
+            criteria.neighborhoods.splice(index, 1);
+            button.classList.remove("activate");
+          } else {
+            button.classList.add("activate");
+            criteria.neighborhoods.push(button.textContent);
+          }
+          filterEvents(data, criteria);
+        };
+        container.appendChild(button);
+      }
+    }
+
+    async function getCredentials(email) {
+      console.log("getting credentials");
+      fetch("https://api.tech-week.com/submit_email/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: email }),
+        credentials: "include",
+      })
+        .then((response) => response.json())
+        .then((data) => console.log(data))
+        .then((queriedCreds = true))
+        .catch((error) => console.error("Error:", error));
+    }
+
+    document
+      .getElementById("email-form-3")
+      .addEventListener("submit", function (event) {
+        event.preventDefault();
+        const emailField = this.elements["email"];
+        getCredentials(emailField.value);
+        setTimeout(() => fetchData(), 500);
+      });
+
+    function initialHideFilters() {
+      const topicButtons = document.getElementById("topic-filters");
+      hideButtons(topicButtons.children);
+
+      const neighborhoodButtons = document.getElementById(
+        "neighborhood-filters"
+      );
+      hideButtons(neighborhoodButtons.children);
+
+      const typeButtons = document.getElementById("type-filters");
+      hideButtons(typeButtons.children);
+    }
+
+    function convertEventsToPdt(events) {
+      let convertedEvents = [];
+      for (event of events) {
+        let e = event;
+        e.start_time = utcToPdt(event.start_time);
+        convertedEvents.push(e);
+      }
+      return convertedEvents;
+    }
+
+    function utcToPdt(isoString) {
+      const date = new Date(isoString);
+      const pdtOffsetMs = -7 * 60 * 60 * 1000;
+      const pdtDate = new Date(date.getTime() + pdtOffsetMs);
+      return pdtDate.toISOString();
+    }
+  });
+</script>
+<script>
+  Webflow.push(function () {
+    // Disable submitting form fields during development
+    $("form").submit(function () {
+      return false;
+    });
+  });
+</script>

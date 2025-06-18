@@ -1,0 +1,831 @@
+<script> 
+    (function () {
+    
+        var deadline = '2024/10/22 00:00';
+    
+        function pad(num, size) {
+            var s = "0" + num;
+            return s.substr(s.length - size);
+        }
+    
+        // fixes "Date.parse(date)" on safari
+        function parseDate(date) {
+            const parsed = Date.parse(date);
+            if (!isNaN(parsed)) return parsed
+            return Date.parse(date.replace(/-/g, '/').replace(/[a-z]+/gi, ' '));
+        }
+    
+        function getTimeRemaining(endtime) {
+            let total = parseDate(endtime) - Date.parse(new Date())
+            let seconds = Math.floor((total / 1000) % 60)
+            let minutes = Math.floor((total / 1000 / 60) % 60)
+            let hours = Math.floor((total / (1000 * 60 * 60)) % 24)
+            let days = Math.floor(total / (1000 * 60 * 60 * 24))
+    
+            return { total, days, hours, minutes, seconds };
+        }
+    
+        function clock(id, endtime) {
+            let days = document.getElementById(id + '-days')
+            let hours = document.getElementById(id + '-hours')
+            let minutes = document.getElementById(id + '-minutes')
+            let seconds = document.getElementById(id + '-seconds')
+    
+            var timeinterval = setInterval(function () {
+                var time = getTimeRemaining(endtime);
+    
+                if (time.total <= 0) {
+                    clearInterval(timeinterval);
+                } else {
+                    days.innerHTML = pad(time.days, 2);
+                    hours.innerHTML = pad(time.hours, 2);
+                    minutes.innerHTML = pad(time.minutes, 2);
+                    seconds.innerHTML = pad(time.seconds, 2);
+                }
+            }, 1000);
+        }
+    
+        clock('js-clock', deadline);
+    })();
+    </script>
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var scheduleSeeMore = document.querySelector('.Schedule-See-More');
+        var header = document.getElementById('see-full-schedule');
+    
+        if (scheduleSeeMore && header) {
+          scheduleSeeMore.addEventListener('mouseenter', function() {
+            header.style.background = 'linear-gradient(265deg, #ED7602 -0.07%, #EF2A00 100%)';
+          });
+    
+          scheduleSeeMore.addEventListener('mouseleave', function() {
+            header.style.background = 'none';
+          });
+        }
+      });
+    </script>
+    
+    <script>
+      let data = []
+      let currentNeighborhoods = []
+      
+      let city = getCity();
+      const nyDate = 3;
+      const sfDate = 7;
+      const laDate = 14;
+      
+      const container = document.getElementById("calendar-container");
+      
+      const initStart = 0;
+      let criteria = { date: [], search: "", start: initStart, topic: [], type: [], neighborhoods: [] };
+      let topicExpanded = true;
+      let typeExpanded = true;
+      let neighborhoodExpanded = true;
+      let queriedCreds = false;
+      
+      const page = document.getElementById("page-wrapper");
+      page.classList.add("no-scroll");
+      
+      fetchData();
+      initialHideFilters();
+      
+      async function fetchData() {
+        try {
+            const response2 = await fetch('https://api.tech-week.com/list_events/?city=' + city, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                'credentials': 'include',
+            });
+    
+            if (!response2.ok) {
+                console.log(response2)
+            } else {
+              data = await response2.json();
+              data = convertEventsToPdt(data);
+              fillNeighborhoods(data);
+              attachOnClick();
+              initialHideFilters();
+              filterEvents(data, criteria);
+              
+              const subForm = document.getElementById('email-form-container');
+              subForm.style.display = 'none'
+              page.classList.remove("no-scroll");
+            }
+        } catch (error) {
+            const subForm = document.getElementById('email-form-container');
+            subForm.style.display = 'flex'
+            console.log("Err");
+            console.error('Error:', error);
+        }
+      }
+      
+    function filterEvents(events, criteria) { // Date, Search, Time, Topic, Type
+        let results = events.filter((event) => {
+            // Ensure event.hosts is a string before using toLowerCase
+            let eventHosts = Array.isArray(event.hosts) ? event.hosts.join(', ') : String(event.hosts);
+            return event.event_name.toLowerCase().includes(criteria.search.toLowerCase()) ||
+                   eventHosts.toLowerCase().includes(criteria.search.toLowerCase());
+        });
+    
+        if (criteria.date.length > 0) {
+            results = results.filter((event) => { 
+                if (event.start_time != null) {
+                    const rawDate = parseInt(event.start_time.split("T")[0].split("-")[2]); // Removed double parseInt
+                    return criteria.date.includes(rawDate);
+                }
+                return false; // Explicit return false if start_time is null
+            });
+        }
+    
+        results = results.filter((event) => {
+            if (event.start_time != null) {
+                const time = convertIsoTo24Hour(event.start_time); 
+                return time >= criteria.start;
+            } else {
+                return true;
+            }
+        });
+    
+        results = results.filter((event) => haveCommonElement(event.themes, criteria.topic));
+    
+        if (criteria.neighborhoods.length > 0) {
+            results = results.filter((event) => criteria.neighborhoods.includes(event.neighborhood.toLowerCase().trim()));
+        }
+    
+        results = results.filter((event) => haveCommonElement(event.formats, criteria.type));
+    
+        results.sort((a, b) => {
+            // Sort featured before non-featured
+            if (a.is_featured !== b.is_featured) {
+                return b.is_featured - a.is_featured;
+            }
+            // Sort by start time (earliest first)
+            return new Date(a.start_time) - new Date(b.start_time);
+        });
+    
+        populateEvents(results);
+    }
+      
+      function populateEvents(list) {
+        container.replaceChildren();
+        
+        for (let d of list) {
+          const item = document.createElement("div");
+          item.setAttribute("class", "calendar-flex-item");
+          const superInfoFlex = document.createElement("div");
+          superInfoFlex.setAttribute("class", "super-info-flex");
+          const infoFlex = document.createElement("div");
+          infoFlex.setAttribute("class", "info-flex");
+          const subInfoFlex = document.createElement("div");
+          subInfoFlex.setAttribute("class", "sub-info-flex");
+          
+          //Featured
+          if (d.is_featured === true) {
+            const fsvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            const fimage = document.createElementNS("http://www.w3.org/2000/svg", "image");
+            fsvg.setAttribute('height', '14');
+            fsvg.setAttribute('width', '14');
+            fsvg.appendChild(fimage);
+            fimage.setAttribute('href', "https://cdn.prod.website-files.com/62acecf52d5a4664886cbac1/66ce40dd56cea4366aacbb5c_Star.svg");
+            subInfoFlex.appendChild(fsvg);
+          }
+          
+          //Hosts
+          const hostP = document.createElement("p");
+          const hosts = document.createTextNode(d.hosts.join(', '));
+          hostP.setAttribute("class", "calendar-hosts info");
+          hostP.appendChild(hosts);
+          subInfoFlex.appendChild(hostP);
+          infoFlex.appendChild(subInfoFlex);
+          
+          //Time
+          if (d.start_time != null) {
+            const start = convertIsoToReadable(d.start_time);
+            const day = getDayOfWeek(d.start_time);
+            const timeP = document.createElement("p");
+            const timeText = document.createTextNode(day + ' ' + start);
+            timeP.setAttribute("class", "calendar-time");
+            timeP.appendChild(timeText);
+            infoFlex.appendChild(timeP);
+          } else {
+            console.log("Start Time Null", d);
+          }
+          
+          //Neighborhood
+          if (d.neighborhood != null) {
+            const neighborP = document.createElement("p");
+            const neighborText = document.createTextNode(d.neighborhood);
+            neighborP.setAttribute("class", "calendar-time");
+            neighborP.appendChild(neighborText);
+            superInfoFlex.appendChild(neighborP);
+          }
+          
+          superInfoFlex.append(infoFlex);
+          superInfoFlex.appendChild(infoFlex);
+          
+          //Headline
+          const headlineP = document.createElement("a");
+          let vipText = '';
+          if (d.invite_url === '' || d.invite_url.includes('Invite Only')) {
+            headlineP.setAttribute("class", "calendar-headline");
+            vipText = ' (Invite Only)';
+            const headline = document.createTextNode(d.event_name + vipText + "\t\t\t");
+            headlineP.appendChild(headline);
+          } else {
+            headlineP.setAttribute("class", "calendar-headline non-vip");
+            headlineP.href = d.invite_url;
+            headlineP.target = "_blank";
+            
+            const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            const image = document.createElementNS("http://www.w3.org/2000/svg", "image");
+            svg.setAttribute('height', '16');
+            svg.setAttribute('width', '16');
+            svg.appendChild(image);
+            image.setAttribute('href', "https://cdn.prod.website-files.com/62acecf52d5a4664886cbac1/66d086ad9ffe190e0d23b416_arrow_outward.svg");
+            svg.setAttribute("class", "inline-arrow");
+            const headline = document.createTextNode(d.event_name + vipText + "\t\t\t");
+            headlineP.appendChild(headline);
+            headlineP.appendChild(svg);
+          
+            headlineP.onmouseover = function (e) { 
+              this.getElementsByTagName('image')[0].setAttribute('href', 'https://cdn.prod.website-files.com/62acecf52d5a4664886cbac1/66d0902ff5397138e81249c8_arrow_outward_hover.svg');
+            }
+            headlineP.onmouseleave = function (e) { 
+              this.getElementsByTagName('image')[0].setAttribute('href', "https://cdn.prod.website-files.com/62acecf52d5a4664886cbac1/66d086ad9ffe190e0d23b416_arrow_outward.svg");
+            }
+          }
+          
+          const headCatDiv = document.createElement("div");
+          headCatDiv.setAttribute("class", "head-cat-container");
+          headCatDiv.appendChild(headlineP);
+          
+          //Themes
+          const catContainer = document.createElement("div");
+          catContainer.setAttribute("class", "category-container");
+          for (let c of d.themes) {
+            const catDiv = document.createElement("div");
+            const cat = document.createTextNode(c);
+            catDiv.appendChild(cat);
+            catDiv.setAttribute("class", "item-filter-button");
+            catContainer.appendChild(catDiv);
+          }
+          
+          /*
+          if (catContainer.childElementCount > 5) {
+            const catDiv = document.createElement("div");
+            const cat = document.createTextNode('+');
+            catDiv.appendChild(cat);
+            catDiv.setAttribute("class", "item-filter-button");
+            catDiv.onclick = function () {
+              if (catContainer.lastChild.textContent === '-') {
+                hideButtons(catContainer.children);
+                catDiv.textContent = '+'
+              } else {
+                showButtons(catContainer.children);
+                catDiv.textContent = '-'
+              }
+            }
+            catContainer.appendChild(catDiv);
+            hideButtons(catContainer.children);
+          }
+          
+          headCatDiv.appendChild(catContainer);
+          */
+          
+          const infoContainer = document.createElement("div");
+          infoContainer.setAttribute("class", "info-container");
+          infoContainer.appendChild(superInfoFlex);
+          infoContainer.appendChild(headCatDiv);
+          item.appendChild(infoContainer);
+          
+          /*
+          const watchDiv = document.createElement("a");
+          watchDiv.href = d.invite_url;
+          watchDiv.target = "_blank";
+          watchDiv.setAttribute("class", "watch");
+          const watchText = document.createTextNode("Event Link");
+          watchDiv.appendChild(watchText);
+          */
+          
+          container.appendChild(item);
+        }
+      }
+      
+      function attachOnClick() {
+      
+        //city
+        const cityButtons = document.getElementById("city-filters");
+        
+        for (let button of cityButtons.children) {
+          if (button.id === city) {
+            button.classList.add("specialActivate");
+          }
+          
+          button.onclick = function() {
+            
+            if (!button.classList.contains('disabled')) {
+              city = button.id;
+              fetchData();
+    
+              const monday = document.getElementById("monday-button");
+              monday.click();
+    
+              clearCityButtons();
+              clearTopicTypeButtons();
+              clearDateButtons();
+              criteria.neighborhoods = []
+              button.classList.add("specialActivate");
+              
+              if (topicExpanded) {
+                  const topicMore = document.getElementById("topic-more");
+                topicMore.click();
+              }
+              
+              if (!typeExpanded) {
+                  const typeMore = document.getElementById("type-more");
+                typeMore.click();
+              }
+              if (!topicExpanded) {
+                  const topicMore = document.getElementById("topic-more");
+                topicMore.click();
+              }
+              if (!neighborhoodExpanded) {
+                  const neighborhoodMore = document.getElementById("neighborhood-more");
+                neighborhoodMore.click();
+              }
+            }
+          }
+        }
+        
+        const cityDropdown = document.getElementById('city-dropdown');
+        const cityDropText = document.getElementById('city-drop-text');
+        for (let option of cityDropdown.children) {
+          option.onclick = function() { 
+            cityDropText.textContent = option.textContent;
+            let c = "SF";
+            if (option.textContent.toLowerCase() === "los angeles") {
+              c = "LA";
+            }
+            
+            city = c;
+            fetchData();
+    
+            const monday = document.getElementById("monday-button");
+            monday.click();
+    
+            clearCityButtons();
+            clearTopicTypeButtons();
+            clearDateButtons();
+            criteria.neighborhoods = []
+            
+             if (topicExpanded) {
+                  const topicMore = document.getElementById("topic-more");
+                topicMore.click();
+              }
+              
+              if (!typeExpanded) {
+                  const typeMore = document.getElementById("type-more");
+                typeMore.click();
+              }
+              if (!topicExpanded) {
+                  const topicMore = document.getElementById("topic-more");
+                topicMore.click();
+              }
+              if (!neighborhoodExpanded) {
+                  const neighborhoodMore = document.getElementById("neighborhood-more");
+                neighborhoodMore.click();
+              }
+          }
+        }
+        
+        
+        //Date
+        const dateButtons = document.getElementById("date-filters");
+        
+        for (let i=0; i<dateButtons.childElementCount; i++) {
+          const button = dateButtons.children[i];
+          
+          button.onclick = function() { 
+            let proposed = nyDate + i;
+            if (city === "LA") {
+              proposed = laDate + i;
+            } else if (city === "SF") {
+              proposed = sfDate + i;
+            }
+            
+            if (criteria.date.includes(proposed)) {
+              const index = criteria.date.indexOf(proposed);
+              criteria.date = criteria.date.filter(function(item) {
+                return item !== proposed
+              })
+              button.classList.remove("activate");
+            } else {
+              criteria.date.push(proposed);
+              button.classList.add("activate");
+            }
+            
+            filterEvents(data, criteria);
+          };
+        }
+        
+        const dayX = document.getElementById('day-clear');
+        dayX.onclick = function() { 
+          criteria.date = [];
+          filterEvents(data, criteria);
+          clearDateButtons();
+        }
+        
+        //Search
+        const search = document.getElementById("search");
+        search.onkeypress = function(event) {
+          if(event.keyCode === 13) { criteria.search = search.value };
+          filterEvents(data, criteria);
+        };
+        
+        const clearSearch = document.getElementById("clear-search");
+        clearSearch.onclick = function() {
+          criteria.search = "";
+          search.value = "";
+          filterEvents(data, criteria);
+        }
+        
+        const mobileButton = document.getElementById('mobile-filter-button');
+        mobileButton.onclick = function() {
+            const search = document.getElementById("search");
+          criteria.search = search.value;
+          filterEvents(data, criteria);
+        }
+        
+        const exitButton = document.getElementById('exit-button');
+        mobileButton.onclick = function() {
+            const search = document.getElementById("search");
+          criteria.search = search.value;
+          filterEvents(data, criteria);
+        }
+        
+        //Start
+        const startDropdown = document.getElementById('start-dropdown');
+        const startText = document.getElementById('start-text');
+        for (let option of startDropdown.children) {
+          option.onclick = function() { startText.textContent = option.textContent; criteria.start = convertTo24Hour(option.textContent.replace(/[\s–]+$/, '')); filterEvents(data, criteria); };
+        }
+        
+        const startX = document.getElementById('time-clear');
+        startX.onclick = function() { 
+          criteria.start = 0;
+          filterEvents(data, criteria);
+          startText.textContent = '–'
+        }
+        
+        //Topics
+        const topicButtons = document.getElementById("topic-filters"); //Topics
+        for (let button of topicButtons.children) {
+          button.onclick = function() {
+            if (button.classList.contains("activate")) {
+              const index = criteria.topic.indexOf(button.textContent);
+              criteria.topic.splice(index, 1);
+              button.classList.remove("activate");
+            } else {
+              button.classList.add("activate");
+              criteria.topic.push(button.textContent);
+            }
+            filterEvents(data, criteria);
+          };
+        }
+        
+        const topicX = document.getElementById('topics-clear');
+        topicX.onclick = function() { 
+          criteria.topic = [];
+          filterEvents(data, criteria);
+          const topicButtons = document.getElementById("topic-filters");
+          for (let button of topicButtons.children) {
+            button.classList.remove("activate");
+          }
+        }
+        
+        const typeButtons = document.getElementById("type-filters"); //Types
+        for (let button of typeButtons.children) {
+          button.onclick = function() {
+            if (button.classList.contains("activate")) {
+              const index = criteria.type.indexOf(button.textContent);
+              criteria.type.splice(index, 1);
+              button.classList.remove("activate");
+            } else {
+              button.classList.add("activate");
+              criteria.type.push(button.textContent);
+            }
+            filterEvents(data, criteria);
+          };
+        }
+        
+        const typeX = document.getElementById('types-clear');
+        typeX.onclick = function() { 
+          criteria.type = [];
+          filterEvents(data, criteria);
+          const typeButtons = document.getElementById("type-filters");
+          for (let button of typeButtons.children) {
+            button.classList.remove("activate");
+          }
+        }
+        
+        //Neighborhood
+        const neighborhoodButtons = document.getElementById("neighborhood-filters"); //Topics
+        const neighborhoodMore = document.getElementById("neighborhood-more");
+        neighborhoodMore.onclick = function() {
+          if (neighborhoodExpanded) {
+            showButtons(neighborhoodButtons.children);
+            neighborhoodMore.textContent = "see less";
+          } else {
+            hideButtons(neighborhoodButtons.children);
+            neighborhoodMore.textContent = "see more";
+          }
+          neighborhoodExpanded = !neighborhoodExpanded;
+        }
+        
+        const neighborhoodX = document.getElementById('neighborhood-clear');
+        neighborhoodX.onclick = function() { 
+          criteria.neighborhoods = [];
+          filterEvents(data, criteria);
+          clearNeighborhoodButtons();
+        }
+        
+        //Topic
+        const topicMore = document.getElementById("topic-more");
+        topicMore.onclick = function() {
+          if (topicExpanded) {
+            showButtons(topicButtons.children);
+            topicMore.textContent = "see less";
+          } else {
+            hideButtons(topicButtons.children);
+            topicMore.textContent = "see more";
+          }
+          topicExpanded = !topicExpanded;
+        }
+        
+        //Type
+        const typeMore = document.getElementById("type-more");
+        typeMore.onclick = function() {
+          if (typeExpanded) {
+            showButtons(typeButtons.children);
+            typeMore.textContent = "see less";
+          } else {
+            hideButtons(typeButtons.children);
+            typeMore.textContent = "see more";
+          }
+          typeExpanded = !typeExpanded;
+        }
+        
+        const clearButton = document.getElementById("clear-filters");
+        clearButton.onclick = function() { 
+          criteria = { date: [], search: "", start: initStart, topic: [], type: [], neighborhoods: [] };
+          startText.textContent = "–";
+          clearDateButtons();
+          clearTopicTypeButtons();
+          clearNeighborhoodButtons();
+          filterEvents(data, criteria);
+        };
+      }
+      
+      function clearDateButtons() {
+        const dateButtons = document.getElementById('date-filters');
+        criteria.date = [];
+        for (let button of dateButtons.children) {
+          button.classList.remove("activate");
+        }
+      }
+      
+      function clearNeighborhoodButtons() {
+        const neighborhoodButtons = document.getElementById('neighborhood-filters');
+        criteria.neighborhoods = [];
+        for (let button of neighborhoodButtons.children) {
+          button.classList.remove("activate");
+        }
+      }
+      
+      function clearCityButtons() {
+        const cityButtons = document.getElementById("city-filters");
+        for (let button of cityButtons.children) {
+           button.classList.remove("specialActivate");
+        }
+      }
+      
+      function clearTopicTypeButtons() {
+        const topicButtons = document.getElementById("topic-filters");
+        const typeButtons = document.getElementById("type-filters");
+        for (let button of topicButtons.children) {
+           button.classList.remove("activate");
+        }
+        for (let button of typeButtons.children) {
+           button.classList.remove("activate");
+        }
+      }
+      
+      function haveCommonElement(arr1, arr2) {
+        arr1 = arr1.map((w) => w.toLowerCase());
+        arr2 = arr2.map((w) => w.toLowerCase());
+        
+        if (arr2.length === 0) { return true };
+        const set1 = new Set(arr1);
+        return arr2.some(item => set1.has(item));
+      }
+      
+      function convertTo24Hour(time) {
+        if (time === '') {
+          return 0
+        }
+        
+        let [hour, modifier] = time.split(' '); // Split the time string into hour and AM/PM
+        let [hours, minutes] = hour.split(':'); // Further split the hour part into hours and minutes
+        
+        hours = parseInt(hours, 10);
+    
+        if (modifier.toLowerCase() === 'pm' && hours !== 12) {
+            hours += 12;
+        }
+        if (modifier.toLowerCase() === 'am' && hours === 12) {
+            hours = 0;
+        }
+        return hours;
+      }
+      
+      function convertIsoTo24Hour(timeStr) {
+        const timePart = timeStr.split('T')[1];
+        const hhmm = timePart.split(':')
+        return parseInt(hhmm[0]) + parseInt(hhmm[1]) / 60;
+      }
+      
+      function convertIsoToReadable(timeStr) {
+        timeStr = timeStr.split('T')[1].split('Z')[0]
+        const [hours, minutes] = timeStr.split(':');
+        let hour = parseInt(hours, 10);
+        const period = hour >= 12 ? 'PM' : 'AM';
+        if (hour > 12) { hour -= 12; } else if (hour === 0) { hour = 12; }
+        return `${hour}:${minutes} ${period}`
+      }
+      
+      function hideButtons(buttons) {
+        let i = 0;
+        for (let button of buttons) { 
+          if (i > 4) {
+            button.style.display = 'none';
+          }
+          i++;
+        }
+      }
+      
+      const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+      function getDayOfWeek(startTime) {
+        const date = parseInt(startTime.split("T")[0].split("-")[2])
+        let ref = nyDate;
+        if (city === "SF") {
+          ref = sfDate;
+        } else if (city === "LA") {
+          ref = laDate;
+        }
+        
+        return days[Math.min(Math.max(date-ref, 0), 6)]
+      }
+      
+      function showButtons(buttons) {
+        for (let button of buttons) { 
+           button.style.display = 'block';
+        }
+      }
+      
+    function getCity() {
+      const urlParams = new URLSearchParams(window.location.search);
+      let city = urlParams.get('city');
+      if (city != null) { 
+        city = city.toUpperCase(); 
+      } else { 
+        city = "LA"; // Change default city to LA
+      }
+      return city;
+    }
+      
+      function fillNeighborhoods(data) {
+        
+        const list = []
+        for (let event of data) {
+          list.push(event.neighborhood.toLowerCase().trim());
+        }
+        
+        const frequencyMap = list.reduce((acc, neighborhood) => {
+          acc[neighborhood] = (acc[neighborhood] || 0) + 1;
+          return acc;
+        }, {});
+        
+        const currentNeighborhoods = Object.entries(frequencyMap)
+          .sort((a, b) => b[1] - a[1]) // Step 3: Sort by frequency in descending order
+          .map(entry => entry[0]);      // Step 4: Extract the neighborhood names only
+        
+        const container = document.getElementById('neighborhood-filters');
+        container.replaceChildren();
+        
+        for (let neighborhood of currentNeighborhoods) {
+          const button = document.createElement('a')
+          button.setAttribute('class', 'filter-button-3 w-button');
+          const text = document.createTextNode(neighborhood)
+          button.appendChild(text)
+          button.onclick = function() {
+            if (button.classList.contains("activate")) {
+              const index = criteria.neighborhoods.indexOf(button.textContent);
+              criteria.neighborhoods.splice(index, 1);
+              button.classList.remove("activate");
+            } else {
+              button.classList.add("activate");
+              criteria.neighborhoods.push(button.textContent);
+            }
+            filterEvents(data, criteria);
+          }
+          container.appendChild(button)
+        }
+      }
+      
+      async function getCredentials(email) {
+          console.log("getting credentials");
+        fetch('https://api.tech-week.com/submit_email/', { 
+          method: 'POST', 
+          headers: { 
+            'Content-Type': 'application/json' 
+          }, 
+          body: JSON.stringify({ email: email }), 
+          credentials: 'include' }) 
+            .then(response => response.json()) 
+            .then(data => console.log(data)) 
+            .then(queriedCreds = true)
+            .catch(error => console.error('Error:', error));
+      }
+      
+      document.getElementById('email-form-3').addEventListener('submit', 
+        function(event) {
+            event.preventDefault();
+            const emailField = this.elements["email"];
+            getCredentials(emailField.value);
+            setTimeout(() => fetchData(), 500)
+      });
+      
+      function initialHideFilters() {
+        const topicButtons = document.getElementById("topic-filters");
+        hideButtons(topicButtons.children);
+        
+        const neighborhoodButtons = document.getElementById("neighborhood-filters");
+        hideButtons(neighborhoodButtons.children);
+        
+        const typeButtons = document.getElementById("type-filters");
+        hideButtons(typeButtons.children);
+      }
+      
+      function convertEventsToPdt(events) {
+        let convertedEvents = []
+        for (event of events) {
+          let e = event
+          e.start_time = utcToPdt(event.start_time);
+          convertedEvents.push(e);
+        }
+        return convertedEvents
+      }
+      
+      function utcToPdt(isoString) {
+        const date = new Date(isoString);
+        const pdtOffsetMs = -7 * 60 * 60 * 1000;
+        const pdtDate = new Date(date.getTime() + pdtOffsetMs);
+        return pdtDate.toISOString();
+      }
+    </script>
+    <script>
+      Webflow.push(function() {
+        // Disable submitting form fields during development
+        $('form').submit(function() {
+          return false;
+        });
+      });
+      
+      const mobileFilterButton = document.getElementById('mobile-filter-button');
+      const allFilters = document.getElementById('all-filters');
+      const allEvents = document.getElementById('all-events');
+      const exitFilters = document.getElementById('exit-filters');
+      if (window.innerWidth <= 425) {
+        allFilters.style.display = 'none'
+      } else {
+        allFilters.style.display = 'block'
+        exitFilters.style.display = 'none'
+      }
+      function customFunction(event) {
+        event.preventDefault();
+        if (allFilters.style.display === 'none') {
+          allFilters.style.display = 'block'
+          exitFilters.style.display = 'block'
+          allEvents.style.display = 'none'
+        } else {
+          allFilters.style.display = 'none'
+          exitFilters.style.display = 'none'
+          allEvents.style.display = 'block'
+        }
+      }
+      mobileFilterButton.addEventListener('click', customFunction);
+      exitFilters.addEventListener('click', customFunction);
+    </script>

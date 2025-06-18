@@ -1,0 +1,267 @@
+<script>
+  (function () {
+    var deadline = "2024/10/22 00:00";
+
+    function pad(num, size) {
+      var s = "0" + num;
+      return s.substr(s.length - size);
+    }
+
+    // fixes "Date.parse(date)" on safari
+    function parseDate(date) {
+      const parsed = Date.parse(date);
+      if (!isNaN(parsed)) return parsed;
+      return Date.parse(date.replace(/-/g, "/").replace(/[a-z]+/gi, " "));
+    }
+
+    function getTimeRemaining(endtime) {
+      let total = parseDate(endtime) - Date.parse(new Date());
+      let seconds = Math.floor((total / 1000) % 60);
+      let minutes = Math.floor((total / 1000 / 60) % 60);
+      let hours = Math.floor((total / (1000 * 60 * 60)) % 24);
+      let days = Math.floor(total / (1000 * 60 * 60 * 24));
+
+      return { total, days, hours, minutes, seconds };
+    }
+
+    function clock(id, endtime) {
+      let days = document.getElementById(id + "-days");
+      let hours = document.getElementById(id + "-hours");
+      let minutes = document.getElementById(id + "-minutes");
+      let seconds = document.getElementById(id + "-seconds");
+
+      var timeinterval = setInterval(function () {
+        var time = getTimeRemaining(endtime);
+
+        if (time.total <= 0) {
+          clearInterval(timeinterval);
+        } else {
+          days.innerHTML = pad(time.days, 2);
+          hours.innerHTML = pad(time.hours, 2);
+          minutes.innerHTML = pad(time.minutes, 2);
+          seconds.innerHTML = pad(time.seconds, 2);
+        }
+      }, 1000);
+    }
+
+    clock("js-clock", deadline);
+  })();
+</script>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Didact+Gothic&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Didact+Gothic&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+  /* Initial state for the header */
+  #see-full-schedule {
+    background: none;
+    transition: background 0.3s ease;
+  }
+
+  a {
+    text-decoration: none;
+  }
+  .search {
+    color: white;
+  }
+
+  .no-scroll-bar {
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .no-scroll-bar::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+
+  .calendar-flex-item {
+    display: flex;
+    padding: 0.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    align-self: stretch;
+    width: 100%;
+    border-bottom: 1px solid #fff;
+    background: #212121;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .sub-info-flex {
+    display: flex;
+  }
+
+  .info-flex {
+    display: flex;
+    align-items: center;
+  }
+
+  .super-info-flex {
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    display: flex;
+    gap: 32px;
+  }
+
+  .info {
+    border-right: 1px solid rgba(0, 0, 0, 0.5);
+  }
+
+  .calendar-hosts {
+    color: #14e8ff;
+    font-family: "Space Grotesk";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 110%; /* 19.8px */
+    letter-spacing: -0.45px;
+    text-transform: uppercase;
+  }
+
+  .calendar-headline {
+    color: #fff;
+    font-family: "Space Grotesk";
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%; /* 38.4px */
+    letter-spacing: -0.64px;
+    text-transform: capitalize;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .non-vip:hover {
+    background-clip: text;
+    color: #14e8ff;
+    text-decoration: underline;
+  }
+
+  .calendar-time {
+    color: rgba(255, 255, 255, 0.75);
+    font-family: "Space Grotesk";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 110%; /* 19.8px */
+    letter-spacing: -0.45px;
+    text-transform: uppercase;
+  }
+
+  .head-cat-container {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .info-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.125rem;
+  }
+
+  #link-arrow-hover:hover #arrow {
+    fill: #14e8ff;
+  }
+
+  .category-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .item-filter-button {
+    font-family: Oswald;
+    text-transform: uppercase;
+    line-height: 110%; /* 15.4px */
+    letter-spacing: -0.35px;
+    font-weight: 400;
+    font-size: 12px;
+    padding: 4px 8px;
+    background: rgba(0, 0, 0, 0.08);
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+  .inline-arrow {
+    margin-left: 8px;
+    color: #fff;
+    fill: #fff;
+    stroke: #fff;
+  }
+
+  .watch {
+    display: flex;
+    font-family: Inter;
+    font-weight: 600;
+    font-size: 18px;
+    color: black;
+    background-color: white;
+    text-decoration: none;
+    margin: 12px 0 0 0;
+    padding: 8px 16px;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+  }
+
+  .specialActivate {
+    background-color: #14e8ff;
+    color: #000;
+    border: none;
+  }
+
+  .specialActivate .city-heading,
+  .specialActivate .city-date {
+    color: #000;
+  }
+
+  .activate,
+  .date-button:active,
+  .date-button:focus,
+  .filter-button:active,
+  .filter-button:focus {
+    color: black;
+    background-color: white;
+  }
+
+  @media only screen and (max-width: 767px) {
+    .calendar-headline {
+      font-size: 24px;
+    }
+
+    .calendar-hosts {
+      /* Corrected from .calendar-host */
+      font-size: 14px;
+    }
+
+    .calendar-time {
+      font-size: 14px;
+    }
+
+    .item-filter-button {
+      padding: 4px 8px;
+      font-size: 12px;
+    }
+
+    .category-container {
+      gap: 4px;
+    }
+
+    .info-container {
+      gap: 10px;
+    }
+
+    .calendar-flex-item {
+      padding: 8px 0;
+    }
+
+    .head-cat-container {
+      gap: 4px;
+    }
+  }
+</style>
