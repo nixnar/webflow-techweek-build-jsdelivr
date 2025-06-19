@@ -7,15 +7,61 @@ const App = () => {
   const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
   const [isValidEmail, setIsValidEmail] = React.useState(false);
   const [email, setEmail] = React.useState("");
-  const [events, setEvents] = React.useState([]);
+  const [futureEvents, setFutureEvents] = React.useState([]);
+  const [pastEvents, setPastEvents] = React.useState([]);
+  // Helper function to parse Webflow date format "10.15.2025 7:00 AM"
+  const parseWebflowDate = (dateString) => {
+    if (!dateString) return null;
+
+    // Replace dots with slashes for better Date parsing
+    // Convert "10.15.2025 7:00 AM" to "10/15/2025 7:00 AM"
+    const formattedDate = dateString.replace(/\./g, "/");
+
+    return new Date(formattedDate);
+  };
+
+  // Helper function to compare dates without time (only show as past when it's a different day)
+  const isEventPastDay = (eventDate) => {
+    if (!eventDate) return false;
+
+    const today = new Date();
+    const eventDateOnly = new Date(
+      eventDate.getFullYear(),
+      eventDate.getMonth(),
+      eventDate.getDate()
+    );
+    const todayDateOnly = new Date(
+      today.getFullYear(),
+      today.getMonth(),
+      today.getDate()
+    );
+
+    return eventDateOnly < todayDateOnly;
+  };
 
   // Load testimonials using MutationObserver
   React.useEffect(() => {
     const getEvents = () => {
       if (window.webflowCmsData?.events) {
         const eventsData = window.webflowCmsData.events;
-        // console.log("Found testimonials:", testimonialsData);
-        setEvents(eventsData);
+        eventsData.forEach((event) => {
+          const eventDate = parseWebflowDate(event.time);
+          event.pastEvent = eventDate ? isEventPastDay(eventDate) : false;
+        });
+        eventsData.sort((a, b) => {
+          const dateA = parseWebflowDate(a.time);
+          const dateB = parseWebflowDate(b.time);
+          return dateA - dateB;
+        });
+        const futureEvents = eventsData.filter((event) => !event.pastEvent);
+        const pastEvents = eventsData.filter((event) => event.pastEvent);
+        pastEvents.sort((a, b) => {
+          const dateA = parseWebflowDate(a.time);
+          const dateB = parseWebflowDate(b.time);
+          return dateB - dateA;
+        });
+        setFutureEvents(futureEvents);
+        setPastEvents(pastEvents);
         return true;
       }
       return false;
@@ -174,33 +220,63 @@ const App = () => {
       ) : (
         <div className="flex w-full justify-center text-white select-none">
           <div className="max-w-[1400px] grow flex flex-col gap-4">
-            <div id="contentAndFilters" className="flex gap-4 justify-between">
+            <div id="nonPastEvents" className="flex gap-4 justify-between">
               <div className="flex flex-col grow">
                 <div
                   id="content"
                   className="border-[1px] border-white p-[4px] bg-black h-fit"
                 >
                   <div className="grow border-[1px] border-white ml-[-1px]">
-                    {events.length > 0 &&
-                      events.map((item) => {
-                        if (item.invite_url !== "Invite Only") {
-                          return (
-                            <a
-                              key={item.id}
-                              href={item.invite_url}
-                              target="_blank"
-                            >
-                              <IndividualEvent
-                                item={item}
-                                windowWidth={windowWidth}
-                                hasLink={true}
-                                className=""
-                              />
-                            </a>
-                          );
-                        } else {
-                          return <p>{item.title}</p>;
-                        }
+                    {futureEvents.length > 0 &&
+                      futureEvents.map((item) => {
+                        return (
+                          <a
+                            key={item.id}
+                            href={item.invite_url}
+                            target="_blank"
+                          >
+                            <IndividualEvent
+                              item={item}
+                              windowWidth={windowWidth}
+                              hasLink={true}
+                              className=""
+                              pastEvent={item.pastEvent}
+                            />
+                          </a>
+                        );
+                      })}
+                  </div>
+                </div>
+                <div className="grow" />
+              </div>
+            </div>
+            <div id="pastEvents" className="flex gap-4 justify-between">
+              <div className="flex flex-col grow">
+                <div
+                  id="pastEventsContent"
+                  className="border-[1px] border-white p-[4px] bg-black h-fit"
+                >
+                  <div className="grow border-[1px] border-white ml-[-1px]">
+                    <div className="px-6 py-3 border-b-[1px] border-white text-[1.125rem] font-[700] leading-[1.1] tracking-[-0.02813rem]">
+                      PAST EVENTS
+                    </div>
+                    {pastEvents.length > 0 &&
+                      pastEvents.map((item) => {
+                        return (
+                          <a
+                            key={item.id}
+                            href={item.invite_url}
+                            target="_blank"
+                          >
+                            <IndividualEvent
+                              item={item}
+                              windowWidth={windowWidth}
+                              hasLink={true}
+                              className=""
+                              pastEvent={item.pastEvent}
+                            />
+                          </a>
+                        );
                       })}
                   </div>
                 </div>

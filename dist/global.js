@@ -491,10 +491,6 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   display: none;
 }
 
-.tailwind .pointer-events-none{
-  pointer-events: none !important;
-}
-
 .tailwind .fixed{
   position: fixed !important;
 }
@@ -507,39 +503,11 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   position: relative !important;
 }
 
-.tailwind .sticky{
-  position: sticky !important;
-}
-
 .tailwind .inset-0{
   top: 0px !important;
   right: 0px !important;
   bottom: 0px !important;
   left: 0px !important;
-}
-
-.tailwind .left-0{
-  left: 0px !important;
-}
-
-.tailwind .right-3{
-  right: 0.75rem !important;
-}
-
-.tailwind .top-0{
-  top: 0px !important;
-}
-
-.tailwind .top-1\\/2{
-  top: 50% !important;
-}
-
-.tailwind .top-4{
-  top: 1rem !important;
-}
-
-.tailwind .z-10{
-  z-index: 10 !important;
 }
 
 .tailwind .z-\\[9999\\]{
@@ -550,28 +518,12 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   margin-bottom: 1rem !important;
 }
 
-.tailwind .ml-2{
-  margin-left: 0.5rem !important;
-}
-
-.tailwind .mt-1{
-  margin-top: 0.25rem !important;
-}
-
-.tailwind .mt-\\[0\\.5px\\]{
-  margin-top: 0.5px !important;
-}
-
 .tailwind .mb-6{
   margin-bottom: 1.5rem !important;
 }
 
 .tailwind .mb-8{
   margin-bottom: 2rem !important;
-}
-
-.tailwind .mb-\\[-0\\.5rem\\]{
-  margin-bottom: -0.5rem !important;
 }
 
 .tailwind .ml-\\[-1px\\]{
@@ -582,28 +534,12 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   margin-top: 2rem !important;
 }
 
-.tailwind .block{
-  display: block !important;
+.tailwind .mt-4{
+  margin-top: 1rem !important;
 }
 
 .tailwind .flex{
   display: flex !important;
-}
-
-.tailwind .hidden{
-  display: none !important;
-}
-
-.tailwind .h-4{
-  height: 1rem !important;
-}
-
-.tailwind .h-\\[12px\\]{
-  height: 12px !important;
-}
-
-.tailwind .h-full{
-  height: 100% !important;
 }
 
 .tailwind .h-fit{
@@ -611,45 +547,17 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   height: fit-content !important;
 }
 
-.tailwind .max-h-0{
-  max-height: 0px !important;
-}
-
-.tailwind .max-h-\\[500px\\]{
-  max-height: 500px !important;
-}
-
-.tailwind .min-h-\\[20rem\\]{
-  min-height: 20rem !important;
-}
-
-.tailwind .w-4{
-  width: 1rem !important;
-}
-
-.tailwind .w-\\[12px\\]{
-  width: 12px !important;
-}
-
-.tailwind .w-\\[22\\.5rem\\]{
-  width: 22.5rem !important;
-}
-
-.tailwind .w-\\[90\\%\\]{
-  width: 90% !important;
-}
-
-.tailwind .w-fit{
-  width: -moz-fit-content !important;
-  width: fit-content !important;
+.tailwind .h-full{
+  height: 100% !important;
 }
 
 .tailwind .w-full{
   width: 100% !important;
 }
 
-.tailwind .min-w-\\[120px\\]{
-  min-width: 120px !important;
+.tailwind .w-fit{
+  width: -moz-fit-content !important;
+  width: fit-content !important;
 }
 
 .tailwind .max-w-2xl{
@@ -660,8 +568,8 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   max-width: 1400px !important;
 }
 
-.tailwind .flex-shrink-0{
-  flex-shrink: 0 !important;
+.tailwind .max-w-\\[53rem\\]{
+  max-width: 53rem !important;
 }
 
 .tailwind .flex-grow{
@@ -672,35 +580,21 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   flex-grow: 1 !important;
 }
 
-.tailwind .basis-0{
-  flex-basis: 0px !important;
-}
-
-.tailwind .origin-top{
-  transform-origin: top !important;
-}
-
-.tailwind .-translate-y-1\\/2{
-  --tw-translate-y: -50% !important;
-  transform: translate(var(--tw-translate-x), -50%) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
+.tailwind .translate-y-\\[0\\.05rem\\]{
+  --tw-translate-y: 0.05rem !important;
+  transform: translate(var(--tw-translate-x), 0.05rem) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
 }
 
-.tailwind .rotate-180{
-  --tw-rotate: 180deg !important;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(180deg) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
+.tailwind .translate-y-\\[0\\.02rem\\]{
+  --tw-translate-y: 0.02rem !important;
+  transform: translate(var(--tw-translate-x), 0.02rem) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
 }
 
-.tailwind .scale-y-0{
-  --tw-scale-y: 0 !important;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(0) !important;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
-}
-
-.tailwind .scale-y-100{
-  --tw-scale-y: 1 !important;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(1) !important;
+.tailwind .translate-y-\\[0\\.03rem\\]{
+  --tw-translate-y: 0.03rem !important;
+  transform: translate(var(--tw-translate-x), 0.03rem) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
 }
 
@@ -726,22 +620,8 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   resize: both !important;
 }
 
-.tailwind .appearance-none{
-  -webkit-appearance: none !important;
-     -moz-appearance: none !important;
-          appearance: none !important;
-}
-
 .tailwind .flex-col{
   flex-direction: column !important;
-}
-
-.tailwind .flex-wrap{
-  flex-wrap: wrap !important;
-}
-
-.tailwind .items-start{
-  align-items: flex-start !important;
 }
 
 .tailwind .items-center{
@@ -752,10 +632,6 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   justify-content: flex-start !important;
 }
 
-.tailwind .justify-end{
-  justify-content: flex-end !important;
-}
-
 .tailwind .justify-center{
   justify-content: center !important;
 }
@@ -764,52 +640,28 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   justify-content: space-between !important;
 }
 
-.tailwind .gap-1{
-  gap: 0.25rem !important;
-}
-
 .tailwind .gap-2{
   gap: 0.5rem !important;
-}
-
-.tailwind .gap-3{
-  gap: 0.75rem !important;
 }
 
 .tailwind .gap-4{
   gap: 1rem !important;
 }
 
-.tailwind .gap-6{
-  gap: 1.5rem !important;
-}
-
-.tailwind .gap-\\[0\\.25rem\\]{
+.tailwind .gap-1{
   gap: 0.25rem !important;
 }
 
-.tailwind .gap-\\[10px\\]{
-  gap: 10px !important;
-}
-
-.tailwind .gap-\\[0\\.375rem\\]{
-  gap: 0.375rem !important;
+.tailwind .gap-3{
+  gap: 0.75rem !important;
 }
 
 .tailwind .overflow-hidden{
   overflow: hidden !important;
 }
 
-.tailwind .overflow-y-scroll{
-  overflow-y: scroll !important;
-}
-
-.tailwind .text-nowrap{
-  text-wrap: nowrap !important;
-}
-
-.tailwind .text-pretty{
-  text-wrap: pretty !important;
+.tailwind .rounded-md{
+  border-radius: 0.375rem !important;
 }
 
 .tailwind .border{
@@ -824,22 +676,8 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   border-bottom-width: 1px !important;
 }
 
-.tailwind .border-l{
-  border-left-width: 1px !important;
-}
-
-.tailwind .border-b-0{
-  border-bottom-width: 0px !important;
-}
-
 .tailwind .border-none{
   border-style: none !important;
-}
-
-.tailwind .border-\\[\\#777777\\]{
-  --tw-border-opacity: 1 !important;
-  border-color: rgba(119, 119, 119, 1) !important;
-  border-color: rgba(119, 119, 119, var(--tw-border-opacity, 1)) !important;
 }
 
 .tailwind .border-gray-500{
@@ -858,44 +696,10 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   border-color: rgba(255, 255, 255, 0.4) !important;
 }
 
-.tailwind .border-black{
-  --tw-border-opacity: 1 !important;
-  border-color: rgba(0, 0, 0, 1) !important;
-  border-color: rgba(0, 0, 0, var(--tw-border-opacity, 1)) !important;
-}
-
-.tailwind .bg-\\[\\#000\\]{
-  --tw-bg-opacity: 1 !important;
-  background-color: rgba(0, 0, 0, 1) !important;
-  background-color: rgba(0, 0, 0, var(--tw-bg-opacity, 1)) !important;
-}
-
-.tailwind .bg-\\[\\#14e8ff\\]{
-  --tw-bg-opacity: 1 !important;
-  background-color: rgba(20, 232, 255, 1) !important;
-  background-color: rgba(20, 232, 255, var(--tw-bg-opacity, 1)) !important;
-}
-
-.tailwind .bg-\\[\\#181818\\]{
-  --tw-bg-opacity: 1 !important;
-  background-color: rgba(24, 24, 24, 1) !important;
-  background-color: rgba(24, 24, 24, var(--tw-bg-opacity, 1)) !important;
-}
-
 .tailwind .bg-black{
   --tw-bg-opacity: 1 !important;
   background-color: rgba(0, 0, 0, 1) !important;
   background-color: rgba(0, 0, 0, var(--tw-bg-opacity, 1)) !important;
-}
-
-.tailwind .bg-transparent{
-  background-color: transparent !important;
-}
-
-.tailwind .bg-white{
-  --tw-bg-opacity: 1 !important;
-  background-color: rgba(255, 255, 255, 1) !important;
-  background-color: rgba(255, 255, 255, var(--tw-bg-opacity, 1)) !important;
 }
 
 .tailwind .bg-black\\/70{
@@ -908,28 +712,18 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   background-color: rgba(107, 114, 128, var(--tw-bg-opacity, 1)) !important;
 }
 
-.tailwind .bg-opacity-50{
-  --tw-bg-opacity: 0.5 !important;
+.tailwind .bg-transparent{
+  background-color: transparent !important;
 }
 
-.tailwind .bg-gradient-to-br{
-  background-image: linear-gradient(to bottom right, var(--tw-gradient-stops)) !important;
+.tailwind .bg-white{
+  --tw-bg-opacity: 1 !important;
+  background-color: rgba(255, 255, 255, 1) !important;
+  background-color: rgba(255, 255, 255, var(--tw-bg-opacity, 1)) !important;
 }
 
 .tailwind .bg-gradient-to-r{
   background-image: linear-gradient(to right, var(--tw-gradient-stops)) !important;
-}
-
-.tailwind .from-brand\\/20{
-  --tw-gradient-from: rgba(20, 232, 255, 0.2) var(--tw-gradient-from-position) !important;
-  --tw-gradient-to: rgba(20, 232, 255, 0) var(--tw-gradient-to-position) !important;
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
-}
-
-.tailwind .from-white{
-  --tw-gradient-from: #fff var(--tw-gradient-from-position) !important;
-  --tw-gradient-to: rgba(255, 255, 255, 0) var(--tw-gradient-to-position) !important;
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
 }
 
 .tailwind .from-\\[\\#fee646\\]{
@@ -938,20 +732,8 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
 }
 
-.tailwind .from-20\\%{
-  --tw-gradient-from-position: 20% !important;
-}
-
-.tailwind .to-black{
-  --tw-gradient-to: #000 var(--tw-gradient-to-position) !important;
-}
-
 .tailwind .to-\\[\\#2cd4df\\]{
   --tw-gradient-to: #2cd4df var(--tw-gradient-to-position) !important;
-}
-
-.tailwind .to-90\\%{
-  --tw-gradient-to-position: 90% !important;
 }
 
 .tailwind .bg-clip-text{
@@ -959,13 +741,8 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
           background-clip: text !important;
 }
 
-.tailwind .object-contain{
-  -o-object-fit: contain !important;
-     object-fit: contain !important;
-}
-
-.tailwind .p-2{
-  padding: 0.5rem !important;
+.tailwind .p-12{
+  padding: 3rem !important;
 }
 
 .tailwind .p-3{
@@ -976,21 +753,12 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   padding: 1rem !important;
 }
 
-.tailwind .p-6{
-  padding: 1.5rem !important;
-}
-
 .tailwind .p-\\[4px\\]{
   padding: 4px !important;
 }
 
-.tailwind .p-12{
-  padding: 3rem !important;
-}
-
-.tailwind .px-2{
-  padding-left: 0.5rem !important;
-  padding-right: 0.5rem !important;
+.tailwind .p-6{
+  padding: 1.5rem !important;
 }
 
 .tailwind .px-\\[8px\\]{
@@ -998,29 +766,9 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   padding-right: 8px !important;
 }
 
-.tailwind .py-1\\.5{
-  padding-top: 0.375rem !important;
-  padding-bottom: 0.375rem !important;
-}
-
-.tailwind .py-\\[0\\.375rem\\]{
-  padding-top: 0.375rem !important;
-  padding-bottom: 0.375rem !important;
-}
-
 .tailwind .py-\\[6px\\]{
   padding-top: 6px !important;
   padding-bottom: 6px !important;
-}
-
-.tailwind .px-\\[0\\.5rem\\]{
-  padding-left: 0.5rem !important;
-  padding-right: 0.5rem !important;
-}
-
-.tailwind .py-4{
-  padding-top: 1rem !important;
-  padding-bottom: 1rem !important;
 }
 
 .tailwind .px-4{
@@ -1033,62 +781,32 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   padding-bottom: 0.5rem !important;
 }
 
-.tailwind .pb-4{
-  padding-bottom: 1rem !important;
+.tailwind .px-3{
+  padding-left: 0.75rem !important;
+  padding-right: 0.75rem !important;
 }
 
-.tailwind .pl-4{
-  padding-left: 1rem !important;
+.tailwind .py-\\[0\\.37rem\\]{
+  padding-top: 0.37rem !important;
+  padding-bottom: 0.37rem !important;
+}
+
+.tailwind .px-6{
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+}
+
+.tailwind .py-3{
+  padding-top: 0.75rem !important;
+  padding-bottom: 0.75rem !important;
+}
+
+.tailwind .pt-4{
+  padding-top: 1rem !important;
 }
 
 .tailwind .text-center{
   text-align: center !important;
-}
-
-.tailwind .text-\\[0\\.4rem\\]{
-  font-size: 0.4rem !important;
-}
-
-.tailwind .text-\\[0\\.5rem\\]{
-  font-size: 0.5rem !important;
-}
-
-.tailwind .text-\\[0\\.75rem\\]{
-  font-size: 0.75rem !important;
-}
-
-.tailwind .text-\\[0\\.875rem\\]{
-  font-size: 0.875rem !important;
-}
-
-.tailwind .text-\\[1\\.65rem\\]{
-  font-size: 1.65rem !important;
-}
-
-.tailwind .text-\\[14px\\]{
-  font-size: 14px !important;
-}
-
-.tailwind .text-\\[17px\\]{
-  font-size: 17px !important;
-}
-
-.tailwind .text-\\[18px\\]{
-  font-size: 18px !important;
-}
-
-.tailwind .text-\\[1rem\\]{
-  font-size: 1rem !important;
-}
-
-.tailwind .text-xl{
-  font-size: 1.25rem !important;
-  line-height: 1.75rem !important;
-}
-
-.tailwind .text-4xl{
-  font-size: 2.25rem !important;
-  line-height: 2.5rem !important;
 }
 
 .tailwind .text-2xl{
@@ -1096,100 +814,92 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   line-height: 2rem !important;
 }
 
+.tailwind .text-4xl{
+  font-size: 2.25rem !important;
+  line-height: 2.5rem !important;
+}
+
+.tailwind .text-\\[14px\\]{
+  font-size: 14px !important;
+}
+
+.tailwind .text-xl{
+  font-size: 1.25rem !important;
+  line-height: 1.75rem !important;
+}
+
+.tailwind .text-\\[1\\.125rem\\]{
+  font-size: 1.125rem !important;
+}
+
+.tailwind .text-\\[2rem\\]{
+  font-size: 2rem !important;
+}
+
+.tailwind .text-\\[1\\.25rem\\]{
+  font-size: 1.25rem !important;
+}
+
+.tailwind .text-\\[1rem\\]{
+  font-size: 1rem !important;
+}
+
 .tailwind .font-\\[400\\]{
   font-weight: 400 !important;
-}
-
-.tailwind .font-\\[500\\]{
-  font-weight: 500 !important;
-}
-
-.tailwind .font-\\[600\\]{
-  font-weight: 600 !important;
-}
-
-.tailwind .font-\\[700\\]{
-  font-weight: 700 !important;
 }
 
 .tailwind .font-bold{
   font-weight: 700 !important;
 }
 
-.tailwind .font-medium{
-  font-weight: 500 !important;
+.tailwind .font-\\[700\\]{
+  font-weight: 700 !important;
 }
 
 .tailwind .uppercase{
   text-transform: uppercase !important;
 }
 
-.tailwind .capitalize{
-  text-transform: capitalize !important;
-}
-
-.tailwind .leading-4{
-  line-height: 1rem !important;
-}
-
-.tailwind .leading-\\[0\\.5rem\\]{
-  line-height: 0.5rem !important;
-}
-
-.tailwind .leading-\\[0\\.75rem\\]{
-  line-height: 0.75rem !important;
-}
-
-.tailwind .leading-\\[1\\.1\\]{
-  line-height: 1.1 !important;
-}
-
-.tailwind .leading-\\[1\\.1rem\\]{
-  line-height: 1.1rem !important;
-}
-
-.tailwind .leading-\\[1\\.2\\]{
-  line-height: 1.2 !important;
+.tailwind .ordinal{
+  --tw-ordinal: ordinal !important;
+  font-variant-numeric: ordinal var(--tw-slashed-zero) var(--tw-numeric-figure) var(--tw-numeric-spacing) var(--tw-numeric-fraction) !important;
+  font-variant-numeric: var(--tw-ordinal) var(--tw-slashed-zero) var(--tw-numeric-figure) var(--tw-numeric-spacing) var(--tw-numeric-fraction) !important;
 }
 
 .tailwind .leading-\\[18px\\]{
   line-height: 18px !important;
 }
 
-.tailwind .leading-\\[21\\.75px\\]{
-  line-height: 21.75px !important;
+.tailwind .leading-\\[1\\.1\\]{
+  line-height: 1.1 !important;
 }
 
-.tailwind .leading-\\[23px\\]{
-  line-height: 23px !important;
+.tailwind .leading-\\[1\\.2\\]{
+  line-height: 1.2 !important;
 }
 
-.tailwind .tracking-\\[-0\\.0281rem\\]{
-  letter-spacing: -0.0281rem !important;
-}
-
-.tailwind .tracking-\\[-0\\.04rem\\]{
-  letter-spacing: -0.04rem !important;
+.tailwind .leading-\\[1\\.35\\]{
+  line-height: 1.35 !important;
 }
 
 .tailwind .tracking-\\[-0\\.4496px\\]{
   letter-spacing: -0.4496px !important;
 }
 
-.tailwind .tracking-\\[-0\\.45px\\]{
-  letter-spacing: -0.45px !important;
+.tailwind .tracking-\\[-0\\.02813rem\\]{
+  letter-spacing: -0.02813rem !important;
 }
 
-.tailwind .text-\\[\\#000\\]{
-  --tw-text-opacity: 1 !important;
-  color: rgba(0, 0, 0, 1) !important;
-  color: rgba(0, 0, 0, var(--tw-text-opacity, 1)) !important;
+.tailwind .tracking-\\[-0\\.0375rem\\]{
+  letter-spacing: -0.0375rem !important;
 }
 
-.tailwind .text-\\[\\#979797\\]{
-  --tw-text-opacity: 1 !important;
-  color: rgba(151, 151, 151, 1) !important;
-  color: rgba(151, 151, 151, var(--tw-text-opacity, 1)) !important;
+.tailwind .tracking-\\[-0\\.04rem\\]{
+  letter-spacing: -0.04rem !important;
+}
+
+.tailwind .tracking-\\[0\\.0395rem\\]{
+  letter-spacing: 0.0395rem !important;
 }
 
 .tailwind .text-black{
@@ -1198,16 +908,10 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   color: rgba(0, 0, 0, var(--tw-text-opacity, 1)) !important;
 }
 
-.tailwind .text-brand{
+.tailwind .text-gray-300{
   --tw-text-opacity: 1 !important;
-  color: rgba(20, 232, 255, 1) !important;
-  color: rgba(20, 232, 255, var(--tw-text-opacity, 1)) !important;
-}
-
-.tailwind .text-gray-400{
-  --tw-text-opacity: 1 !important;
-  color: rgba(156, 163, 175, 1) !important;
-  color: rgba(156, 163, 175, var(--tw-text-opacity, 1)) !important;
+  color: rgba(209, 213, 219, 1) !important;
+  color: rgba(209, 213, 219, var(--tw-text-opacity, 1)) !important;
 }
 
 .tailwind .text-gray-500{
@@ -1216,8 +920,8 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   color: rgba(107, 114, 128, var(--tw-text-opacity, 1)) !important;
 }
 
-.tailwind .text-grayText{
-  color: rgba(255, 255, 255, 0.75) !important;
+.tailwind .text-transparent{
+  color: transparent !important;
 }
 
 .tailwind .text-white{
@@ -1226,26 +930,8 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   color: rgba(255, 255, 255, var(--tw-text-opacity, 1)) !important;
 }
 
-.tailwind .text-gray-300{
-  --tw-text-opacity: 1 !important;
-  color: rgba(209, 213, 219, 1) !important;
-  color: rgba(209, 213, 219, var(--tw-text-opacity, 1)) !important;
-}
-
-.tailwind .text-transparent{
-  color: transparent !important;
-}
-
-.tailwind .opacity-0{
-  opacity: 0 !important;
-}
-
-.tailwind .opacity-100{
-  opacity: 1 !important;
-}
-
-.tailwind .opacity-75{
-  opacity: 0.75 !important;
+.tailwind .text-\\[rem\\]{
+  color: rem !important;
 }
 
 .tailwind .outline-none{
@@ -1265,10 +951,8 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia) !important;
 }
 
-.tailwind .transition{
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter !important;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter !important;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter !important;
+.tailwind .transition-colors{
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke !important;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
   transition-duration: 150ms !important;
 }
@@ -1279,40 +963,8 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   transition-duration: 150ms !important;
 }
 
-.tailwind .transition-colors{
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke !important;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
-  transition-duration: 150ms !important;
-}
-
-.tailwind .transition-transform{
-  transition-property: transform !important;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
-  transition-duration: 150ms !important;
-}
-
-.tailwind .duration-200{
-  transition-duration: 200ms !important;
-}
-
 .tailwind .duration-300{
   transition-duration: 300ms !important;
-}
-
-.tailwind .ease-in-out{
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
-}
-
-.tailwind .ease-out{
-  transition-timing-function: cubic-bezier(0, 0, 0.2, 1) !important;
-}
-
-.tailwind .\\[-moz-appearance\\:none\\]{
-  -moz-appearance: none !important;
-}
-
-.tailwind .\\[-webkit-appearance\\:none\\]{
-  -webkit-appearance: none !important;
 }
 
 .tailwind {
@@ -1341,34 +993,10 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   -ms-overflow-style: none;
 }
 
-.checked\\:border-white:checked{
-  --tw-border-opacity: 1 !important;
-  border-color: rgba(255, 255, 255, 1) !important;
-  border-color: rgba(255, 255, 255, var(--tw-border-opacity, 1)) !important;
-}
-
-.checked\\:bg-white:checked{
-  --tw-bg-opacity: 1 !important;
-  background-color: rgba(255, 255, 255, 1) !important;
-  background-color: rgba(255, 255, 255, var(--tw-bg-opacity, 1)) !important;
-}
-
 .hover\\:border-gray-200:hover{
   --tw-border-opacity: 1 !important;
   border-color: rgba(229, 231, 235, 1) !important;
   border-color: rgba(229, 231, 235, var(--tw-border-opacity, 1)) !important;
-}
-
-.hover\\:border-white:hover{
-  --tw-border-opacity: 1 !important;
-  border-color: rgba(255, 255, 255, 1) !important;
-  border-color: rgba(255, 255, 255, var(--tw-border-opacity, 1)) !important;
-}
-
-.hover\\:bg-white:hover{
-  --tw-bg-opacity: 1 !important;
-  background-color: rgba(255, 255, 255, 1) !important;
-  background-color: rgba(255, 255, 255, var(--tw-bg-opacity, 1)) !important;
 }
 
 .hover\\:bg-gray-200:hover{
@@ -1383,10 +1011,28 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   background-color: rgba(17, 24, 39, var(--tw-bg-opacity, 1)) !important;
 }
 
-.hover\\:text-black:hover{
-  --tw-text-opacity: 1 !important;
-  color: rgba(0, 0, 0, 1) !important;
-  color: rgba(0, 0, 0, var(--tw-text-opacity, 1)) !important;
+.hover\\:bg-white\\/80:hover{
+  background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.hover\\:bg-\\[\\#2cd4df\\]:hover{
+  --tw-bg-opacity: 1 !important;
+  background-color: rgba(44, 212, 223, 1) !important;
+  background-color: rgba(44, 212, 223, var(--tw-bg-opacity, 1)) !important;
+}
+
+.hover\\:bg-gradient-to-r:hover{
+  background-image: linear-gradient(to right, var(--tw-gradient-stops)) !important;
+}
+
+.hover\\:from-\\[\\#fee646\\]:hover{
+  --tw-gradient-from: #fee646 var(--tw-gradient-from-position) !important;
+  --tw-gradient-to: rgba(254, 230, 70, 0) var(--tw-gradient-to-position) !important;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+
+.hover\\:to-\\[\\#2cd4df\\]:hover{
+  --tw-gradient-to: #2cd4df var(--tw-gradient-to-position) !important;
 }
 
 .hover\\:text-gray-200:hover{
@@ -1395,37 +1041,10 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   color: rgba(229, 231, 235, var(--tw-text-opacity, 1)) !important;
 }
 
-.hover\\:text-gray-300:hover{
-  --tw-text-opacity: 1 !important;
-  color: rgba(209, 213, 219, 1) !important;
-  color: rgba(209, 213, 219, var(--tw-text-opacity, 1)) !important;
-}
-
 .hover\\:text-gray-900:hover{
   --tw-text-opacity: 1 !important;
   color: rgba(17, 24, 39, 1) !important;
   color: rgba(17, 24, 39, var(--tw-text-opacity, 1)) !important;
-}
-
-.focus\\:outline-none:focus{
-  outline: 2px solid transparent !important;
-  outline-offset: 2px !important;
-}
-
-.group:hover .group-hover\\:rotate-90{
-  --tw-rotate: 90deg !important;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(90deg) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
-}
-
-.group:hover .group-hover\\:fill-brand{
-  fill: #14E8FF !important;
-}
-
-.group:hover .group-hover\\:text-\\[\\#aaa\\]{
-  --tw-text-opacity: 1 !important;
-  color: rgba(170, 170, 170, 1) !important;
-  color: rgba(170, 170, 170, var(--tw-text-opacity, 1)) !important;
 }
 
 @media (min-width: 768px){
@@ -1433,13 +1052,6 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   .md\\:text-5xl{
     font-size: 3rem !important;
     line-height: 1 !important;
-  }
-}
-
-@media (max-width: 1030px){
-
-  .mobile\\:hidden{
-    display: none !important;
   }
 }
 `, ""]);
@@ -17581,7 +17193,7 @@ if (true) {
 
 /***/ }),
 
-/***/ 858:
+/***/ 477:
 /***/ ((__unused_webpack_module, exports) => {
 
 /**
@@ -17935,7 +17547,7 @@ exports.unstable_wrapCallback = function (callback) {
 
 
 if (true) {
-  module.exports = __webpack_require__(858);
+  module.exports = __webpack_require__(477);
 } else {}
 
 
@@ -18311,23 +17923,87 @@ function IndividualEvent(_ref) {
   var item = _ref.item,
     windowWidth = _ref.windowWidth,
     hasLink = _ref.hasLink,
-    className = _ref.className;
+    className = _ref.className,
+    pastEvent = _ref.pastEvent;
   var hosts = item.hosts.split("|");
+  var formattedTime = function formattedTime(time) {
+    var date = new Date(time);
+
+    // Get month abbreviation
+    var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    var month = months[date.getMonth()];
+
+    // Get day with proper ordinal suffix
+    var day = date.getDate();
+    // Get time in 12-hour format
+    var hour = date.getHours();
+    var minute = date.getMinutes();
+    var ampm = hour >= 12 ? "PM" : "AM";
+    hour = hour % 12;
+    hour = hour ? hour : 12; // 0 should be 12
+    var formattedMinute = minute < 10 ? "0" + minute : minute;
+    return "".concat(month.toUpperCase(), ".").concat(day, " ").concat(hour, ":").concat(formattedMinute).concat(ampm);
+  };
   return /*#__PURE__*/react.createElement("div", {
     key: item.title,
-    className: "border-b-[1px] border-white flex flex-col p-4"
+    className: "border-b-[1px] border-white flex flex-col p-6"
   }, /*#__PURE__*/react.createElement("div", {
-    className: "flex justify-start items-center"
+    className: "flex justify-start flex-col gap-2 text-[1.125rem] font-[700] leading-[1.1] tracking-[-0.02813rem]"
   }, /*#__PURE__*/react.createElement("div", {
-    className: "flex gap-2"
+    id: "firstLine",
+    className: "flex items-center gap-4"
+  }, /*#__PURE__*/react.createElement("div", {
+    className: "flex gap-2",
+    id: "hosts"
   }, hosts.map(function (host) {
     return /*#__PURE__*/react.createElement("p", {
       key: host,
       className: "bg-gradient-to-r from-[#fee646] to-[#2cd4df] bg-clip-text text-transparent uppercase"
     }, host);
-  }))), /*#__PURE__*/react.createElement("h3", {
-    className: "text-2xl font-bold"
-  }, item.title), /*#__PURE__*/react.createElement("p", null, item.description));
+  })), /*#__PURE__*/react.createElement("div", null, "|"), /*#__PURE__*/react.createElement("div", {
+    id: "date"
+  }, /*#__PURE__*/react.createElement("p", null, formattedTime(item.time)))), /*#__PURE__*/react.createElement("div", {
+    id: "secondLine",
+    className: "flex items-center gap-4"
+  }, /*#__PURE__*/react.createElement("div", {
+    id: "speakers",
+    className: "uppercase"
+  }, /*#__PURE__*/react.createElement("p", null, item.speakers))), /*#__PURE__*/react.createElement("div", {
+    id: "thirdLine",
+    className: "flex items-center gap-4"
+  }, /*#__PURE__*/react.createElement("p", {
+    className: "text-[2rem] leading-[1.2] tracking-[-0.04rem]"
+  }, item.title)), /*#__PURE__*/react.createElement("div", {
+    id: "fourthLine",
+    className: "flex items-center gap-4 max-w-[53rem] text-[1.25rem] leading-[1.35] tracking-[-0.0375rem]"
+  }, /*#__PURE__*/react.createElement("p", null, item.description)), !pastEvent && /*#__PURE__*/react.createElement("a", {
+    href: item.link,
+    target: "_blank",
+    className: "flex items-center justify-center gap-3 w-fit bg-white text-black px-3 py-[0.37rem] mt-4 hover:bg-[#2cd4df] transition-all duration-300 text-[1rem] leading-[1.35] tracking-[0.0395rem]"
+  }, /*#__PURE__*/react.createElement("p", {
+    className: "translate-y-[0.03rem]"
+  }, "REGISTER NOW"), /*#__PURE__*/react.createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "9",
+    height: "25",
+    viewBox: "0 0 9 25",
+    fill: "none"
+  }, /*#__PURE__*/react.createElement("g", {
+    "clip-path": "url(#clip0_3588_153966)"
+  }, /*#__PURE__*/react.createElement("path", {
+    d: "M1.70459 18.664L7.63376 12.7348L1.70459 6.80566",
+    stroke: "black",
+    "stroke-width": "1.97639",
+    "stroke-linecap": "round",
+    "stroke-linejoin": "round"
+  })), /*#__PURE__*/react.createElement("defs", null, /*#__PURE__*/react.createElement("clipPath", {
+    id: "clip0_3588_153966"
+  }, /*#__PURE__*/react.createElement("rect", {
+    width: "7.90556",
+    height: "23.7167",
+    fill: "white",
+    transform: "translate(0.716797 0.876465)"
+  })))))));
 }
 ;// ./src/App.js
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -18370,8 +18046,30 @@ var App = function App() {
     setEmail = _React$useState8[1];
   var _React$useState9 = react.useState([]),
     _React$useState10 = _slicedToArray(_React$useState9, 2),
-    events = _React$useState10[0],
-    setEvents = _React$useState10[1];
+    futureEvents = _React$useState10[0],
+    setFutureEvents = _React$useState10[1];
+  var _React$useState11 = react.useState([]),
+    _React$useState12 = _slicedToArray(_React$useState11, 2),
+    pastEvents = _React$useState12[0],
+    setPastEvents = _React$useState12[1];
+  // Helper function to parse Webflow date format "10.15.2025 7:00 AM"
+  var parseWebflowDate = function parseWebflowDate(dateString) {
+    if (!dateString) return null;
+
+    // Replace dots with slashes for better Date parsing
+    // Convert "10.15.2025 7:00 AM" to "10/15/2025 7:00 AM"
+    var formattedDate = dateString.replace(/\./g, "/");
+    return new Date(formattedDate);
+  };
+
+  // Helper function to compare dates without time (only show as past when it's a different day)
+  var isEventPastDay = function isEventPastDay(eventDate) {
+    if (!eventDate) return false;
+    var today = new Date();
+    var eventDateOnly = new Date(eventDate.getFullYear(), eventDate.getMonth(), eventDate.getDate());
+    var todayDateOnly = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    return eventDateOnly < todayDateOnly;
+  };
 
   // Load testimonials using MutationObserver
   react.useEffect(function () {
@@ -18379,8 +18077,28 @@ var App = function App() {
       var _window$webflowCmsDat;
       if ((_window$webflowCmsDat = window.webflowCmsData) !== null && _window$webflowCmsDat !== void 0 && _window$webflowCmsDat.events) {
         var eventsData = window.webflowCmsData.events;
-        // console.log("Found testimonials:", testimonialsData);
-        setEvents(eventsData);
+        eventsData.forEach(function (event) {
+          var eventDate = parseWebflowDate(event.time);
+          event.pastEvent = eventDate ? isEventPastDay(eventDate) : false;
+        });
+        eventsData.sort(function (a, b) {
+          var dateA = parseWebflowDate(a.time);
+          var dateB = parseWebflowDate(b.time);
+          return dateA - dateB;
+        });
+        var _futureEvents = eventsData.filter(function (event) {
+          return !event.pastEvent;
+        });
+        var _pastEvents = eventsData.filter(function (event) {
+          return event.pastEvent;
+        });
+        _pastEvents.sort(function (a, b) {
+          var dateA = parseWebflowDate(a.time);
+          var dateB = parseWebflowDate(b.time);
+          return dateB - dateA;
+        });
+        setFutureEvents(_futureEvents);
+        setPastEvents(_pastEvents);
         return true;
       }
       return false;
@@ -18549,7 +18267,7 @@ var App = function App() {
   }, /*#__PURE__*/react.createElement("div", {
     className: "max-w-[1400px] grow flex flex-col gap-4"
   }, /*#__PURE__*/react.createElement("div", {
-    id: "contentAndFilters",
+    id: "nonPastEvents",
     className: "flex gap-4 justify-between"
   }, /*#__PURE__*/react.createElement("div", {
     className: "flex flex-col grow"
@@ -18558,21 +18276,44 @@ var App = function App() {
     className: "border-[1px] border-white p-[4px] bg-black h-fit"
   }, /*#__PURE__*/react.createElement("div", {
     className: "grow border-[1px] border-white ml-[-1px]"
-  }, events.length > 0 && events.map(function (item) {
-    if (item.invite_url !== "Invite Only") {
-      return /*#__PURE__*/react.createElement("a", {
-        key: item.id,
-        href: item.invite_url,
-        target: "_blank"
-      }, /*#__PURE__*/react.createElement(IndividualEvent, {
-        item: item,
-        windowWidth: windowWidth,
-        hasLink: true,
-        className: ""
-      }));
-    } else {
-      return /*#__PURE__*/react.createElement("p", null, item.title);
-    }
+  }, futureEvents.length > 0 && futureEvents.map(function (item) {
+    return /*#__PURE__*/react.createElement("a", {
+      key: item.id,
+      href: item.invite_url,
+      target: "_blank"
+    }, /*#__PURE__*/react.createElement(IndividualEvent, {
+      item: item,
+      windowWidth: windowWidth,
+      hasLink: true,
+      className: "",
+      pastEvent: item.pastEvent
+    }));
+  }))), /*#__PURE__*/react.createElement("div", {
+    className: "grow"
+  }))), /*#__PURE__*/react.createElement("div", {
+    id: "pastEvents",
+    className: "flex gap-4 justify-between"
+  }, /*#__PURE__*/react.createElement("div", {
+    className: "flex flex-col grow"
+  }, /*#__PURE__*/react.createElement("div", {
+    id: "pastEventsContent",
+    className: "border-[1px] border-white p-[4px] bg-black h-fit"
+  }, /*#__PURE__*/react.createElement("div", {
+    className: "grow border-[1px] border-white ml-[-1px]"
+  }, /*#__PURE__*/react.createElement("div", {
+    className: "px-6 py-3 border-b-[1px] border-white text-[1.125rem] font-[700] leading-[1.1] tracking-[-0.02813rem]"
+  }, "PAST EVENTS"), pastEvents.length > 0 && pastEvents.map(function (item) {
+    return /*#__PURE__*/react.createElement("a", {
+      key: item.id,
+      href: item.invite_url,
+      target: "_blank"
+    }, /*#__PURE__*/react.createElement(IndividualEvent, {
+      item: item,
+      windowWidth: windowWidth,
+      hasLink: true,
+      className: "",
+      pastEvent: item.pastEvent
+    }));
   }))), /*#__PURE__*/react.createElement("div", {
     className: "grow"
   }))))));
