@@ -257,7 +257,11 @@ const App = () => {
                   className="border-[1px] border-white p-[4px] bg-black h-fit"
                 >
                   <div className="grow border-[1px] border-white ml-[-1px]">
-                    <div className="px-6 py-3 border-b-[1px] border-white text-[1.125rem] font-[700] leading-[1.1] tracking-[-0.02813rem]">
+                    <div
+                      className={`${
+                        windowWidth < 1030 ? "px-4" : "px-6"
+                      } py-3 border-b-[1px] border-white text-[1.125rem] font-[700] leading-[1.1] tracking-[-0.02813rem]`}
+                    >
                       PAST EVENTS
                     </div>
                     {pastEvents.length > 0 &&

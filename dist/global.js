@@ -530,12 +530,16 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   margin-left: -1px !important;
 }
 
+.tailwind .mt-4{
+  margin-top: 1rem !important;
+}
+
 .tailwind .mt-8{
   margin-top: 2rem !important;
 }
 
-.tailwind .mt-4{
-  margin-top: 1rem !important;
+.tailwind .mt-2{
+  margin-top: 0.5rem !important;
 }
 
 .tailwind .flex{
@@ -551,13 +555,13 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   height: 100% !important;
 }
 
-.tailwind .w-full{
-  width: 100% !important;
-}
-
 .tailwind .w-fit{
   width: -moz-fit-content !important;
   width: fit-content !important;
+}
+
+.tailwind .w-full{
+  width: 100% !important;
 }
 
 .tailwind .max-w-2xl{
@@ -578,18 +582,6 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 
 .tailwind .grow{
   flex-grow: 1 !important;
-}
-
-.tailwind .translate-y-\\[0\\.05rem\\]{
-  --tw-translate-y: 0.05rem !important;
-  transform: translate(var(--tw-translate-x), 0.05rem) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
-}
-
-.tailwind .translate-y-\\[0\\.02rem\\]{
-  --tw-translate-y: 0.02rem !important;
-  transform: translate(var(--tw-translate-x), 0.02rem) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
 }
 
 .tailwind .translate-y-\\[0\\.03rem\\]{
@@ -644,24 +636,16 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   gap: 0.5rem !important;
 }
 
-.tailwind .gap-4{
-  gap: 1rem !important;
-}
-
-.tailwind .gap-1{
-  gap: 0.25rem !important;
-}
-
 .tailwind .gap-3{
   gap: 0.75rem !important;
 }
 
-.tailwind .overflow-hidden{
-  overflow: hidden !important;
+.tailwind .gap-4{
+  gap: 1rem !important;
 }
 
-.tailwind .rounded-md{
-  border-radius: 0.375rem !important;
+.tailwind .overflow-hidden{
+  overflow: hidden !important;
 }
 
 .tailwind .border{
@@ -732,8 +716,18 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
 }
 
+.tailwind .from-\\[\\#d9e361\\]{
+  --tw-gradient-from: #d9e361 var(--tw-gradient-from-position) !important;
+  --tw-gradient-to: rgba(217, 227, 97, 0) var(--tw-gradient-to-position) !important;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+
 .tailwind .to-\\[\\#2cd4df\\]{
   --tw-gradient-to: #2cd4df var(--tw-gradient-to-position) !important;
+}
+
+.tailwind .to-\\[\\#65d9b5\\]{
+  --tw-gradient-to: #65d9b5 var(--tw-gradient-to-position) !important;
 }
 
 .tailwind .bg-clip-text{
@@ -749,21 +743,41 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   padding: 0.75rem !important;
 }
 
-.tailwind .p-4{
-  padding: 1rem !important;
+.tailwind .p-6{
+  padding: 1.5rem !important;
 }
 
 .tailwind .p-\\[4px\\]{
   padding: 4px !important;
 }
 
-.tailwind .p-6{
-  padding: 1.5rem !important;
+.tailwind .p-4{
+  padding: 1rem !important;
+}
+
+.tailwind .px-3{
+  padding-left: 0.75rem !important;
+  padding-right: 0.75rem !important;
+}
+
+.tailwind .px-6{
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
 }
 
 .tailwind .px-\\[8px\\]{
   padding-left: 8px !important;
   padding-right: 8px !important;
+}
+
+.tailwind .py-3{
+  padding-top: 0.75rem !important;
+  padding-bottom: 0.75rem !important;
+}
+
+.tailwind .py-\\[0\\.37rem\\]{
+  padding-top: 0.37rem !important;
+  padding-bottom: 0.37rem !important;
 }
 
 .tailwind .py-\\[6px\\]{
@@ -781,37 +795,8 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   padding-bottom: 0.5rem !important;
 }
 
-.tailwind .px-3{
-  padding-left: 0.75rem !important;
-  padding-right: 0.75rem !important;
-}
-
-.tailwind .py-\\[0\\.37rem\\]{
-  padding-top: 0.37rem !important;
-  padding-bottom: 0.37rem !important;
-}
-
-.tailwind .px-6{
-  padding-left: 1.5rem !important;
-  padding-right: 1.5rem !important;
-}
-
-.tailwind .py-3{
-  padding-top: 0.75rem !important;
-  padding-bottom: 0.75rem !important;
-}
-
-.tailwind .pt-4{
-  padding-top: 1rem !important;
-}
-
 .tailwind .text-center{
   text-align: center !important;
-}
-
-.tailwind .text-2xl{
-  font-size: 1.5rem !important;
-  line-height: 2rem !important;
 }
 
 .tailwind .text-4xl{
@@ -819,8 +804,24 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   line-height: 2.5rem !important;
 }
 
+.tailwind .text-\\[1\\.125rem\\]{
+  font-size: 1.125rem !important;
+}
+
+.tailwind .text-\\[1\\.25rem\\]{
+  font-size: 1.25rem !important;
+}
+
 .tailwind .text-\\[14px\\]{
   font-size: 14px !important;
+}
+
+.tailwind .text-\\[1rem\\]{
+  font-size: 1rem !important;
+}
+
+.tailwind .text-\\[2rem\\]{
+  font-size: 2rem !important;
 }
 
 .tailwind .text-xl{
@@ -828,31 +829,15 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   line-height: 1.75rem !important;
 }
 
-.tailwind .text-\\[1\\.125rem\\]{
-  font-size: 1.125rem !important;
-}
-
-.tailwind .text-\\[2rem\\]{
-  font-size: 2rem !important;
-}
-
-.tailwind .text-\\[1\\.25rem\\]{
-  font-size: 1.25rem !important;
-}
-
-.tailwind .text-\\[1rem\\]{
-  font-size: 1rem !important;
-}
-
 .tailwind .font-\\[400\\]{
   font-weight: 400 !important;
 }
 
-.tailwind .font-bold{
+.tailwind .font-\\[700\\]{
   font-weight: 700 !important;
 }
 
-.tailwind .font-\\[700\\]{
+.tailwind .font-bold{
   font-weight: 700 !important;
 }
 
@@ -864,10 +849,6 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   --tw-ordinal: ordinal !important;
   font-variant-numeric: ordinal var(--tw-slashed-zero) var(--tw-numeric-figure) var(--tw-numeric-spacing) var(--tw-numeric-fraction) !important;
   font-variant-numeric: var(--tw-ordinal) var(--tw-slashed-zero) var(--tw-numeric-figure) var(--tw-numeric-spacing) var(--tw-numeric-fraction) !important;
-}
-
-.tailwind .leading-\\[18px\\]{
-  line-height: 18px !important;
 }
 
 .tailwind .leading-\\[1\\.1\\]{
@@ -882,8 +863,8 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   line-height: 1.35 !important;
 }
 
-.tailwind .tracking-\\[-0\\.4496px\\]{
-  letter-spacing: -0.4496px !important;
+.tailwind .leading-\\[18px\\]{
+  line-height: 18px !important;
 }
 
 .tailwind .tracking-\\[-0\\.02813rem\\]{
@@ -896,6 +877,10 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 
 .tailwind .tracking-\\[-0\\.04rem\\]{
   letter-spacing: -0.04rem !important;
+}
+
+.tailwind .tracking-\\[-0\\.4496px\\]{
+  letter-spacing: -0.4496px !important;
 }
 
 .tailwind .tracking-\\[0\\.0395rem\\]{
@@ -930,10 +915,6 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   color: rgba(255, 255, 255, var(--tw-text-opacity, 1)) !important;
 }
 
-.tailwind .text-\\[rem\\]{
-  color: rem !important;
-}
-
 .tailwind .outline-none{
   outline: 2px solid transparent !important;
   outline-offset: 2px !important;
@@ -951,14 +932,14 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia) !important;
 }
 
-.tailwind .transition-colors{
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke !important;
+.tailwind .transition-all{
+  transition-property: all !important;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
   transition-duration: 150ms !important;
 }
 
-.tailwind .transition-all{
-  transition-property: all !important;
+.tailwind .transition-colors{
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke !important;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
   transition-duration: 150ms !important;
 }
@@ -999,6 +980,12 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   border-color: rgba(229, 231, 235, var(--tw-border-opacity, 1)) !important;
 }
 
+.hover\\:bg-\\[\\#2cd4df\\]:hover{
+  --tw-bg-opacity: 1 !important;
+  background-color: rgba(44, 212, 223, 1) !important;
+  background-color: rgba(44, 212, 223, var(--tw-bg-opacity, 1)) !important;
+}
+
 .hover\\:bg-gray-200:hover{
   --tw-bg-opacity: 1 !important;
   background-color: rgba(229, 231, 235, 1) !important;
@@ -1009,30 +996,6 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   --tw-bg-opacity: 1 !important;
   background-color: rgba(17, 24, 39, 1) !important;
   background-color: rgba(17, 24, 39, var(--tw-bg-opacity, 1)) !important;
-}
-
-.hover\\:bg-white\\/80:hover{
-  background-color: rgba(255, 255, 255, 0.8) !important;
-}
-
-.hover\\:bg-\\[\\#2cd4df\\]:hover{
-  --tw-bg-opacity: 1 !important;
-  background-color: rgba(44, 212, 223, 1) !important;
-  background-color: rgba(44, 212, 223, var(--tw-bg-opacity, 1)) !important;
-}
-
-.hover\\:bg-gradient-to-r:hover{
-  background-image: linear-gradient(to right, var(--tw-gradient-stops)) !important;
-}
-
-.hover\\:from-\\[\\#fee646\\]:hover{
-  --tw-gradient-from: #fee646 var(--tw-gradient-from-position) !important;
-  --tw-gradient-to: rgba(254, 230, 70, 0) var(--tw-gradient-to-position) !important;
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
-}
-
-.hover\\:to-\\[\\#2cd4df\\]:hover{
-  --tw-gradient-to: #2cd4df var(--tw-gradient-to-position) !important;
 }
 
 .hover\\:text-gray-200:hover{
@@ -17942,11 +17905,11 @@ function IndividualEvent(_ref) {
     hour = hour % 12;
     hour = hour ? hour : 12; // 0 should be 12
     var formattedMinute = minute < 10 ? "0" + minute : minute;
-    return "".concat(month.toUpperCase(), ".").concat(day, " ").concat(hour, ":").concat(formattedMinute).concat(ampm);
+    return "".concat(month.toUpperCase(), " ").concat(day, ", ").concat(hour, ":").concat(formattedMinute, " ").concat(ampm);
   };
   return /*#__PURE__*/react.createElement("div", {
     key: item.title,
-    className: "border-b-[1px] border-white flex flex-col p-6"
+    className: "border-b-[1px] border-white flex flex-col ".concat(windowWidth < 1030 ? "p-4" : "p-6")
   }, /*#__PURE__*/react.createElement("div", {
     className: "flex justify-start flex-col gap-2 text-[1.125rem] font-[700] leading-[1.1] tracking-[-0.02813rem]"
   }, /*#__PURE__*/react.createElement("div", {
@@ -17958,7 +17921,7 @@ function IndividualEvent(_ref) {
   }, hosts.map(function (host) {
     return /*#__PURE__*/react.createElement("p", {
       key: host,
-      className: "bg-gradient-to-r from-[#fee646] to-[#2cd4df] bg-clip-text text-transparent uppercase"
+      className: "bg-gradient-to-r from-[#d9e361] to-[#65d9b5] bg-clip-text text-transparent uppercase"
     }, host);
   })), /*#__PURE__*/react.createElement("div", null, "|"), /*#__PURE__*/react.createElement("div", {
     id: "date"
@@ -17979,7 +17942,7 @@ function IndividualEvent(_ref) {
   }, /*#__PURE__*/react.createElement("p", null, item.description)), !pastEvent && /*#__PURE__*/react.createElement("a", {
     href: item.link,
     target: "_blank",
-    className: "flex items-center justify-center gap-3 w-fit bg-white text-black px-3 py-[0.37rem] mt-4 hover:bg-[#2cd4df] transition-all duration-300 text-[1rem] leading-[1.35] tracking-[0.0395rem]"
+    className: "flex items-center justify-center gap-3 w-fit bg-white text-black px-3 py-[0.37rem] ".concat(windowWidth < 1030 ? "mt-2" : "mt-4", " hover:bg-[#2cd4df] transition-all duration-300 text-[1rem] leading-[1.35] tracking-[0.0395rem]")
   }, /*#__PURE__*/react.createElement("p", {
     className: "translate-y-[0.03rem]"
   }, "REGISTER NOW"), /*#__PURE__*/react.createElement("svg", {
@@ -18301,7 +18264,7 @@ var App = function App() {
   }, /*#__PURE__*/react.createElement("div", {
     className: "grow border-[1px] border-white ml-[-1px]"
   }, /*#__PURE__*/react.createElement("div", {
-    className: "px-6 py-3 border-b-[1px] border-white text-[1.125rem] font-[700] leading-[1.1] tracking-[-0.02813rem]"
+    className: "".concat(windowWidth < 1030 ? "px-4" : "px-6", " py-3 border-b-[1px] border-white text-[1.125rem] font-[700] leading-[1.1] tracking-[-0.02813rem]")
   }, "PAST EVENTS"), pastEvents.length > 0 && pastEvents.map(function (item) {
     return /*#__PURE__*/react.createElement("a", {
       key: item.id,

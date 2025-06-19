@@ -38,12 +38,14 @@ export default function IndividualEvent({
     hour = hour ? hour : 12; // 0 should be 12
     const formattedMinute = minute < 10 ? "0" + minute : minute;
 
-    return `${month.toUpperCase()}.${day} ${hour}:${formattedMinute}${ampm}`;
+    return `${month.toUpperCase()} ${day}, ${hour}:${formattedMinute} ${ampm}`;
   };
   return (
     <div
       key={item.title}
-      className="border-b-[1px] border-white flex flex-col p-6"
+      className={`border-b-[1px] border-white flex flex-col ${
+        windowWidth < 1030 ? "p-4" : "p-6"
+      }`}
     >
       <div className="flex justify-start flex-col gap-2 text-[1.125rem] font-[700] leading-[1.1] tracking-[-0.02813rem]">
         <div id="firstLine" className="flex items-center gap-4">
@@ -51,7 +53,7 @@ export default function IndividualEvent({
             {hosts.map((host) => (
               <p
                 key={host}
-                className="bg-gradient-to-r from-[#fee646] to-[#2cd4df] bg-clip-text text-transparent uppercase"
+                className="bg-gradient-to-r from-[#d9e361] to-[#65d9b5] bg-clip-text text-transparent uppercase"
               >
                 {host}
               </p>
@@ -82,7 +84,9 @@ export default function IndividualEvent({
           <a
             href={item.link}
             target="_blank"
-            className="flex items-center justify-center gap-3 w-fit bg-white text-black px-3 py-[0.37rem] mt-4 hover:bg-[#2cd4df] transition-all duration-300 text-[1rem] leading-[1.35] tracking-[0.0395rem]"
+            className={`flex items-center justify-center gap-3 w-fit bg-white text-black px-3 py-[0.37rem] ${
+              windowWidth < 1030 ? "mt-2" : "mt-4"
+            } hover:bg-[#2cd4df] transition-all duration-300 text-[1rem] leading-[1.35] tracking-[0.0395rem]`}
           >
             <p className="translate-y-[0.03rem]">REGISTER NOW</p>
             <svg
