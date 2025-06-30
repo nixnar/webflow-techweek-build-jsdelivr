@@ -17873,9 +17873,15 @@ function IndividualEvent(_ref) {
     hasLink = _ref.hasLink,
     className = _ref.className,
     pastEvent = _ref.pastEvent;
-  var hosts = item.hosts.split("|");
+  var hosts = item.hosts ? item.hosts.split("|") : [];
   var formattedTime = function formattedTime(time) {
+    if (!time) return "Time TBD";
     var date = new Date(time);
+
+    // Check if date is valid
+    if (isNaN(date.getTime())) {
+      return "Time TBD";
+    }
 
     // Get month abbreviation
     var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -18052,6 +18058,7 @@ var App = function App() {
           speakers: (speakersElement === null || speakersElement === void 0 ? void 0 : speakersElement.getAttribute("eventspeakers")) || "",
           hosts: (hostsElement === null || hostsElement === void 0 ? void 0 : hostsElement.getAttribute("eventhosts")) || ""
         };
+        console.log("Event data for item", index + 1, ":", eventData);
         var eventDate = parseWebflowDate(eventData.time);
         eventData.pastEvent = eventDate ? isEventPastDay(eventDate) : false;
         eventsData.push(eventData);

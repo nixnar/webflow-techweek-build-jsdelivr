@@ -76,6 +76,8 @@ const App = () => {
           hosts: hostsElement?.getAttribute("eventhosts") || "",
         };
 
+        console.log("Event data for item", index + 1, ":", eventData);
+
         const eventDate = parseWebflowDate(eventData.time);
         eventData.pastEvent = eventDate ? isEventPastDay(eventDate) : false;
 

@@ -6,10 +6,17 @@ export default function IndividualEvent({
   className,
   pastEvent,
 }) {
-  const hosts = item.hosts.split("|");
+  const hosts = item.hosts ? item.hosts.split("|") : [];
 
   const formattedTime = (time) => {
+    if (!time) return "Time TBD";
+
     const date = new Date(time);
+
+    // Check if date is valid
+    if (isNaN(date.getTime())) {
+      return "Time TBD";
+    }
 
     // Get month abbreviation
     const months = [
