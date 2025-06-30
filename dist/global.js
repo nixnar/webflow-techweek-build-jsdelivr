@@ -530,16 +530,16 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   margin-left: -1px !important;
 }
 
+.tailwind .mt-2{
+  margin-top: 0.5rem !important;
+}
+
 .tailwind .mt-4{
   margin-top: 1rem !important;
 }
 
 .tailwind .mt-8{
   margin-top: 2rem !important;
-}
-
-.tailwind .mt-2{
-  margin-top: 0.5rem !important;
 }
 
 .tailwind .flex{
@@ -710,20 +710,10 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   background-image: linear-gradient(to right, var(--tw-gradient-stops)) !important;
 }
 
-.tailwind .from-\\[\\#fee646\\]{
-  --tw-gradient-from: #fee646 var(--tw-gradient-from-position) !important;
-  --tw-gradient-to: rgba(254, 230, 70, 0) var(--tw-gradient-to-position) !important;
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
-}
-
 .tailwind .from-\\[\\#d9e361\\]{
   --tw-gradient-from: #d9e361 var(--tw-gradient-from-position) !important;
   --tw-gradient-to: rgba(217, 227, 97, 0) var(--tw-gradient-to-position) !important;
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
-}
-
-.tailwind .to-\\[\\#2cd4df\\]{
-  --tw-gradient-to: #2cd4df var(--tw-gradient-to-position) !important;
 }
 
 .tailwind .to-\\[\\#65d9b5\\]{
@@ -743,6 +733,10 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   padding: 0.75rem !important;
 }
 
+.tailwind .p-4{
+  padding: 1rem !important;
+}
+
 .tailwind .p-6{
   padding: 1.5rem !important;
 }
@@ -751,13 +745,14 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   padding: 4px !important;
 }
 
-.tailwind .p-4{
-  padding: 1rem !important;
-}
-
 .tailwind .px-3{
   padding-left: 0.75rem !important;
   padding-right: 0.75rem !important;
+}
+
+.tailwind .px-4{
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
 }
 
 .tailwind .px-6{
@@ -783,16 +778,6 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .tailwind .py-\\[6px\\]{
   padding-top: 6px !important;
   padding-bottom: 6px !important;
-}
-
-.tailwind .px-4{
-  padding-left: 1rem !important;
-  padding-right: 1rem !important;
-}
-
-.tailwind .py-2{
-  padding-top: 0.5rem !important;
-  padding-bottom: 0.5rem !important;
 }
 
 .tailwind .text-center{
@@ -18034,51 +18019,88 @@ var App = function App() {
     return eventDateOnly < todayDateOnly;
   };
 
-  // Load testimonials using MutationObserver
+  // Parse events from DOM structure under #allData
   react.useEffect(function () {
-    var getEvents = function getEvents() {
-      var _window$webflowCmsDat;
-      if ((_window$webflowCmsDat = window.webflowCmsData) !== null && _window$webflowCmsDat !== void 0 && _window$webflowCmsDat.events) {
-        var eventsData = window.webflowCmsData.events;
-        eventsData.forEach(function (event) {
-          var eventDate = parseWebflowDate(event.time);
-          event.pastEvent = eventDate ? isEventPastDay(eventDate) : false;
-        });
-        eventsData.sort(function (a, b) {
-          var dateA = parseWebflowDate(a.time);
-          var dateB = parseWebflowDate(b.time);
-          return dateA - dateB;
-        });
-        var _futureEvents = eventsData.filter(function (event) {
-          return !event.pastEvent;
-        });
-        var _pastEvents = eventsData.filter(function (event) {
-          return event.pastEvent;
-        });
-        _pastEvents.sort(function (a, b) {
-          var dateA = parseWebflowDate(a.time);
-          var dateB = parseWebflowDate(b.time);
-          return dateB - dateA;
-        });
-        setFutureEvents(_futureEvents);
-        setPastEvents(_pastEvents);
-        return true;
+    var parseEventsFromDOM = function parseEventsFromDOM() {
+      var allDataElement = document.getElementById("allData");
+      if (!allDataElement) {
+        console.log("no allDataElement");
+        return false;
       }
-      return false;
+
+      // Find all title elements (each represents one event)
+      var titleElements = allDataElement.querySelectorAll('[id="title"]');
+      if (titleElements.length === 0) {
+        console.log("no title elements");
+        return false;
+      }
+      var eventsData = [];
+      titleElements.forEach(function (titleElement, index) {
+        // For each title element, find its sibling elements with the other IDs
+        var parent = titleElement.parentElement;
+        var descElement = parent.querySelector('[id="description"]');
+        var timeElement = parent.querySelector('[id="time"]');
+        var linkElement = parent.querySelector('[id="link"]');
+        var speakersElement = parent.querySelector('[id="speakers"]');
+        var hostsElement = parent.querySelector('[id="hosts"]');
+        var eventData = {
+          id: index + 1,
+          title: titleElement.getAttribute("eventtitle") || "",
+          time: (timeElement === null || timeElement === void 0 ? void 0 : timeElement.getAttribute("eventtime")) || "",
+          description: (descElement === null || descElement === void 0 ? void 0 : descElement.getAttribute("eventdescription")) || "",
+          invite_url: (linkElement === null || linkElement === void 0 ? void 0 : linkElement.getAttribute("eventlink")) || "",
+          speakers: (speakersElement === null || speakersElement === void 0 ? void 0 : speakersElement.getAttribute("eventspeakers")) || "",
+          hosts: (hostsElement === null || hostsElement === void 0 ? void 0 : hostsElement.getAttribute("eventhosts")) || ""
+        };
+        var eventDate = parseWebflowDate(eventData.time);
+        eventData.pastEvent = eventDate ? isEventPastDay(eventDate) : false;
+        eventsData.push(eventData);
+      });
+
+      // Sort all events by date
+      console.log("eventsData", eventsData);
+      eventsData.sort(function (a, b) {
+        var dateA = parseWebflowDate(a.time);
+        var dateB = parseWebflowDate(b.time);
+        return dateA - dateB;
+      });
+
+      // Separate into future and past events
+      var futureEvents = eventsData.filter(function (event) {
+        return !event.pastEvent;
+      });
+      var pastEvents = eventsData.filter(function (event) {
+        return event.pastEvent;
+      });
+
+      // Sort past events in reverse chronological order (most recent first)
+      pastEvents.sort(function (a, b) {
+        var dateA = parseWebflowDate(a.time);
+        var dateB = parseWebflowDate(b.time);
+        return dateB - dateA;
+      });
+      setFutureEvents(futureEvents);
+      setPastEvents(pastEvents);
+      return true;
     };
-    if (getEvents()) return;
-    var observer = new MutationObserver(function () {
-      if (getEvents()) {
-        observer.disconnect();
+
+    // Try to parse immediately
+    if (parseEventsFromDOM()) return;
+
+    // If not available immediately, set up a simple polling mechanism
+    var pollInterval = setInterval(function () {
+      if (parseEventsFromDOM()) {
+        clearInterval(pollInterval);
       }
-    });
-    observer.observe(document.documentElement, {
-      attributes: true,
-      childList: true,
-      subtree: true
-    });
+    }, 100);
+
+    // Clean up after 10 seconds to avoid infinite polling
+    var timeout = setTimeout(function () {
+      clearInterval(pollInterval);
+    }, 10000);
     return function () {
-      return observer.disconnect();
+      clearInterval(pollInterval);
+      clearTimeout(timeout);
     };
   }, []);
   var submitForm = /*#__PURE__*/function () {

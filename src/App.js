@@ -39,49 +39,92 @@ const App = () => {
     return eventDateOnly < todayDateOnly;
   };
 
-  // Load testimonials using MutationObserver
+  // Parse events from DOM structure under #allData
   React.useEffect(() => {
-    const getEvents = () => {
-      if (window.webflowCmsData?.events) {
-        const eventsData = window.webflowCmsData.events;
-        eventsData.forEach((event) => {
-          const eventDate = parseWebflowDate(event.time);
-          event.pastEvent = eventDate ? isEventPastDay(eventDate) : false;
-        });
-        eventsData.sort((a, b) => {
-          const dateA = parseWebflowDate(a.time);
-          const dateB = parseWebflowDate(b.time);
-          return dateA - dateB;
-        });
-        const futureEvents = eventsData.filter((event) => !event.pastEvent);
-        const pastEvents = eventsData.filter((event) => event.pastEvent);
-        pastEvents.sort((a, b) => {
-          const dateA = parseWebflowDate(a.time);
-          const dateB = parseWebflowDate(b.time);
-          return dateB - dateA;
-        });
-        setFutureEvents(futureEvents);
-        setPastEvents(pastEvents);
-        return true;
+    const parseEventsFromDOM = () => {
+      const allDataElement = document.getElementById("allData");
+      if (!allDataElement) {
+        console.log("no allDataElement");
+        return false;
       }
-      return false;
+
+      // Find all title elements (each represents one event)
+      const titleElements = allDataElement.querySelectorAll('[id="title"]');
+      if (titleElements.length === 0) {
+        console.log("no title elements");
+        return false;
+      }
+
+      const eventsData = [];
+
+      titleElements.forEach((titleElement, index) => {
+        // For each title element, find its sibling elements with the other IDs
+        const parent = titleElement.parentElement;
+        const descElement = parent.querySelector('[id="description"]');
+        const timeElement = parent.querySelector('[id="time"]');
+        const linkElement = parent.querySelector('[id="link"]');
+        const speakersElement = parent.querySelector('[id="speakers"]');
+        const hostsElement = parent.querySelector('[id="hosts"]');
+
+        const eventData = {
+          id: index + 1,
+          title: titleElement.getAttribute("eventtitle") || "",
+          time: timeElement?.getAttribute("eventtime") || "",
+          description: descElement?.getAttribute("eventdescription") || "",
+          invite_url: linkElement?.getAttribute("eventlink") || "",
+          speakers: speakersElement?.getAttribute("eventspeakers") || "",
+          hosts: hostsElement?.getAttribute("eventhosts") || "",
+        };
+
+        const eventDate = parseWebflowDate(eventData.time);
+        eventData.pastEvent = eventDate ? isEventPastDay(eventDate) : false;
+
+        eventsData.push(eventData);
+      });
+
+      // Sort all events by date
+      console.log("eventsData", eventsData);
+      eventsData.sort((a, b) => {
+        const dateA = parseWebflowDate(a.time);
+        const dateB = parseWebflowDate(b.time);
+        return dateA - dateB;
+      });
+
+      // Separate into future and past events
+      const futureEvents = eventsData.filter((event) => !event.pastEvent);
+      const pastEvents = eventsData.filter((event) => event.pastEvent);
+
+      // Sort past events in reverse chronological order (most recent first)
+      pastEvents.sort((a, b) => {
+        const dateA = parseWebflowDate(a.time);
+        const dateB = parseWebflowDate(b.time);
+        return dateB - dateA;
+      });
+
+      setFutureEvents(futureEvents);
+      setPastEvents(pastEvents);
+      return true;
     };
 
-    if (getEvents()) return;
+    // Try to parse immediately
+    if (parseEventsFromDOM()) return;
 
-    const observer = new MutationObserver(() => {
-      if (getEvents()) {
-        observer.disconnect();
+    // If not available immediately, set up a simple polling mechanism
+    const pollInterval = setInterval(() => {
+      if (parseEventsFromDOM()) {
+        clearInterval(pollInterval);
       }
-    });
+    }, 100);
 
-    observer.observe(document.documentElement, {
-      attributes: true,
-      childList: true,
-      subtree: true,
-    });
+    // Clean up after 10 seconds to avoid infinite polling
+    const timeout = setTimeout(() => {
+      clearInterval(pollInterval);
+    }, 10000);
 
-    return () => observer.disconnect();
+    return () => {
+      clearInterval(pollInterval);
+      clearTimeout(timeout);
+    };
   }, []);
 
   const submitForm = async (e) => {
