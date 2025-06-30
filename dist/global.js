@@ -644,8 +644,16 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   gap: 1rem !important;
 }
 
+.tailwind .gap-1{
+  gap: 0.25rem !important;
+}
+
 .tailwind .overflow-hidden{
   overflow: hidden !important;
+}
+
+.tailwind .text-nowrap{
+  text-wrap: nowrap !important;
 }
 
 .tailwind .border{
@@ -745,6 +753,10 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   padding: 4px !important;
 }
 
+.tailwind .p-2{
+  padding: 0.5rem !important;
+}
+
 .tailwind .px-3{
   padding-left: 0.75rem !important;
   padding-right: 0.75rem !important;
@@ -812,6 +824,22 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .tailwind .text-xl{
   font-size: 1.25rem !important;
   line-height: 1.75rem !important;
+}
+
+.tailwind .text-\\[0\\.875rem\\]{
+  font-size: 0.875rem !important;
+}
+
+.tailwind .text-\\[0\\.75rem\\]{
+  font-size: 0.75rem !important;
+}
+
+.tailwind .text-\\[1\\.5rem\\]{
+  font-size: 1.5rem !important;
+}
+
+.tailwind .text-\\[1\\.4rem\\]{
+  font-size: 1.4rem !important;
 }
 
 .tailwind .font-\\[400\\]{
@@ -17900,12 +17928,12 @@ function IndividualEvent(_ref) {
   };
   return /*#__PURE__*/react.createElement("div", {
     key: item.title,
-    className: "border-b-[1px] border-white flex flex-col ".concat(windowWidth < 1030 ? "p-4" : "p-6")
+    className: "border-b-[1px] border-white flex flex-col ".concat(windowWidth < 1030 ? "p-3" : "p-6")
   }, /*#__PURE__*/react.createElement("div", {
-    className: "flex justify-start flex-col gap-2 text-[1.125rem] font-[700] leading-[1.1] tracking-[-0.02813rem]"
+    className: "flex justify-start flex-col gap-2 text-[1.125rem] font-[700] leading-[1.1] tracking-[-0.02813rem] ".concat(windowWidth < 1030 ? "gap-1" : "")
   }, /*#__PURE__*/react.createElement("div", {
     id: "firstLine",
-    className: "flex items-center gap-4"
+    className: "flex items-center gap-4 ".concat(windowWidth < 1030 ? "text-[0.75rem] gap-2" : "")
   }, /*#__PURE__*/react.createElement("div", {
     className: "flex gap-2",
     id: "hosts"
@@ -17916,17 +17944,19 @@ function IndividualEvent(_ref) {
     }, host);
   })), /*#__PURE__*/react.createElement("div", null, "|"), /*#__PURE__*/react.createElement("div", {
     id: "date"
-  }, /*#__PURE__*/react.createElement("p", null, formattedTime(item.time)))), /*#__PURE__*/react.createElement("div", {
+  }, /*#__PURE__*/react.createElement("p", {
+    className: "text-nowrap"
+  }, formattedTime(item.time)))), /*#__PURE__*/react.createElement("div", {
     id: "secondLine",
     className: "flex items-center gap-4"
   }, /*#__PURE__*/react.createElement("div", {
     id: "speakers",
-    className: "uppercase"
+    className: "uppercase ".concat(windowWidth < 1030 ? "text-[0.75rem]" : "")
   }, /*#__PURE__*/react.createElement("p", null, item.speakers))), /*#__PURE__*/react.createElement("div", {
     id: "thirdLine",
     className: "flex items-center gap-4"
   }, /*#__PURE__*/react.createElement("p", {
-    className: "text-[2rem] leading-[1.2] tracking-[-0.04rem]"
+    className: "text-[2rem] leading-[1.2] tracking-[-0.04rem] ".concat(windowWidth < 1030 ? "text-[1.4rem]" : "")
   }, item.title)), /*#__PURE__*/react.createElement("div", {
     id: "fourthLine",
     className: "flex items-center gap-4 max-w-[53rem] text-[1.25rem] leading-[1.35] tracking-[-0.0375rem]"
@@ -18058,14 +18088,16 @@ var App = function App() {
           speakers: (speakersElement === null || speakersElement === void 0 ? void 0 : speakersElement.getAttribute("eventspeakers")) || "",
           hosts: (hostsElement === null || hostsElement === void 0 ? void 0 : hostsElement.getAttribute("eventhosts")) || ""
         };
-        console.log("Event data for item", index + 1, ":", eventData);
+
+        //console.log("Event data for item", index + 1, ":", eventData);
+
         var eventDate = parseWebflowDate(eventData.time);
         eventData.pastEvent = eventDate ? isEventPastDay(eventDate) : false;
         eventsData.push(eventData);
       });
 
       // Sort all events by date
-      console.log("eventsData", eventsData);
+      //console.log("eventsData", eventsData);
       eventsData.sort(function (a, b) {
         var dateA = parseWebflowDate(a.time);
         var dateB = parseWebflowDate(b.time);
@@ -18269,17 +18301,13 @@ var App = function App() {
   }, /*#__PURE__*/react.createElement("div", {
     className: "grow border-[1px] border-white ml-[-1px]"
   }, futureEvents.length > 0 && futureEvents.map(function (item) {
-    return /*#__PURE__*/react.createElement("a", {
-      key: item.id,
-      href: item.invite_url,
-      target: "_blank"
-    }, /*#__PURE__*/react.createElement(IndividualEvent, {
+    return /*#__PURE__*/react.createElement(IndividualEvent, {
       item: item,
       windowWidth: windowWidth,
       hasLink: true,
       className: "",
       pastEvent: item.pastEvent
-    }));
+    });
   }))), /*#__PURE__*/react.createElement("div", {
     className: "grow"
   }))), /*#__PURE__*/react.createElement("div", {
@@ -18295,17 +18323,13 @@ var App = function App() {
   }, /*#__PURE__*/react.createElement("div", {
     className: "".concat(windowWidth < 1030 ? "px-4" : "px-6", " py-3 border-b-[1px] border-white text-[1.125rem] font-[700] leading-[1.1] tracking-[-0.02813rem]")
   }, "PAST EVENTS"), pastEvents.length > 0 && pastEvents.map(function (item) {
-    return /*#__PURE__*/react.createElement("a", {
-      key: item.id,
-      href: item.invite_url,
-      target: "_blank"
-    }, /*#__PURE__*/react.createElement(IndividualEvent, {
+    return /*#__PURE__*/react.createElement(IndividualEvent, {
       item: item,
       windowWidth: windowWidth,
       hasLink: true,
       className: "",
       pastEvent: item.pastEvent
-    }));
+    });
   }))), /*#__PURE__*/react.createElement("div", {
     className: "grow"
   }))))));

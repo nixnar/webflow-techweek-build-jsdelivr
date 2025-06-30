@@ -51,11 +51,20 @@ export default function IndividualEvent({
     <div
       key={item.title}
       className={`border-b-[1px] border-white flex flex-col ${
-        windowWidth < 1030 ? "p-4" : "p-6"
+        windowWidth < 1030 ? "p-3" : "p-6"
       }`}
     >
-      <div className="flex justify-start flex-col gap-2 text-[1.125rem] font-[700] leading-[1.1] tracking-[-0.02813rem]">
-        <div id="firstLine" className="flex items-center gap-4">
+      <div
+        className={`flex justify-start flex-col gap-2 text-[1.125rem] font-[700] leading-[1.1] tracking-[-0.02813rem] ${
+          windowWidth < 1030 ? "gap-1" : ""
+        }`}
+      >
+        <div
+          id="firstLine"
+          className={`flex items-center gap-4 ${
+            windowWidth < 1030 ? "text-[0.75rem] gap-2" : ""
+          }`}
+        >
           <div className="flex gap-2" id="hosts">
             {hosts.map((host) => (
               <p
@@ -68,16 +77,25 @@ export default function IndividualEvent({
           </div>
           <div>|</div>
           <div id="date">
-            <p>{formattedTime(item.time)}</p>
+            <p className="text-nowrap">{formattedTime(item.time)}</p>
           </div>
         </div>
         <div id="secondLine" className="flex items-center gap-4">
-          <div id="speakers" className="uppercase">
+          <div
+            id="speakers"
+            className={`uppercase ${
+              windowWidth < 1030 ? "text-[0.75rem]" : ""
+            }`}
+          >
             <p>{item.speakers}</p>
           </div>
         </div>
         <div id="thirdLine" className="flex items-center gap-4">
-          <p className="text-[2rem] leading-[1.2] tracking-[-0.04rem]">
+          <p
+            className={`text-[2rem] leading-[1.2] tracking-[-0.04rem] ${
+              windowWidth < 1030 ? "text-[1.4rem]" : ""
+            }`}
+          >
             {item.title}
           </p>
         </div>

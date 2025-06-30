@@ -76,7 +76,7 @@ const App = () => {
           hosts: hostsElement?.getAttribute("eventhosts") || "",
         };
 
-        console.log("Event data for item", index + 1, ":", eventData);
+        //console.log("Event data for item", index + 1, ":", eventData);
 
         const eventDate = parseWebflowDate(eventData.time);
         eventData.pastEvent = eventDate ? isEventPastDay(eventDate) : false;
@@ -85,7 +85,7 @@ const App = () => {
       });
 
       // Sort all events by date
-      console.log("eventsData", eventsData);
+      //console.log("eventsData", eventsData);
       eventsData.sort((a, b) => {
         const dateA = parseWebflowDate(a.time);
         const dateB = parseWebflowDate(b.time);
@@ -275,19 +275,13 @@ const App = () => {
                     {futureEvents.length > 0 &&
                       futureEvents.map((item) => {
                         return (
-                          <a
-                            key={item.id}
-                            href={item.invite_url}
-                            target="_blank"
-                          >
-                            <IndividualEvent
-                              item={item}
-                              windowWidth={windowWidth}
-                              hasLink={true}
-                              className=""
-                              pastEvent={item.pastEvent}
-                            />
-                          </a>
+                          <IndividualEvent
+                            item={item}
+                            windowWidth={windowWidth}
+                            hasLink={true}
+                            className=""
+                            pastEvent={item.pastEvent}
+                          />
                         );
                       })}
                   </div>
@@ -312,19 +306,13 @@ const App = () => {
                     {pastEvents.length > 0 &&
                       pastEvents.map((item) => {
                         return (
-                          <a
-                            key={item.id}
-                            href={item.invite_url}
-                            target="_blank"
-                          >
-                            <IndividualEvent
-                              item={item}
-                              windowWidth={windowWidth}
-                              hasLink={true}
-                              className=""
-                              pastEvent={item.pastEvent}
-                            />
-                          </a>
+                          <IndividualEvent
+                            item={item}
+                            windowWidth={windowWidth}
+                            hasLink={true}
+                            className=""
+                            pastEvent={item.pastEvent}
+                          />
                         );
                       })}
                   </div>
