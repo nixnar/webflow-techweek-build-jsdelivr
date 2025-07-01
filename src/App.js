@@ -71,7 +71,7 @@ const App = () => {
           title: titleElement.getAttribute("eventtitle") || "",
           time: timeElement?.getAttribute("eventtime") || "",
           description: descElement?.getAttribute("eventdescription") || "",
-          invite_url: linkElement?.getAttribute("eventlink") || "",
+          link: linkElement?.getAttribute("eventlink") || "",
           speakers: speakersElement?.getAttribute("eventspeakers") || "",
           hosts: hostsElement?.getAttribute("eventhosts") || "",
         };

@@ -18095,7 +18095,7 @@ var App = function App() {
           title: titleElement.getAttribute("eventtitle") || "",
           time: (timeElement === null || timeElement === void 0 ? void 0 : timeElement.getAttribute("eventtime")) || "",
           description: (descElement === null || descElement === void 0 ? void 0 : descElement.getAttribute("eventdescription")) || "",
-          invite_url: (linkElement === null || linkElement === void 0 ? void 0 : linkElement.getAttribute("eventlink")) || "",
+          link: (linkElement === null || linkElement === void 0 ? void 0 : linkElement.getAttribute("eventlink")) || "",
           speakers: (speakersElement === null || speakersElement === void 0 ? void 0 : speakersElement.getAttribute("eventspeakers")) || "",
           hosts: (hostsElement === null || hostsElement === void 0 ? void 0 : hostsElement.getAttribute("eventhosts")) || ""
         };
