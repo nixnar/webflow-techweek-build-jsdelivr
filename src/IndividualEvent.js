@@ -11,7 +11,8 @@ export default function IndividualEvent({
   const formattedTime = (time) => {
     if (!time) return "Time TBD";
 
-    const date = new Date(time);
+    const date = parseCustomDate(time);
+    //console.log("date", date);
 
     // Check if date is valid
     if (isNaN(date.getTime())) {
@@ -47,6 +48,22 @@ export default function IndividualEvent({
 
     return `${month.toUpperCase()} ${day}, ${hour}:${formattedMinute} ${ampm}`;
   };
+
+  function parseCustomDate(dateStr) {
+    // Example input: "7.22.2025 5:00 PM"
+    const match = dateStr.match(/^(\d{1,2})\.(\d{1,2})\.(\d{4}) (\d{1,2}):(\d{2}) (AM|PM)$/);
+    if (!match) return null;
+    let [, month, day, year, hour, minute, ampm] = match;
+    month = parseInt(month, 10) - 1; // JS months are 0-based
+    day = parseInt(day, 10);
+    year = parseInt(year, 10);
+    hour = parseInt(hour, 10);
+    minute = parseInt(minute, 10);
+    if (ampm === "PM" && hour !== 12) hour += 12;
+    if (ampm === "AM" && hour === 12) hour = 0;
+    return new Date(year, month, day, hour, minute);
+  }
+
   return (
     <div
       key={item.title}
@@ -77,7 +94,10 @@ export default function IndividualEvent({
           </div>
           <div>|</div>
           <div id="date">
-            <p className="text-nowrap">{formattedTime(item.time)}</p>
+            <p className="text-nowrap">
+              {console.log("item.time", item.time)}
+              {formattedTime(item.time)}
+            </p>
           </div>
         </div>
         <div id="secondLine" className="flex items-center gap-4">

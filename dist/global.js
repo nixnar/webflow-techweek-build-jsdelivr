@@ -632,6 +632,10 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   justify-content: space-between !important;
 }
 
+.tailwind .gap-1{
+  gap: 0.25rem !important;
+}
+
 .tailwind .gap-2{
   gap: 0.5rem !important;
 }
@@ -642,10 +646,6 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 
 .tailwind .gap-4{
   gap: 1rem !important;
-}
-
-.tailwind .gap-1{
-  gap: 0.25rem !important;
 }
 
 .tailwind .overflow-hidden{
@@ -741,20 +741,12 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   padding: 0.75rem !important;
 }
 
-.tailwind .p-4{
-  padding: 1rem !important;
-}
-
 .tailwind .p-6{
   padding: 1.5rem !important;
 }
 
 .tailwind .p-\\[4px\\]{
   padding: 4px !important;
-}
-
-.tailwind .p-2{
-  padding: 0.5rem !important;
 }
 
 .tailwind .px-3{
@@ -801,12 +793,20 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   line-height: 2.5rem !important;
 }
 
+.tailwind .text-\\[0\\.75rem\\]{
+  font-size: 0.75rem !important;
+}
+
 .tailwind .text-\\[1\\.125rem\\]{
   font-size: 1.125rem !important;
 }
 
 .tailwind .text-\\[1\\.25rem\\]{
   font-size: 1.25rem !important;
+}
+
+.tailwind .text-\\[1\\.4rem\\]{
+  font-size: 1.4rem !important;
 }
 
 .tailwind .text-\\[14px\\]{
@@ -824,22 +824,6 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .tailwind .text-xl{
   font-size: 1.25rem !important;
   line-height: 1.75rem !important;
-}
-
-.tailwind .text-\\[0\\.875rem\\]{
-  font-size: 0.875rem !important;
-}
-
-.tailwind .text-\\[0\\.75rem\\]{
-  font-size: 0.75rem !important;
-}
-
-.tailwind .text-\\[1\\.5rem\\]{
-  font-size: 1.5rem !important;
-}
-
-.tailwind .text-\\[1\\.4rem\\]{
-  font-size: 1.4rem !important;
 }
 
 .tailwind .font-\\[400\\]{
@@ -17894,6 +17878,12 @@ var update = injectStylesIntoStyleTag_default()(style/* default */.A, options);
        /* harmony default export */ const src_style = (style/* default */.A && style/* default */.A.locals ? style/* default */.A.locals : undefined);
 
 ;// ./src/IndividualEvent.js
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 function IndividualEvent(_ref) {
   var item = _ref.item,
@@ -17904,7 +17894,8 @@ function IndividualEvent(_ref) {
   var hosts = item.hosts ? item.hosts.split("|") : [];
   var formattedTime = function formattedTime(time) {
     if (!time) return "Time TBD";
-    var date = new Date(time);
+    var date = parseCustomDate(time);
+    //console.log("date", date);
 
     // Check if date is valid
     if (isNaN(date.getTime())) {
@@ -17926,6 +17917,26 @@ function IndividualEvent(_ref) {
     var formattedMinute = minute < 10 ? "0" + minute : minute;
     return "".concat(month.toUpperCase(), " ").concat(day, ", ").concat(hour, ":").concat(formattedMinute, " ").concat(ampm);
   };
+  function parseCustomDate(dateStr) {
+    // Example input: "7.22.2025 5:00 PM"
+    var match = dateStr.match(/^(\d{1,2})\.(\d{1,2})\.(\d{4}) (\d{1,2}):(\d{2}) (AM|PM)$/);
+    if (!match) return null;
+    var _match = _slicedToArray(match, 7),
+      month = _match[1],
+      day = _match[2],
+      year = _match[3],
+      hour = _match[4],
+      minute = _match[5],
+      ampm = _match[6];
+    month = parseInt(month, 10) - 1; // JS months are 0-based
+    day = parseInt(day, 10);
+    year = parseInt(year, 10);
+    hour = parseInt(hour, 10);
+    minute = parseInt(minute, 10);
+    if (ampm === "PM" && hour !== 12) hour += 12;
+    if (ampm === "AM" && hour === 12) hour = 0;
+    return new Date(year, month, day, hour, minute);
+  }
   return /*#__PURE__*/react.createElement("div", {
     key: item.title,
     className: "border-b-[1px] border-white flex flex-col ".concat(windowWidth < 1030 ? "p-3" : "p-6")
@@ -17946,7 +17957,7 @@ function IndividualEvent(_ref) {
     id: "date"
   }, /*#__PURE__*/react.createElement("p", {
     className: "text-nowrap"
-  }, formattedTime(item.time)))), /*#__PURE__*/react.createElement("div", {
+  }, console.log("item.time", item.time), formattedTime(item.time)))), /*#__PURE__*/react.createElement("div", {
     id: "secondLine",
     className: "flex items-center gap-4"
   }, /*#__PURE__*/react.createElement("div", {
@@ -18002,38 +18013,38 @@ function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { 
 function _OverloadYield(e, d) { this.v = e, this.k = d; }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
 function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+function App_slicedToArray(r, e) { return App_arrayWithHoles(r) || App_iterableToArrayLimit(r, e) || App_unsupportedIterableToArray(r, e) || App_nonIterableRest(); }
+function App_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function App_unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return App_arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? App_arrayLikeToArray(r, a) : void 0; } }
+function App_arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function App_iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function App_arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
 var App = function App() {
   var _React$useState = react.useState(null),
-    _React$useState2 = _slicedToArray(_React$useState, 2),
+    _React$useState2 = App_slicedToArray(_React$useState, 2),
     error = _React$useState2[0],
     setError = _React$useState2[1];
   var _React$useState3 = react.useState(window.innerWidth),
-    _React$useState4 = _slicedToArray(_React$useState3, 2),
+    _React$useState4 = App_slicedToArray(_React$useState3, 2),
     windowWidth = _React$useState4[0],
     setWindowWidth = _React$useState4[1];
   var _React$useState5 = react.useState(false),
-    _React$useState6 = _slicedToArray(_React$useState5, 2),
+    _React$useState6 = App_slicedToArray(_React$useState5, 2),
     isValidEmail = _React$useState6[0],
     setIsValidEmail = _React$useState6[1];
   var _React$useState7 = react.useState(""),
-    _React$useState8 = _slicedToArray(_React$useState7, 2),
+    _React$useState8 = App_slicedToArray(_React$useState7, 2),
     email = _React$useState8[0],
     setEmail = _React$useState8[1];
   var _React$useState9 = react.useState([]),
-    _React$useState10 = _slicedToArray(_React$useState9, 2),
+    _React$useState10 = App_slicedToArray(_React$useState9, 2),
     futureEvents = _React$useState10[0],
     setFutureEvents = _React$useState10[1];
   var _React$useState11 = react.useState([]),
-    _React$useState12 = _slicedToArray(_React$useState11, 2),
+    _React$useState12 = App_slicedToArray(_React$useState11, 2),
     pastEvents = _React$useState12[0],
     setPastEvents = _React$useState12[1];
   // Helper function to parse Webflow date format "10.15.2025 7:00 AM"
@@ -18095,6 +18106,7 @@ var App = function App() {
         eventData.pastEvent = eventDate ? isEventPastDay(eventDate) : false;
         eventsData.push(eventData);
       });
+      console.log("eventsData", eventsData);
 
       // Sort all events by date
       //console.log("eventsData", eventsData);
@@ -18122,6 +18134,7 @@ var App = function App() {
       setPastEvents(pastEvents);
       return true;
     };
+    //console.log("futureEvents", futureEvents);
 
     // Try to parse immediately
     if (parseEventsFromDOM()) return;

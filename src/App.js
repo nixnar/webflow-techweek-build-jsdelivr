@@ -83,6 +83,7 @@ const App = () => {
 
         eventsData.push(eventData);
       });
+      console.log("eventsData", eventsData);
 
       // Sort all events by date
       //console.log("eventsData", eventsData);
@@ -107,6 +108,7 @@ const App = () => {
       setPastEvents(pastEvents);
       return true;
     };
+    //console.log("futureEvents", futureEvents);
 
     // Try to parse immediately
     if (parseEventsFromDOM()) return;
