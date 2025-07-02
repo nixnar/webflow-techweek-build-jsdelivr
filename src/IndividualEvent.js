@@ -103,17 +103,19 @@ export default function IndividualEvent({
         <div id="secondLine" className="flex items-center gap-4">
           <div
             id="speakers"
-            className={`uppercase ${
-              windowWidth < 1030 ? "text-[0.75rem]" : ""
-            }`}
+            className={`uppercase`}
           >
-            <p>{item.speakers}</p>
+            <p className={`uppercase ${windowWidth < 1030 ? "text-[1.2rem]" : "text-[1.5rem]"
+              }`}
+            >
+              {item.speakers}
+            </p>
           </div>
         </div>
         <div id="thirdLine" className="flex items-center gap-4">
           <p
-            className={`text-[2rem] leading-[1.2] tracking-[-0.04rem] ${
-              windowWidth < 1030 ? "text-[1.4rem]" : ""
+            className={`text-[1.375rem] leading-[1.2] tracking-[-0.04rem] font-[500] ${
+              windowWidth < 1030 ? "text-[1rem]" : ""
             }`}
           >
             {item.title}
@@ -121,7 +123,7 @@ export default function IndividualEvent({
         </div>
         <div
           id="fourthLine"
-          className="flex items-center gap-4 max-w-[53rem] text-[1.25rem] leading-[1.35] tracking-[-0.0375rem]"
+          className="flex items-center gap-4 max-w-[53rem] font-[400] text-[1.25rem] leading-[1.35] tracking-[-0.0375rem]"
         >
           <p>{item.description}</p>
         </div>

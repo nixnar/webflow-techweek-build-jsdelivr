@@ -826,6 +826,22 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   line-height: 1.75rem !important;
 }
 
+.tailwind .text-\\[1\\.5rem\\]{
+  font-size: 1.5rem !important;
+}
+
+.tailwind .text-\\[3rem\\]{
+  font-size: 3rem !important;
+}
+
+.tailwind .text-\\[1\\.2rem\\]{
+  font-size: 1.2rem !important;
+}
+
+.tailwind .text-\\[1\\.375rem\\]{
+  font-size: 1.375rem !important;
+}
+
 .tailwind .font-\\[400\\]{
   font-weight: 400 !important;
 }
@@ -836,6 +852,10 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 
 .tailwind .font-bold{
   font-weight: 700 !important;
+}
+
+.tailwind .font-\\[500\\]{
+  font-weight: 500 !important;
 }
 
 .tailwind .uppercase{
@@ -17962,15 +17982,17 @@ function IndividualEvent(_ref) {
     className: "flex items-center gap-4"
   }, /*#__PURE__*/react.createElement("div", {
     id: "speakers",
-    className: "uppercase ".concat(windowWidth < 1030 ? "text-[0.75rem]" : "")
-  }, /*#__PURE__*/react.createElement("p", null, item.speakers))), /*#__PURE__*/react.createElement("div", {
+    className: "uppercase"
+  }, /*#__PURE__*/react.createElement("p", {
+    className: "uppercase ".concat(windowWidth < 1030 ? "text-[1.2rem]" : "text-[1.5rem]")
+  }, item.speakers))), /*#__PURE__*/react.createElement("div", {
     id: "thirdLine",
     className: "flex items-center gap-4"
   }, /*#__PURE__*/react.createElement("p", {
-    className: "text-[2rem] leading-[1.2] tracking-[-0.04rem] ".concat(windowWidth < 1030 ? "text-[1.4rem]" : "")
+    className: "text-[1.375rem] leading-[1.2] tracking-[-0.04rem] font-[500] ".concat(windowWidth < 1030 ? "text-[1rem]" : "")
   }, item.title)), /*#__PURE__*/react.createElement("div", {
     id: "fourthLine",
-    className: "flex items-center gap-4 max-w-[53rem] text-[1.25rem] leading-[1.35] tracking-[-0.0375rem]"
+    className: "flex items-center gap-4 max-w-[53rem] font-[400] text-[1.25rem] leading-[1.35] tracking-[-0.0375rem]"
   }, /*#__PURE__*/react.createElement("p", null, item.description)), !pastEvent && /*#__PURE__*/react.createElement("a", {
     href: item.link,
     target: "_blank",
