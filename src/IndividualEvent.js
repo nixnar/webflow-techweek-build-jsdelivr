@@ -64,6 +64,13 @@ export default function IndividualEvent({
     return new Date(year, month, day, hour, minute);
   }
 
+  function getSpeakers(speakers) {
+    if (speakers.includes("|")) {
+      return speakers.replace("|", ", ");
+    }
+    return speakers;
+  }
+
   return (
     <div
       key={item.title}
@@ -72,8 +79,8 @@ export default function IndividualEvent({
       }`}
     >
       <div
-        className={`flex justify-start flex-col gap-2 text-[1.125rem] font-[700] leading-[1.1] tracking-[-0.02813rem] ${
-          windowWidth < 1030 ? "gap-1" : ""
+        className={`flex justify-start flex-col gap-1.5 text-[1.125rem] font-[700] leading-[1.1] tracking-[-0.02813rem] ${
+          windowWidth < 1030 ? "gap-0.75" : ""
         }`}
       >
         <div
@@ -105,17 +112,17 @@ export default function IndividualEvent({
             id="speakers"
             className={`uppercase`}
           >
-            <p className={`uppercase ${windowWidth < 1030 ? "text-[1.2rem]" : "text-[1.5rem]"
+            <p className={`uppercase leading-[1.3] text-[1.5rem] font-[600] ${windowWidth < 1030 ? "text-[1.25rem]" : ""
               }`}
             >
-              {item.speakers}
+              {getSpeakers(item.speakers)}
             </p>
           </div>
         </div>
         <div id="thirdLine" className="flex items-center gap-4">
           <p
             className={`text-[1.375rem] leading-[1.2] tracking-[-0.04rem] font-[500] ${
-              windowWidth < 1030 ? "text-[1rem]" : ""
+              windowWidth < 1030 ? "text-[1.25rem]" : ""
             }`}
           >
             {item.title}

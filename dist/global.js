@@ -648,6 +648,22 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   gap: 1rem !important;
 }
 
+.tailwind .gap-1\\.5{
+  gap: 0.375rem !important;
+}
+
+.tailwind .gap-\\[0\\.75\\]{
+  gap: 0.75 !important;
+}
+
+.tailwind .gap-0\\.5{
+  gap: 0.125rem !important;
+}
+
+.tailwind .gap-0{
+  gap: 0px !important;
+}
+
 .tailwind .overflow-hidden{
   overflow: hidden !important;
 }
@@ -805,8 +821,16 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   font-size: 1.25rem !important;
 }
 
-.tailwind .text-\\[1\\.4rem\\]{
-  font-size: 1.4rem !important;
+.tailwind .text-\\[1\\.2rem\\]{
+  font-size: 1.2rem !important;
+}
+
+.tailwind .text-\\[1\\.375rem\\]{
+  font-size: 1.375rem !important;
+}
+
+.tailwind .text-\\[1\\.5rem\\]{
+  font-size: 1.5rem !important;
 }
 
 .tailwind .text-\\[14px\\]{
@@ -817,33 +841,21 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   font-size: 1rem !important;
 }
 
-.tailwind .text-\\[2rem\\]{
-  font-size: 2rem !important;
-}
-
 .tailwind .text-xl{
   font-size: 1.25rem !important;
   line-height: 1.75rem !important;
 }
 
-.tailwind .text-\\[1\\.5rem\\]{
-  font-size: 1.5rem !important;
-}
-
-.tailwind .text-\\[3rem\\]{
-  font-size: 3rem !important;
-}
-
-.tailwind .text-\\[1\\.2rem\\]{
-  font-size: 1.2rem !important;
-}
-
-.tailwind .text-\\[1\\.375rem\\]{
-  font-size: 1.375rem !important;
+.tailwind .text-\\[1\\.1rem\\]{
+  font-size: 1.1rem !important;
 }
 
 .tailwind .font-\\[400\\]{
   font-weight: 400 !important;
+}
+
+.tailwind .font-\\[500\\]{
+  font-weight: 500 !important;
 }
 
 .tailwind .font-\\[700\\]{
@@ -854,8 +866,8 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   font-weight: 700 !important;
 }
 
-.tailwind .font-\\[500\\]{
-  font-weight: 500 !important;
+.tailwind .font-\\[600\\]{
+  font-weight: 600 !important;
 }
 
 .tailwind .uppercase{
@@ -882,6 +894,10 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 
 .tailwind .leading-\\[18px\\]{
   line-height: 18px !important;
+}
+
+.tailwind .leading-\\[1\\.3\\]{
+  line-height: 1.3 !important;
 }
 
 .tailwind .tracking-\\[-0\\.02813rem\\]{
@@ -17957,11 +17973,17 @@ function IndividualEvent(_ref) {
     if (ampm === "AM" && hour === 12) hour = 0;
     return new Date(year, month, day, hour, minute);
   }
+  function getSpeakers(speakers) {
+    if (speakers.includes("|")) {
+      return speakers.replace("|", ", ");
+    }
+    return speakers;
+  }
   return /*#__PURE__*/react.createElement("div", {
     key: item.title,
     className: "border-b-[1px] border-white flex flex-col ".concat(windowWidth < 1030 ? "p-3" : "p-6")
   }, /*#__PURE__*/react.createElement("div", {
-    className: "flex justify-start flex-col gap-2 text-[1.125rem] font-[700] leading-[1.1] tracking-[-0.02813rem] ".concat(windowWidth < 1030 ? "gap-1" : "")
+    className: "flex justify-start flex-col gap-1.5 text-[1.125rem] font-[700] leading-[1.1] tracking-[-0.02813rem] ".concat(windowWidth < 1030 ? "gap-0.75" : "")
   }, /*#__PURE__*/react.createElement("div", {
     id: "firstLine",
     className: "flex items-center gap-4 ".concat(windowWidth < 1030 ? "text-[0.75rem] gap-2" : "")
@@ -17984,12 +18006,12 @@ function IndividualEvent(_ref) {
     id: "speakers",
     className: "uppercase"
   }, /*#__PURE__*/react.createElement("p", {
-    className: "uppercase ".concat(windowWidth < 1030 ? "text-[1.2rem]" : "text-[1.5rem]")
-  }, item.speakers))), /*#__PURE__*/react.createElement("div", {
+    className: "uppercase leading-[1.3] text-[1.5rem] font-[600] ".concat(windowWidth < 1030 ? "text-[1.25rem]" : "")
+  }, getSpeakers(item.speakers)))), /*#__PURE__*/react.createElement("div", {
     id: "thirdLine",
     className: "flex items-center gap-4"
   }, /*#__PURE__*/react.createElement("p", {
-    className: "text-[1.375rem] leading-[1.2] tracking-[-0.04rem] font-[500] ".concat(windowWidth < 1030 ? "text-[1rem]" : "")
+    className: "text-[1.375rem] leading-[1.2] tracking-[-0.04rem] font-[500] ".concat(windowWidth < 1030 ? "text-[1.25rem]" : "")
   }, item.title)), /*#__PURE__*/react.createElement("div", {
     id: "fourthLine",
     className: "flex items-center gap-4 max-w-[53rem] font-[400] text-[1.25rem] leading-[1.35] tracking-[-0.0375rem]"
